@@ -207,7 +207,7 @@ $(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
 	@printf "Moving file $@.downfile to $@..."
 	@mv -n $@.download $@ $(LOG_ERROR)
 
-%/.dummy:
+%/.dummy: ## Generates a directory tree.
 	@printf "Making directory tree for marker file $(TARGET_VAR)..."
 	@$(MKDIR)
 	@printf "Making marker file $(TARGET_VAR)..."
