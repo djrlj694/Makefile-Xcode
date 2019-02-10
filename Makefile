@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 04FEB2019
-# REVISED: ---
+# REVISED: 10FEEB2019
 # ==============================================================================
 
 # ==============================================================================
@@ -138,7 +138,7 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 #	fi
 dirs: $(DUMMY_FILES) ## Complete all directory setup activities.
 
-docs: ## Make API documentation.
+docs: ## Makes API documentation.
 	@printf "Generating API documentation..."
 	@jazzy \
 		--min-acl internal \
@@ -150,7 +150,7 @@ docs: ## Make API documentation.
 		|| printf "$(FAILED)"
 	@rm -rf ./build
 
-git: .gitignore .git ## Complete all git setup activities.
+git: .gitignore .git ## Completes all git setup activities.
 	@printf "Committing the initial project to the master branch..."
 	@git checkout -q -b master
 	@git add .
@@ -161,7 +161,7 @@ git: .gitignore .git ## Complete all git setup activities.
 	@git remote add origin $(ORIGIN)
 	@git push -u origin master $(LOG_ERROR)
 
-help: ## Show usage documentation.
+help: ## Shows usage documentation.
 	@printf "$$HELP1"
 	@egrep '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) \
 	| sort \
@@ -199,9 +199,8 @@ $(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
 %.download: ## Downloads a file.
 	$(eval FILE = $(basename $@))
-	@printf "Downloading file $(FILE)..."
+	printf "Downloading file $(FILE)..."
 	@curl -s -S -L -f $(GITHUB)/$(FILE) -z $(FILE) -o $@ $(LOG_ERROR)
-#	@curl -O -s -z $@ $(GITHUB)/$@ && $(RESULT)
 
 %.md: ## Makes a Markdown template file.
 	@printf "Moving file $@.downfile to $@..."
@@ -217,12 +216,16 @@ $(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
 	@printf "Initializing git repository..."
 	@git init -q && $(RESULT)
 
+.INTERMEDIATE: .gitignore.download
 .gitignore: .gitignore.download ## Makes a .gitignore file.
 	@printf "Moving file $@.download to $@..."
 	@mv -n $@.download $@ $(LOG_ERROR)
 
+.INTERMEDIATE: CHANGELOG.md.download
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
+.INTERMEDIATE: CONTRIBUTING.md.download
 CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
 
+.INTERMEDIATE: ISSUE_TEMPLATE.md.download
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
