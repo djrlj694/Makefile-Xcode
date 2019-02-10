@@ -202,14 +202,10 @@ $(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
 	@printf "Downloading file $(FILE)..."
 	@curl -s -S -L -f $(GITHUB)/$(FILE) -z $(FILE) -o $@ $(LOG_ERROR)
 #	@curl -O -s -z $@ $(GITHUB)/$@ && $(RESULT)
-	@if [ -f "$@" ]; then \
-		printf "Moving file $@ to $(FILE)..."; \
-		mv -n $@ $(FILE); \
-		[ -f "$@" ] \
-			&& printf "$(FAILED)" \
-			&& rm -f $@ \
-			|| printf "$(DONE)"; \
-	fi
+
+%.md: ## Makes a Markdown template file.
+	@printf "Moving file $@.downfile to $@..."
+	@mv -n $@.download $@ $(LOG_ERROR)
 
 %/.dummy:
 	@printf "Making directory tree for marker file $(TARGET_VAR)..."
@@ -222,6 +218,8 @@ $(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
 	@git init -q && $(RESULT)
 
 .gitignore: .gitignore.download ## Makes a .gitignore file.
+	@printf "Moving file $@.download to $@..."
+	@mv -n $@.download $@ $(LOG_ERROR)
 
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
