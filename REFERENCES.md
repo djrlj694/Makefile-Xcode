@@ -6,6 +6,9 @@ The following is a list of sources that I found helpful when learning new topics
 1. https://lab.github.com/githubtraining/introduction-to-github
 2. https://code.likeagirl.io/how-to-add-git-to-your-new-xcode-project-ce5f53e1ad5a
 
+## iOS
+1. https://thoughtbot.com/blog/creating-your-first-ios-framework
+
 ## Makefile
 1. https://www.gnu.org/software/make/manual/make.html#Multi_002dLine
 2. https://stackoverflow.com/questions/11675070/makefile-echo-n-not-working
