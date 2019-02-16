@@ -171,7 +171,7 @@ setup: setup-dirs setup-md setup-carthage setup-cocoapods setup-git ## Completes
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
 
-# Ancillary phony targets for cleaning activities
+# Prerequisite phony targets for cleaning activities
 
 .PHONY: clean-carthage clean-dirs clean-git clean-md
 
@@ -195,7 +195,7 @@ clean-md: | $(LOG) ## Completes all Markdown cleanup activities.
 	@rm -rf $(MD_FILES) >$(LOG) 2>&1; \
 	$(RESULT)
 
-# Ancillary phony targets for setup activities
+# Prerequisite phony targets for setup activities
 
 .PHONY: setup-carthage setup-cocoapods setup-dirs setup-git setup-md 
 
@@ -228,7 +228,7 @@ setup-git:  .gitignore .git | $(LOG) ## Completes all git setup activities.
 
 setup-md: $(MD_FILES) ## Makes all Markdown files.
 
-# Ancillary phony targets for test activities
+# Prerequisite phony targets for test activities
 
 .PHONY: test-log  test-vars-all test-vars-some
 
