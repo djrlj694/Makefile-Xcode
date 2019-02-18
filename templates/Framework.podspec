@@ -1,16 +1,14 @@
 Pod::Spec.new do |spec|
-  spec.name = "<FRAMEWORK>"
+  spec.name = "${PROJECT}"
   spec.version = "1.0.0"
-  spec.summary = "Sample framework from blog post, not for real world use."
-  spec.homepage = "https://github.com/<GITHUB_USER>/<FRAMEWORK>"
-  spec.license = { type: '<LICENSE>', file: 'LICENSE' }
-  spec.authors = { "<AUTHOR>" => '<EMAIL>' }
-  spec.social_media_url = "http://twitter.com/<TWITTER_USER>"
+  spec.summary = "${SUMMARY}"
+  spec.homepage = "https://github.com/${GITHUB_USER}/${PROJECT}"
+  spec.license = { type: 'MIT', file: 'LICENSE' }
+  spec.authors = { "${AUTHOR}" => '${EMAIL}' }
+  spec.social_media_url = "http://twitter.com/${TWITTER_USER}"
 
-  spec.platform = :<OS>, "<OS_VERSION>"
+  spec.platform = :ios, "12.1"
   spec.requires_arc = true
-  spec.source = { git: "https://github.com/<GITHUB_USER>/<FRAMEWORK>.git", tag: "v#{spec.version}", submodules: true }
-  spec.source_files = "<FRAMEWORK>/**/*.{h,swift}"
-
-  spec.dependency "<DEPENDENCY>", "~> <DEPENDENCY_VERSION>"
+  spec.source = { git: "https://github.com/${GITHUB_USER}/${PROJECT}.git", tag: "v#{spec.version}", submodules: true }
+  spec.source_files = "ResourceKit/**/*.{h,swift}"
 end
