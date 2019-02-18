@@ -11,7 +11,7 @@ make [ -f MAKEFILE] [ OPTIONS ] ... [ TARGETS ] ...
 ```
 ### Options
 
-`make` options discussed in class include the following:
+`make` options include the following:
 
 * `-f MAKEFILE`, `--file=MAKEFILE`, `--makefile=MAKEFILE`  
 	* Use `MAKEFILE` as a makefile.
@@ -25,6 +25,26 @@ make [ -f MAKEFILE] [ OPTIONS ] ... [ TARGETS ] ...
 
 For all other options, refer to the manpage (`man make`).
 
+### Targets
+
+* `clean`           Removes files and directories.
+* `clean-carthage`  Completes all Carthage cleanup activities.
+* `clean-dirs`      Completes all directory cleanup activities.
+* `clean-git`       Completes all git cleanup activities.
+* `clean-md`        Completes all Markdown cleanup activities.
+* `docs`            Makes API documentation.
+* `help`            Shows usage documentation.
+* `setup`           Completes all Xcode project setup activities.
+* `setup-carthage`  Completes all Carthage setup activities.
+* `setup-cocoapods` Completes all CocoaPods setup activities.
+* `setup-dirs`      Completes all directory setup activities.
+* `setup-git`       Completes all git setup activities.
+* `setup-md`        Makes all Markdown files.
+* `test`            Completes all test activities.
+* `test-log`        Shows the most recently generated log for a specified release.
+* `test-vars-all`   Shows all Makefile variables (i.e., built-in and custom).
+* `test-vars-some`  Shows only a few custom Makefile variables.
+
 ## Installation
 
 1. Clone or download the `${PROJECT}` repository.
@@ -32,7 +52,7 @@ For all other options, refer to the manpage (`man make`).
 
 ## Contributing
 
-See [CONTRIBUTING](CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Known issues
 
