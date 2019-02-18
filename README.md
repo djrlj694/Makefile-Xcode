@@ -49,8 +49,8 @@ For all other options, refer to the manpage (`man make`).
 
 Makefile-xcode requires the following to be installed on your system:
 
-* `git` (Apple Git-113 -- git 2.17.2 -- or higher)
-* `make` (GNU Make 3.81 or hire)
+* `git` (Apple Git-113 -- git 2.17.2 -- or later)
+* `make` (GNU Make 3.81 or later)
 
 ## Installation
 
