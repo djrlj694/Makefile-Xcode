@@ -2,8 +2,22 @@
 
 The following is a list of sources that I found helpful when learning new topics, troubleshooting bugs, authoring documentation, etc.
 
+## CODE_OF_CONDUCT.md
+1. https://www.contributor-covenant.org
+2. https://www.contributor-covenant.org/version/1/4/code-of-conduct.md
+3. https://github.com/JohnSundell/Marathon/blob/master/CODE_OF_CONDUCT.md
+4. https://github.com/JohnSundell/Require/blob/master/CODE_OF_CONDUCT.md
+5. https://github.com/JohnSundell/SwiftPlate/blob/master/CODE_OF_CONDUCT.md
+6. https://github.com/tensorflow/tensorflow/blob/master/CODE_OF_CONDUCT.md
+
 ## CONTRIBUTING.md
 1. https://github.com/apple/example-package-dealer/blob/master/CONTRIBUTING.md
+2. https://github.com/atom/atom/blob/master/CONTRIBUTING.md
+3. https://github.com/JohnSundell/Marathon/blob/master/CONTRIBUTING.md
+4. https://github.com/opengovernment/opengovernment/blob/master/CONTRIBUTING.md
+5. https://github.com/rails/rails/blob/master/CONTRIBUTING.md
+6. https://github.com/tensorflow/tensorflow/blob/master/CONTRIBUTING.md
+7. https://help.github.com/articles/setting-guidelines-for-repository-contributors/
 
 ## GitHub
 1. https://lab.github.com/githubtraining/introduction-to-github
@@ -23,7 +37,11 @@ The following is a list of sources that I found helpful when learning new topics
 8. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
 
 ## README.md
-1. https://github.com/tryswift/Snorlax/blob/master/README.md
+1. https://github.com/JohnSundell/Marathon
+2. https://github.com/JohnSundell/Require
+3. https://github.com/JohnSundell/SwiftPlate
+4. https://github.com/tensorflow/tensorflow
+5. https://github.com/tryswift/Snorlax/blob/master/README.md
 
 ## Swift Package Manager
 1. https://github.com/apple/example-package-dealer/blob/master/Package.swift
@@ -31,7 +49,11 @@ The following is a list of sources that I found helpful when learning new topics
 
 ## Unix
 1. https://www.cyberciti.biz/faq/linux-unix-script-check-if-file-empty-or-not/
-2. https://www.thegeekstuff.com/2012/07/wget-curl2. https://unix.stackexchange.com/questions/58310/difference-between-printf-and-echo-in-bash
-3. https://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-line
-4. https://stackoverflow.com/questions/16633066/bash-how-to-test-for-failure-of-mkdir-command/16633130
-5. https://superuser.com/questions/908293/download-file-via-http-only-if-changed-since-last-update
+2. https://www.thegeekstuff.com/2012/07/wget-curl
+3. https://unix.stackexchange.com/questions/58310/difference-between-printf-and-echo-in-bash
+4. https://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-line
+5. https://stackoverflow.com/questions/16633066/bash-how-to-test-for-failure-of-mkdir-command/16633130
+6. https://superuser.com/questions/908293/download-file-via-http-only-if-changed-since-last-update
+
+## Xcode
+1. https://code.likeagirl.io/how-to-add-git-to-your-new-xcode-project-ce5f53e1ad5a
