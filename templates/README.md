@@ -12,6 +12,15 @@ Add the following to your Swift source code file:
 import ${PROJECT}
 ```
 
+## Requirements
+
+${PROJECT} requires the following to be installed on your system:
+
+* `git` (Apple Git-113 -- git 2.17.2 -- or later)
+* `make` (GNU Make 3.81 or later)
+* Swift (4.2 or later)
+* Xcode (10.1 or later)
+
 ## Installation
 
 ${PROJECT} currently supports the following popular package managers:
