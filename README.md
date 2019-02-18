@@ -50,13 +50,13 @@ For all other options, refer to the manpage (`man make`).
 1. Clone or download the `${PROJECT}` repository.
 2. Copy the `Makefile` file to the root folder of your project.
 
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
 ## Known issues
 
 Currently, there are no known issues.  If you discover any, please kindly submit a [pull request](CONTRIBUTING.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
