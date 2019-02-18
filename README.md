@@ -6,7 +6,7 @@ The `Makefile` presented here is designed to handle common Xcode project activit
 
 ## Usage
 
-```bash
+```sh
 make [ -f MAKEFILE] [ OPTIONS ] ... [ TARGETS ] ...
 ```
 ### Options
@@ -44,6 +44,13 @@ For all other options, refer to the manpage (`man make`).
 * `test-log`        Shows the most recently generated log for a specified release.
 * `test-vars-all`   Shows all Makefile variables (i.e., built-in and custom).
 * `test-vars-some`  Shows only a few custom Makefile variables.
+
+## Requirements
+
+Makefile-xcode requires the following to be installed on your system:
+
+- `git` (Apple Git-113 -- git 2.17.2 -- or higher)
+- `make` (GNU Make 3.81 or hire)
 
 ## Installation
 
