@@ -1,6 +1,9 @@
 # References
 
-The following is a list of sources that I found helpful when learning new topics, troubleshooting bugs, etc.
+The following is a list of sources that I found helpful when learning new topics, troubleshooting bugs, authoring documentation, etc.
+
+## CONTRIBUTING.md
+1. https://github.com/apple/example-package-dealer/blob/master/CONTRIBUTING.md
 
 ## GitHub
 1. https://lab.github.com/githubtraining/introduction-to-github
@@ -18,6 +21,13 @@ The following is a list of sources that I found helpful when learning new topics
 6. https://unix.stackexchange.com/questions/425297/how-can-i-use-files-from-http-as-prerequisites-in-gnu-make
 7. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
 8. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
+
+## README.md
+1. https://github.com/tryswift/Snorlax/blob/master/README.md
+
+## Swift Package Manager
+1. https://github.com/apple/example-package-dealer/blob/master/Package.swift
+2. https://swift.org/package-manager/
 
 ## Unix
 1. https://www.cyberciti.biz/faq/linux-unix-script-check-if-file-empty-or-not/
