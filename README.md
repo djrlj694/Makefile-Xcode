@@ -47,7 +47,7 @@ For all other options, refer to the manpage (`man make`).
 
 ## Installation
 
-1. Clone or download the `${PROJECT}` repository.
+1. Clone or download the `Makefile-xcode` repository.
 2. Copy the `Makefile` file to the root folder of your project.
 
 ## Known issues
@@ -60,4 +60,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-${PROJECT} is released under the [MIT License](LICENSE.md).
+Makefile-xcode is released under the [MIT License](LICENSE.md).
