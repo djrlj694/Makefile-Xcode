@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 04FEB2019
-# REVISED: 15FEB2019
+# REVISED: 18FEB2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -65,12 +65,16 @@ DIRS = $(SETUP_DIRS) $(RESOURCES_DIRS) $(SOURCES_DIRS)
 
 # Files
 
+FILE = $(basename $@)
+
 # Used to create special empty ("marker") files in order to:
 # 1. Automaticcally create directory trees if they don't already exist;
 # 2. Avoid directory tree rebuilds as their directory timestamps changed.
 DUMMY_FILES = $(addsuffix /.dummy,$(DIRS))
 
-MD_FILES = CHANGELOG.md CONTRIBUTING.md ISSUE_TEMPLATE.md
+CARTHAGE_FILES = Cartfile Cartfile.private
+COCOAPODS_FILES = Framework.podspec
+MD_FILES = CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md README.md
 
 #LOG = $(shell mktemp /tmp/log.XXXXXXXXXX)
 #LOG = `mktemp /tmp/log.XXXXXXXXXX`
@@ -118,6 +122,7 @@ HELP2 = $(FG_CYAN)%-17s$(RESET) %s
 # Path strings
 
 DIR_VAR = $(FG_CYAN)$(@D)$(RESET)
+FILE_VAR = $(FG_CYAN)$(FILE)$(RESET)
 SUBDIR_VAR = $(FG_CYAN)$(SUBDIR)$(RESET)
 
 TARGET_VAR = $(FG_CYAN)$@$(RESET)
@@ -145,7 +150,7 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 
 all: help
 
-clean: clean-git clean-carthage clean-md clean-dirs ## Removes files and directories.
+clean: clean-git clean-carthage clean-cocoapods clean-md clean-dirs ## Removes files and directories.
 
 docs: | $(LOG) ## Makes API documentation.
 	@printf "Generating API documentation..."
@@ -173,11 +178,16 @@ test: vars-some ## Completes all test activities.
 
 # Prerequisite phony targets for cleaning activities
 
-.PHONY: clean-carthage clean-dirs clean-git clean-md
+.PHONY: clean-carthage clean-cocoapods clean-dirs clean-git clean-md
 
 clean-carthage: | $(LOG) ## Completes all Carthage cleanup activities.
 	@printf "Removing Carthage setup..."
-	@rm -rf Cartfile* >$(LOG) 2>&1; \
+	@rm -rf $(CARTHAGE_FILES) >$(LOG) 2>&1; \
+	$(RESULT)
+
+clean-cocoapods: | $(LOG) ## Completes all CocoaPods cleanup activities.
+	@printf "Removing CocoaPods setup..."
+	@rm -rf $(COCOAPODS_FILES) >$(LOG) 2>&1; \
 	$(RESULT)
 
 clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
@@ -199,9 +209,9 @@ clean-md: | $(LOG) ## Completes all Markdown cleanup activities.
 
 .PHONY: setup-carthage setup-cocoapods setup-dirs setup-git setup-md 
 
-setup-carthage: Cartfile Cartfile.private ## Completes all Carthage setup activities.
+setup-carthage: $(CARTHAGE_FILES) ## Completes all Carthage setup activities.
 
-setup-cocoapods: Framework.podspec ## Completes all CocoaPods setup activities.
+setup-cocoapods: $(COCOAPODS_FILES) ## Completes all CocoaPods setup activities.
 
 #dirs: ## Completes all directory setup activities.
 #	@printf "Setting up directory tree rooted in ./$(PROJECT)..."
@@ -266,8 +276,8 @@ test-vars-some: ## Shows only a few custom Makefile variables.
 
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
 %.download: | $(LOG) ## Downloads a file.
-	$(eval FILE = $(basename $@))
-	@printf "Downloading file $(FILE)..."
+#	$(eval FILE = $(basename $@))
+	@printf "Downloading file $(FILE_VAR)..."
 	@curl -s -S -L -f $(GITHUB)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
 	$(RESULT)
@@ -298,11 +308,15 @@ Cartfile.private: | $(LOG) # Makes a Cartfile file for listing private Carthage 
 
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
+CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
+
 CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
 
 Framework.podspec: Framework.podspec.download ## Makes a Framework.podspec file.
 
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
+
+README.md: ISSUE_TEMPLATE.md.download ## Makes a README.md file.
 
 # ==============================================================================
 # Intermediate Targets
@@ -319,11 +333,15 @@ ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 
 .INTERMEDIATE: CHANGELOG.md.download
 
+.INTERMEDIATE: CODE_OF_CONDUCT.md.download
+
 .INTERMEDIATE: CONTRIBUTING.md.download
 
 .INTERMEDIATE: Framework.podspec.download
 
 .INTERMEDIATE: ISSUE_TEMPLATE.md.download
+
+.INTERMEDIATE: README.md.download
 
 .INTERMEDIATE: $(LOG)
 
