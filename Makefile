@@ -5,9 +5,9 @@
 # PROGRAM: Makefile
 # AUTHORS: Robert L. Jones
 # COMPANY: Synthelytics LLC
-# VERSION: 1.0
+# VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 18FEB2019
+# REVISED: 23FEB2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -30,8 +30,6 @@ SPACE = $(EMPTY) $(EMPTY)
 
 USER = $(shell whoami)
 
-GITHUB_USER = $(USER)
-
 # Commands
 
 MKDIR = mkdir -p
@@ -42,7 +40,7 @@ FAILURE = (printf "$(FAILED)" && echo && cat $(LOG) && echo)
 SUCCESS = printf "$(DONE)"
 RESULT = ([ $$? -eq 0 ] && $(SUCCESS)) || $(FAILURE)
 
-VARIABLES_TO_SHOW = GITHUB GITHUB_USER MAKEFILE MAKEFILE_DIR ORIGIN PREFIX PROJECT PWD RESOURCES_DIRS SOURCES_DIRS USER
+VARIABLES_TO_SHOW = GITHUB GITHUB_USER MAKEFILE MAKEFILE_DIR MAKEFILE_LIST ORIGIN PREFIX PROJECT PWD RESOURCES_DIRS SOURCES_DIRS USER
 
 # Directories
 
@@ -52,37 +50,21 @@ SUBDIR = $(shell basename $(@D))
 
 PROJECT = $(shell basename $(PREFIX))
 
-RESOURCES = Data Fonts Localization Media UserInterfaces
-RESOURCES_DIRS = $(addprefix $(PROJECT)/Resources/,$(addsuffix /.,$(RESOURCES)))
-
 BIN_DIR = bin/.
 LOG_DIR = logs/.
 SETUP_DIRS = $(BIN_DIR) $(LOG_DIR)
-
-SOURCES = Controllers Extensions Models Protocols ViewModels Views
-SOURCES_DIRS = $(addprefix $(PROJECT)/Sources/,$(addsuffix /.,$(SOURCES)))
 
 DIRS = $(SETUP_DIRS) $(RESOURCES_DIRS) $(SOURCES_DIRS)
 
 # Files
 
 FILE = $(basename $@)
-MAKEFILE = $(lastword $(MAKEFILE_LIST))
+MAKEFILE = $(firstword $(MAKEFILE_LIST))
 
 # Used to create special empty ("marker") files in order to:
 # 1. Automaticcally create directory trees if they don't already exist;
 # 2. Avoid directory tree rebuilds as their directory timestamps changed.
 ###DUMMY_FILES = $(addsuffix /.dummy,$(DIRS)) # RLJ: Commented out. 23FEB2019
-
-CARTHAGE_FILES = Cartfile Cartfile.private
-COCOAPODS_FILES = Framework.podspec
-
-DOCS1 = CHANGELOG ISSUE_TEMPLATE README REFERENCES SUPPORT
-DOCS2 = $(addprefix .github/,CODE_OF_CONDUCT CONTRIBUTING) 
-DOCS3 = $(addprefix .github/ISSUE_TEMPLATE/,bug_report custom feature_request)
-
-#MD_FILES = CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md README.md REFERENCES.md
-MD_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
 
 #LOG = $(shell mktemp /tmp/log.XXXXXXXXXX)
 #LOG = `mktemp /tmp/log.XXXXXXXXXX`
@@ -90,11 +72,6 @@ MD_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
 #LOG = $(shell mktemp)
 #LOG = /tmp/make.$$$$.log
 LOG = make.log
-
-# URLs
-
-GITHUB = https://raw.githubusercontent.com/$(GITHUB_USER)/makefile-xcode/master/templates
-ORIGIN = https://github.com/$(GITHUB_USER)/$(PROJECT).git
 
 # STDOUT format settings
 
@@ -172,9 +149,17 @@ docs: | $(LOG) ## Makes API documentation.
 	$(RESULT)
 	@rm -rf ./build
 
+#help: ## Shows usage documentation.
+#	@printf "$$HELP1"
+#	@egrep '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
+#	sed -e 's/:.* ##/: ##/' | sort -d | \
+#	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
+#	@echo ""
+
 help: ## Shows usage documentation.
 	@printf "$$HELP1"
-	@egrep '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
+	@cat $(MAKEFILE_LIST) | \
+	egrep '^[a-zA-Z_-]+:.*?##' | \
 	sed -e 's/:.* ##/: ##/' | sort -d | \
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
@@ -186,40 +171,16 @@ test: vars-some ## Completes all test activities.
 
 # Prerequisite phony targets for cleaning activities
 
-.PHONY: clean-carthage clean-cocoapods clean-dirs clean-git clean-md
-
-clean-carthage: | $(LOG) ## Completes all Carthage cleanup activities.
-	@printf "Removing Carthage setup..."
-	@rm -rf $(CARTHAGE_FILES) >$(LOG) 2>&1; \
-	$(RESULT)
-
-clean-cocoapods: | $(LOG) ## Completes all CocoaPods cleanup activities.
-	@printf "Removing CocoaPods setup..."
-	@rm -rf $(COCOAPODS_FILES) >$(LOG) 2>&1; \
-	$(RESULT)
+.PHONY: clean-dirs
 
 clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 	@printf "Removing directories setup..."
 	@rm -rf $(PROJECT) $(dir $(SETUP_DIRS)) >$(LOG) 2>&1; \
 	$(RESULT)
 
-clean-git: | $(LOG) ## Completes all git cleanup activities.
-	@printf "Removing git setup..."
-	@rm -rf .git .gitignore >$(LOG) 2>&1; \
-	$(RESULT)
-
-clean-md: | $(LOG) ## Completes all Markdown cleanup activities.
-	@printf "Removing Markdown setup..."
-	@rm -rf $(MD_FILES) >$(LOG) 2>&1; \
-	$(RESULT)
-
 # Prerequisite phony targets for setup activities
 
-.PHONY: init-carthage init-cocoapods init-dirs init-git init-md 
-
-init-carthage: $(CARTHAGE_FILES) ## Completes all initial Carthage setup activities.
-
-init-cocoapods: $(COCOAPODS_FILES) ## Completes all initial CocoaPods setup activities.
+.PHONY: init-dirs
 
 #dirs: ## Completes all directory setup activities.
 #	@printf "Setting up directory tree rooted in ./$(PROJECT)..."
@@ -232,19 +193,6 @@ init-cocoapods: $(COCOAPODS_FILES) ## Completes all initial CocoaPods setup acti
 #	fi
 #dirs: $(DUMMY_FILES) ## Completes all directory setup activities.
 init-dirs: $(DIRS) ## Completes all initial directory setup activities.
-
-init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activities.
-	@printf "Committing the initial project to the master branch..."
-	@git checkout -b master >$(LOG) 2>&1; \
-	git add . >>$(LOG) 2>&1; \
-	git commit -m "Initial project setup" >>$(LOG) 2>&1; \
-	$(RESULT)
-	@printf "Syncing the initial project with the origin..."
-	@git remote add origin $(ORIGIN) >$(LOG) 2>&1; \
-	git push -u origin master >$(LOG) 2>&1; \
-	$(RESULT)
-
-init-md: $(MD_FILES) ## Completes all initial Markdown file setup activites.
 
 # Prerequisite phony targets for test activities
 
@@ -297,47 +245,6 @@ test-vars-some: ## Shows only a few custom Makefile variables.
 #	@printf "Making marker file $(TARGET_VAR)..."
 #	@touch $@; $(RESULT)
 
-.git: | $(LOG) ## Makes a git repository.
-	@printf "Initializing git repository..."
-	@git init >$(LOG) 2>&1; \
-	$(RESULT)
-
-.github/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
-
-.github/CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
-
-.github/ISSUE_TEMPLATE/bug_report.md: bug_report.md.download ## Makes a bug_report.md file.
-
-.github/ISSUE_TEMPLATE/custom.md: custom.md.download ## Makes a custom.md file.
-
-.github/ISSUE_TEMPLATE/feature_request.md: feature_request.md.download ## Makes a feature_request.md file.
-
-.gitignore: .gitignore.download ## Makes a .gitignore file.
-
-Cartfile: | $(LOG) # Makes a Cartfile file for listing runtime Carthage dependencies.
-	@printf "Making empty file $(TARGET_VAR)..."
-	@touch $@ >$(LOG) 2>&1; \
-	$(RESULT)
-
-Cartfile.private: | $(LOG) # Makes a Cartfile file for listing private Carthage dependencies.
-	@printf "Making empty file $(TARGET_VAR)..."
-	@touch $@ >$(LOG) 2>&1; \
-	$(RESULT)
-
-CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
-
-Framework.podspec: Framework.podspec.download ## Makes a Framework.podspec file.
-
-ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
-
-README.md: ISSUE_TEMPLATE.md.download ## Makes a README.md file.
-
-REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
-
-setup: setup.download ## Makes a setup file.
-
-SUPPORT.md: SUPPORT.md.download ## Makes a SUPPORT.md file.
-
 # ==============================================================================
 # Intermediate Targets
 #
@@ -348,30 +255,6 @@ SUPPORT.md: SUPPORT.md.download ## Makes a SUPPORT.md file.
 # other words, such files that did not exist before a "make" run executed do not
 # exist after a "make" run.
 # ==============================================================================
-
-.INTERMEDIATE: .gitignore.download
-
-.INTERMEDIATE: bug_report.md.download
-
-.INTERMEDIATE: CHANGELOG.md.download
-
-.INTERMEDIATE: CODE_OF_CONDUCT.md.download
-
-.INTERMEDIATE: CONTRIBUTING.md.download
-
-.INTERMEDIATE: custom.md.download
-
-.INTERMEDIATE: feature_request.md.download
-
-.INTERMEDIATE: Framework.podspec.download
-
-.INTERMEDIATE: ISSUE_TEMPLATE.md.download
-
-.INTERMEDIATE: README.md.download
-
-.INTERMEDIATE: REFERENCES.md.download
-
-.INTERMEDIATE: SUPPORT.md.download
 
 .INTERMEDIATE: $(LOG)
 
@@ -384,3 +267,13 @@ $(LOG): ## Makes a temporary file capturring a shell command error.
 
 #.SECONDEXPANSION:
 #$(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
+
+# ==============================================================================
+# Makefiles
+# ==============================================================================
+
+include $(MAKEFILE_DIR)/Carthage.mk
+include $(MAKEFILE_DIR)/CocoaPods.mk
+include $(MAKEFILE_DIR)/git.mk
+include $(MAKEFILE_DIR)/GitHub.mk
+include $(MAKEFILE_DIR)/Xcode.mk
