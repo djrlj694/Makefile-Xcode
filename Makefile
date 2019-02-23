@@ -70,17 +70,17 @@ FILE = $(basename $@)
 # Used to create special empty ("marker") files in order to:
 # 1. Automaticcally create directory trees if they don't already exist;
 # 2. Avoid directory tree rebuilds as their directory timestamps changed.
-DUMMY_FILES = $(addsuffix /.dummy,$(DIRS))
+###DUMMY_FILES = $(addsuffix /.dummy,$(DIRS)) # RLJ: Commented out. 23FEB2019
 
 CARTHAGE_FILES = Cartfile Cartfile.private
 COCOAPODS_FILES = Framework.podspec
 
-DOCS1 = CHANGELOG ISSUE_TEMPLATE README REFERENCES
+DOCS1 = CHANGELOG ISSUE_TEMPLATE README REFERENCES SUPPORT
 DOCS2 = $(addprefix .github/,CODE_OF_CONDUCT CONTRIBUTING) 
-DOCS3 = $(addprefix .github/ISSUE_TEMPLATE,bug_report custom feature_request)
+DOCS3 = $(addprefix .github/ISSUE_TEMPLATE/,bug_report custom feature_request)
 
 #MD_FILES = CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md README.md REFERENCES.md
-MD_FILES = $(addsuffix /.dummy,$(DOCS1) $(DOCS2) $(DOCS3))
+MD_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
 
 #LOG = $(shell mktemp /tmp/log.XXXXXXXXXX)
 #LOG = `mktemp /tmp/log.XXXXXXXXXX`
@@ -177,7 +177,7 @@ help: ## Shows usage documentation.
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
 
-setup: setup-dirs setup-md setup-carthage setup-cocoapods setup-git ## Completes all Xcode project setup activities.
+init: init-dirs init-md init-carthage init-cocoapods init-git ## Completes all initial repo setup activities.
 
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
@@ -213,11 +213,11 @@ clean-md: | $(LOG) ## Completes all Markdown cleanup activities.
 
 # Prerequisite phony targets for setup activities
 
-.PHONY: setup-carthage setup-cocoapods setup-dirs setup-git setup-md 
+.PHONY: init-carthage init-cocoapods init-dirs init-git init-md 
 
-setup-carthage: $(CARTHAGE_FILES) ## Completes all Carthage setup activities.
+init-carthage: $(CARTHAGE_FILES) ## Completes all initial Carthage setup activities.
 
-setup-cocoapods: $(COCOAPODS_FILES) ## Completes all CocoaPods setup activities.
+init-cocoapods: $(COCOAPODS_FILES) ## Completes all initial CocoaPods setup activities.
 
 #dirs: ## Completes all directory setup activities.
 #	@printf "Setting up directory tree rooted in ./$(PROJECT)..."
@@ -229,9 +229,9 @@ setup-cocoapods: $(COCOAPODS_FILES) ## Completes all CocoaPods setup activities.
 #		printf "$(IGNORE)"; \
 #	fi
 #dirs: $(DUMMY_FILES) ## Completes all directory setup activities.
-setup-dirs: $(DIRS) ## Completes all directory setup activities.
+init-dirs: $(DIRS) ## Completes all initial directory setup activities.
 
-setup-git:  .gitignore .git | $(LOG) ## Completes all git setup activities.
+init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activities.
 	@printf "Committing the initial project to the master branch..."
 	@git checkout -b master >$(LOG) 2>&1; \
 	git add . >>$(LOG) 2>&1; \
@@ -242,7 +242,7 @@ setup-git:  .gitignore .git | $(LOG) ## Completes all git setup activities.
 	git push -u origin master >$(LOG) 2>&1; \
 	$(RESULT)
 
-setup-md: $(MD_FILES) ## Makes all Markdown files.
+init-md: $(MD_FILES) ## Completes all initial Markdown file setup activites.
 
 # Prerequisite phony targets for test activities
 
@@ -300,6 +300,16 @@ test-vars-some: ## Shows only a few custom Makefile variables.
 	@git init >$(LOG) 2>&1; \
 	$(RESULT)
 
+.github/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
+
+.github/CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
+
+.github/ISSUE_TEMPLATE/bug_report.md: bug_report.md.download ## Makes a bug_report.md file.
+
+.github/ISSUE_TEMPLATE/custom.md: custom.md.download ## Makes a custom.md file.
+
+.github/ISSUE_TEMPLATE/feature_request.md: feature_request.md.download ## Makes a feature_request.md file.
+
 .gitignore: .gitignore.download ## Makes a .gitignore file.
 
 Cartfile: | $(LOG) # Makes a Cartfile file for listing runtime Carthage dependencies.
@@ -314,10 +324,6 @@ Cartfile.private: | $(LOG) # Makes a Cartfile file for listing private Carthage 
 
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
-CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
-
-CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
-
 Framework.podspec: Framework.podspec.download ## Makes a Framework.podspec file.
 
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
@@ -325,6 +331,10 @@ ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 README.md: ISSUE_TEMPLATE.md.download ## Makes a README.md file.
 
 REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
+
+setup: setup.download ## Makes a setup file.
+
+SUPPORT.md: SUPPORT.md.download ## Makes a SUPPORT.md file.
 
 # ==============================================================================
 # Intermediate Targets
@@ -339,17 +349,27 @@ REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
 
 .INTERMEDIATE: .gitignore.download
 
+.INTERMEDIATE: bug_report.md.download
+
 .INTERMEDIATE: CHANGELOG.md.download
 
 .INTERMEDIATE: CODE_OF_CONDUCT.md.download
 
 .INTERMEDIATE: CONTRIBUTING.md.download
 
+.INTERMEDIATE: custom.md.download
+
+.INTERMEDIATE: feature_request.md.download
+
 .INTERMEDIATE: Framework.podspec.download
 
 .INTERMEDIATE: ISSUE_TEMPLATE.md.download
 
 .INTERMEDIATE: README.md.download
+
+.INTERMEDIATE: REFERENCES.md.download
+
+.INTERMEDIATE: SUPPORT.md.download
 
 .INTERMEDIATE: $(LOG)
 
