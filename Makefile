@@ -135,7 +135,7 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 
 all: help
 
-clean: clean-git clean-carthage clean-cocoapods clean-md clean-dirs ## Removes files and directories.
+clean: clean-git clean-carthage clean-cocoapods  clean-github clean-dirs ## Removes files and directories.
 
 docs: | $(LOG) ## Makes API documentation.
 	@printf "Generating API documentation..."
@@ -164,7 +164,7 @@ help: ## Shows usage documentation.
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
 
-init: init-dirs init-md init-carthage init-cocoapods init-git ## Completes all initial repo setup activities.
+init: init-dirs clean-github init-carthage init-cocoapods init-git ## Completes all initial repo setup activities.
 
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
