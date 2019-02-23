@@ -20,16 +20,16 @@ GITHUB_USER = $(USER)
 
 # Directories
 
-GITHUB_DIR = .github
-ISSUE_TEMPLATE_DIR = $(GITHUB_DIR)/ISSUE_TEMPLATE
+GITHUB_DIR1 = .github
+GITHUB_DIR1 = $(GITHUB_DIR)/ISSUE_TEMPLATE
 
 # Files
 
 DOCS1 = CHANGELOG ISSUE_TEMPLATE README REFERENCES SUPPORT
-DOCS2 = $(addprefix $(GITHUB_DIR)/,CODE_OF_CONDUCT CONTRIBUTING) 
-DOCS3 = $(addprefix $(ISSUE_TEMPLATE_DIR)/,bug_report custom feature_request)
+DOCS2 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
+DOCS3 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request)
 
-MD_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
+GITHUB_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
 
 # URLs
 
@@ -49,32 +49,38 @@ ORIGIN = https://github.com/$(GITHUB_USER)/$(PROJECT).git
 
 # Prerequisite phony targets for cleaning activities
 
-.PHONY: clean-md
+.PHONY: clean-docs-github
 
-clean-md: | $(LOG) ## Completes all Markdown cleanup activities.
+clean-md: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 	@printf "Removing Markdown setup..."
-	@rm -rf $(MD_FILES) >$(LOG) 2>&1; \
+	@rm -rf $(GITHUB_FILES) >$(LOG) 2>&1; \
 	$(RESULT)
 
 # Prerequisite phony targets for initial setup activities
 
-.PHONY: init-md 
+.PHONY: init-github 
 
-init-md: $(MD_FILES) ## Completes all initial Markdown file setup activites.
+init-github: docs-github ## Completes all initial Github setup activites.
+
+# Prerequisite phony targets for initial setup activities
+
+.PHONY: docs-github 
+
+docs-github: $(GITHUB_FILES) ## Completes all GitHub document activites.
 
 # ==============================================================================
 # File Targets
 # ==============================================================================
 
-$(GITHUB_DIR)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
+$(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
 
-$(GITHUB_DIR)/CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
+$(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
 
-$(ISSUE_TEMPLATE_DIR)/bug_report.md: bug_report.md.download ## Makes a bug_report.md file.
+$(GITHUB_DIR2)/bug_report.md: bug_report.md.download ## Makes a bug_report.md file.
 
-$(ISSUE_TEMPLATE_DIR)/custom.md: custom.md.download ## Makes a custom.md file.
+$(GITHUB_DIR2)/custom.md: custom.md.download ## Makes a custom.md file.
 
-$(ISSUE_TEMPLATE_DIR)/feature_request.md: feature_request.md.download ## Makes a feature_request.md file.
+$(GITHUB_DIR2)/feature_request.md: feature_request.md.download ## Makes a feature_request.md file.
 
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
