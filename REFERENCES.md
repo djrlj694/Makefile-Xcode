@@ -38,8 +38,9 @@ The following is a list of sources that I found helpful or inspirational when le
 4. https://stackoverflow.com/questions/23494088/makefile-generic-target-rule
 5. https://stackoverflow.com/questions/649246/is-it-possible-to-create-a-multi-line-string-variable-in-a-makefile
 6. https://unix.stackexchange.com/questions/425297/how-can-i-use-files-from-http-as-prerequisites-in-gnu-make
-7. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
-8. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
+7. https://stackoverflow.com/questions/26063839/how-can-i-make-a-target-private-in-gnu-make-for-internal-use-only-or-how-to
+8. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
+9. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
 
 ## Open Source
 1. https://opensource.guide
