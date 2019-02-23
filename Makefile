@@ -74,7 +74,13 @@ DUMMY_FILES = $(addsuffix /.dummy,$(DIRS))
 
 CARTHAGE_FILES = Cartfile Cartfile.private
 COCOAPODS_FILES = Framework.podspec
-MD_FILES = CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md README.md
+
+DOCS1 = CHANGELOG ISSUE_TEMPLATE README REFERENCES
+DOCS2 = $(addprefix .github/,CODE_OF_CONDUCT CONTRIBUTING) 
+DOCS3 = $(addprefix .github/ISSUE_TEMPLATE,bug_report custom feature_request)
+
+#MD_FILES = CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md ISSUE_TEMPLATE.md README.md REFERENCES.md
+MD_FILES = $(addsuffix /.dummy,$(DOCS1) $(DOCS2) $(DOCS3))
 
 #LOG = $(shell mktemp /tmp/log.XXXXXXXXXX)
 #LOG = `mktemp /tmp/log.XXXXXXXXXX`
@@ -317,6 +323,8 @@ Framework.podspec: Framework.podspec.download ## Makes a Framework.podspec file.
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 
 README.md: ISSUE_TEMPLATE.md.download ## Makes a README.md file.
+
+REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
 
 # ==============================================================================
 # Intermediate Targets
