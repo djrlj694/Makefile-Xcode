@@ -42,13 +42,14 @@ FAILURE = (printf "$(FAILED)" && echo && cat $(LOG) && echo)
 SUCCESS = printf "$(DONE)"
 RESULT = ([ $$? -eq 0 ] && $(SUCCESS)) || $(FAILURE)
 
-VARIABLES_TO_SHOW = GITHUB GITHUB_USER ORIGIN PREFIX PROJECT RESOURCES_DIRS SOURCES_DIRS USER
+VARIABLES_TO_SHOW = GITHUB GITHUB_USER MAKEFILE MAKEFILE_DIR ORIGIN PREFIX PROJECT PWD RESOURCES_DIRS SOURCES_DIRS USER
 
 # Directories
 
+MAKEFILE_DIR = $(dir $(realpath $(MAKEFILE)))
+PREFIX = $(PWD)
 SUBDIR = $(shell basename $(@D))
 
-PREFIX = $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 PROJECT = $(shell basename $(PREFIX))
 
 RESOURCES = Data Fonts Localization Media UserInterfaces
@@ -66,6 +67,7 @@ DIRS = $(SETUP_DIRS) $(RESOURCES_DIRS) $(SOURCES_DIRS)
 # Files
 
 FILE = $(basename $@)
+MAKEFILE = $(lastword $(MAKEFILE_LIST))
 
 # Used to create special empty ("marker") files in order to:
 # 1. Automaticcally create directory trees if they don't already exist;
