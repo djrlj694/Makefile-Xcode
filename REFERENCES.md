@@ -20,8 +20,13 @@ The following is a list of sources that I found helpful or inspirational when le
 7. https://help.github.com/articles/setting-guidelines-for-repository-contributors/
 
 ## GitHub
-1. https://lab.github.com/githubtraining/introduction-to-github
-2. https://code.likeagirl.io/how-to-add-git-to-your-new-xcode-project-ce5f53e1ad5a
+1. https://help.github.com/articles/adding-support-resources-to-your-project/
+2. https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/
+3. https://help.github.com/articles/creating-issue-templates-for-your-repository/
+4. https://help.github.com/articles/setting-guidelines-for-repository-contributors/
+5. https://help.github.com/categories/building-a-strong-community/
+6. https://lab.github.com/githubtraining/introduction-to-github
+7. https://code.likeagirl.io/how-to-add-git-to-your-new-xcode-project-ce5f53e1ad5a
 
 ## iOS
 1. https://thoughtbot.com/blog/creating-your-first-ios-framework
@@ -35,6 +40,9 @@ The following is a list of sources that I found helpful or inspirational when le
 6. https://unix.stackexchange.com/questions/425297/how-can-i-use-files-from-http-as-prerequisites-in-gnu-make
 7. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
 8. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
+
+## Open Source
+1. https://opensource.guide
 
 ## README.md
 1. https://github.com/JohnSundell/Marathon
