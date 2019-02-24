@@ -1,20 +1,20 @@
 # {{PROJECT}}
 
-[![Build Status](https://travis-ci.org/<TRAVIS_USER>/TravisCIBlog.svg?branch=master)](https://travis-ci.org/<TRAVIS_USER>/<PROJECT>)
+[![Build Status](https://travis-ci.org/{{TRAVIS_USER}}/TravisCIBlog.svg?branch=master)](https://travis-ci.org/{{TRAVIS_USER}}/{{PROJECT}})
 
-<DESCRIPTION>
+{{DESCRIPTION}}
 
 ## Usage
 
 Add the following to your Swift source code file:
 
 ```swift
-import <PROJECT>
+import {{PROJECT}}
 ```
 
 ## Requirements
 
-<PROJECT> requires the following to be installed on your system:
+{{PROJECT}} requires the following to be installed on your system:
 
 * `git` (Apple Git-113 -- git 2.17.2 -- or later)
 * `make` (GNU Make 3.81 or later)
@@ -23,7 +23,7 @@ import <PROJECT>
 
 ## Installation
 
-<PROJECT> currently supports the following popular package managers:
+{{PROJECT}} currently supports the following popular package managers:
 
 * [Swift Package Manager (SPM)](https://swift.org/package-manager/): Apple's official solution for managing Swift packages; 
 * [CocoaPods](https://cocoapods.org): A centralized dependency manager, written in Ruby, for Swift and Objective-C projects;
@@ -49,11 +49,11 @@ let package = Package(
     // ... your project details
     dependencies: [
         // As a required dependency
-        .package(url: "https://github.com/<GITHUB_USER>/<PROJECT>.git", majorVersion: 1)
+        .package(url: "https://github.com/{{GITHUB_USER}}/{{PROJECT}}.git", majorVersion: 1)
     ],
     testDependencies: [
         // As a test dependency
-        .package(url: "https://github.com/<GITHUB_USER>/<PROJECT>.git", majorVersion: 1)
+        .package(url: "https://github.com/{{GITHUB_USER}}/{{PROJECT}}.git", majorVersion: 1)
     ]
 )
 ```
@@ -64,7 +64,7 @@ Add the following to your `Podfile`:
 
 ```ruby
 # CocoaPods
-pod '<PROJECT>', '~> 1.0.0'
+pod '{{PROJECT}}', '~> 1.0.0'
 ```
 
 ### Carthage
@@ -72,13 +72,13 @@ pod '<PROJECT>', '~> 1.0.0'
 Add the following to your `Cartfile` (package dependency) or `Cartfile.private` (development dependency):
 
 ```
-github "<GITHUB_USER>/<PROJECT>" ~> 1.0.0
+github "{{GITHUB_USER}}/{{PROJECT}}" ~> 1.0.0
 ```
 
 ### Manual
 
-1. Clone or download the `<PROJECT>` repository.
-2. Copy the `<PROJECT>` folder to your Xcode project.
+1. Clone or download the `{{PROJECT}}` repository.
+2. Copy the `{{PROJECT}}` folder to your Xcode project.
 3. Enable the following options:
 
     -  Copy items if needed
@@ -86,7 +86,7 @@ github "<GITHUB_USER>/<PROJECT>" ~> 1.0.0
 
 ## Documentation
 
-Documentation for the project can be found [here](https://<GITHUB_USER>.github.io/<PROJECT>/).
+Documentation for the project can be found [here](https://{{GITHUB_USER}}.github.io/{{PROJECT}}/).
 
 Information on how the documentation was generated and hosted can be found in the blog: [Generate & Host your iOS Documentation](https://medium.com/@jonathan2457/generate-host-your-ios-documentation-39e21b382ce8).
 
@@ -96,8 +96,8 @@ Currently, there are no known issues.  If you discover any, please kindly submit
 
 ## Contributing
 
-Code and codeless (e.g., documentation) contributions toward improving <PROJECT> are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to become a contributor.
+Code and codeless (e.g., documentation) contributions toward improving {{PROJECT}} are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to become a contributor.
 
 ## License
 
-<PROJECT> is released under the [MIT License](LICENSE.md).
+{{PROJECT}} is released under the [MIT License](LICENSE.md).
