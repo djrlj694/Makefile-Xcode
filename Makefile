@@ -107,7 +107,8 @@ HELP2 = $(FG_CYAN)%-17s$(RESET) %s
 # Path strings
 
 DIR_VAR = $(FG_CYAN)$(@D)$(RESET)
-FILE_VAR = $(FG_CYAN)$(FILE)$(RESET)
+###FILE_VAR = $(FG_CYAN)$(FILE)$(RESET) # RLJ: Commented out. 23FEEB2019, RRLJ
+FILE_VAR = $(FG_CYAN)$(@F)$(RESET)
 SUBDIR_VAR = $(FG_CYAN)$(SUBDIR)$(RESET)
 
 TARGET_VAR = $(FG_CYAN)$@$(RESET)
@@ -135,7 +136,7 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 
 all: help
 
-clean: clean-git clean-carthage clean-cocoapods  clean-github clean-dirs ## Removes files and directories.
+clean: clean-git clean-carthage clean-cocoapods  clean-docs-github clean-dirs ## Removes files and directories.
 
 docs: | $(LOG) ## Makes API documentation.
 	@printf "Generating API documentation..."
@@ -149,13 +150,6 @@ docs: | $(LOG) ## Makes API documentation.
 	$(RESULT)
 	@rm -rf ./build
 
-#help: ## Shows usage documentation.
-#	@printf "$$HELP1"
-#	@egrep '^[a-zA-Z_-]+:.*?##' $(MAKEFILE_LIST) | \
-#	sed -e 's/:.* ##/: ##/' | sort -d | \
-#	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
-#	@echo ""
-
 help: ## Shows usage documentation.
 	@printf "$$HELP1"
 	@cat $(MAKEFILE_LIST) | \
@@ -164,7 +158,7 @@ help: ## Shows usage documentation.
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
 
-init: init-dirs clean-github init-carthage init-cocoapods init-git ## Completes all initial repo setup activities.
+init: init-dirs init-github init-carthage init-cocoapods init-git ## Completes all initial repo setup activities.
 
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
@@ -265,7 +259,7 @@ $(LOG): ## Makes a temporary file capturring a shell command error.
 # Second Expansion Targets
 # ==============================================================================
 
-#.SECONDEXPANSION:
+.SECONDEXPANSION:
 #$(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
 
 # ==============================================================================
