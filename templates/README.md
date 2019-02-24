@@ -1,4 +1,4 @@
-# <PROJECT>
+# {{PROJECT}}
 
 [![Build Status](https://travis-ci.org/<TRAVIS_USER>/TravisCIBlog.svg?branch=master)](https://travis-ci.org/<TRAVIS_USER>/<PROJECT>)
 
