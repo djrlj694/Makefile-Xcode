@@ -79,18 +79,18 @@ $(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Mak
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
-	@sed -e 's/<PROJECT>/$(PROJECT)/g' $@ >$@.tmp1
-	@sed -e 's/<GITHUB_USER>/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/<EMAIL>/$(EMAIL)/g' $@.tmp2 >$@
+	@sed -e 's/{{PROJECT}}/$(PROJECT)/g' $@ >$@.tmp1
+	@sed -e 's/{{GITHUB_USER}}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
+	@sed -e 's/{{EMAIL}}/$(EMAIL)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
 
 $(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a CONTRIBUTING.md file.
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
-	@sed -e 's/<PROJECT>/$(PROJECT)/g' $@ >$@.tmp1
-	@sed -e 's/<GITHUB_USER>/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/<EMAIL>/$(EMAIL)/g' $@.tmp2 >$@
+	@sed -e 's/{{PROJECT}}/$(PROJECT)/g' $@ >$@.tmp1
+	@sed -e 's/{{GITHUB_USER}}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
+	@sed -e 's/{{EMAIL}}/$(EMAIL)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
 
 $(GITHUB_DIR2)/bug_report.md: bug_report.md.download | $$(@D)/.## Makes a bug_report.md file.
@@ -114,8 +114,8 @@ ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 
 README.md: README.md.download ## Makes a README.md file.
 	@sed -e 's/{{PROJECT}}/$(PROJECT)/g' $@ >$@.tmp1
-	@sed -e 's/<GITHUB_USER>/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/<TRAVIS_USER>/$(TRAVIS_USER)/g' $@.tmp2 >$@
+	@sed -e 's/{{GITHUB_USER}}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
+	@sed -e 's/{{TRAVIS_USER}}/$(TRAVIS_USER)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
 
 REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
