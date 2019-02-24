@@ -17,11 +17,14 @@
 # Accounts
 
 GITHUB_USER = $(USER)
+TRAVIS_USER = $(USER)
+
+EMAIL = $(USER)@gmail.com
 
 # Directories
 
 GITHUB_DIR1 = .github
-GITHUB_DIR1 = $(GITHUB_DIR)/ISSUE_TEMPLATE
+GITHUB_DIR2 = $(GITHUB_DIR1)/ISSUE_TEMPLATE
 
 # Files
 
@@ -51,9 +54,9 @@ ORIGIN = https://github.com/$(GITHUB_USER)/$(PROJECT).git
 
 .PHONY: clean-docs-github
 
-clean-md: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
+clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 	@printf "Removing Markdown setup..."
-	@rm -rf $(GITHUB_FILES) >$(LOG) 2>&1; \
+	@rm -rf $(GITHUB_FILES) $(GITHUB_DIR1) >$(LOG) 2>&1; \
 	$(RESULT)
 
 # Prerequisite phony targets for initial setup activities
@@ -72,21 +75,54 @@ docs-github: $(GITHUB_FILES) ## Completes all GitHub document activites.
 # File Targets
 # ==============================================================================
 
-$(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
+$(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Makes a CODE_OF_CONDUCT.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
+	@printf "Replacing variables with values in template file $(TARGET_VAR)..." >$@; \
+	cat $@ | \
+	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
+	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
+	sed -e "s/<EMAIL>/$(EMAIL)/g" >$@; \
+	$(RESULT)
 
-$(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
+$(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a CONTRIBUTING.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
+	@printf "Replacing variables with values in template file $(TARGET_VAR)..." >$@; \
+	cat $@ | \
+	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
+	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
+	sed -e "s/<EMAIL>/$(EMAIL)/g" >$@; \
+	$(RESULT)
 
-$(GITHUB_DIR2)/bug_report.md: bug_report.md.download ## Makes a bug_report.md file.
+$(GITHUB_DIR2)/bug_report.md: bug_report.md.download | $$(@D)/.## Makes a bug_report.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
 
-$(GITHUB_DIR2)/custom.md: custom.md.download ## Makes a custom.md file.
+$(GITHUB_DIR2)/custom.md: custom.md.download | $$(@D)/. ## Makes a custom.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
 
-$(GITHUB_DIR2)/feature_request.md: feature_request.md.download ## Makes a feature_request.md file.
+$(GITHUB_DIR2)/feature_request.md: feature_request.md.download | $$(@D)/. ## Makes a feature_request.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
 
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 
-README.md: ISSUE_TEMPLATE.md.download ## Makes a README.md file.
+README.md: README.md.download ## Makes a README.md file.
+	@printf "Replacing variables with values in template file $(TARGET_VAR)..." >$@; \
+	cat $@ | \
+	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
+	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
+	sed -e "s/<TRAVIS_USER>/$(TRAVIS_USER)/g" >$@; \
+	$(RESULT)
 
 REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
 
