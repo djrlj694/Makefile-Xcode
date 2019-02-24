@@ -113,7 +113,7 @@ CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 
 README.md: README.md.download ## Makes a README.md file.
-	@sed -e 's/<PROJECT>/$(PROJECT)/g' $@ >$@.tmp1
+	@sed -e 's/{{PROJECT}}/$(PROJECT)/g' $@ >$@.tmp1
 	@sed -e 's/<GITHUB_USER>/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
 	@sed -e 's/<TRAVIS_USER>/$(TRAVIS_USER)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
