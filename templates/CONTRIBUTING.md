@@ -2,7 +2,7 @@
 
 Contributions toward improving [<PROJECT>](https://github.com/<GITHUB_USER>/<PROJECT>) (its source code, documentation, etc.) are welcome via GitHub's [pull request](https://github.com/<GITHUB_USER>/<PROJECT>/pull/new/master) process.  By submitting a pull request, you acknowledge and agree to the following:
 
-1. You have the right to license your contribution to <PROJECT>'s project leader (${EMAIL}) and the <PROJECT> community;
+1. You have the right to license your contribution to <PROJECT>'s project leader (<EMAIL>) and the <PROJECT> community;
 2. Your contributions are licensed under the [MIT License](LICENSE.md).
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
