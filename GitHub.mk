@@ -79,8 +79,8 @@ $(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Mak
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
-	@printf "Replacing variables with values in template file $(TARGET_VAR)..." >$@; \
-	cat $@ | \
+	@printf "Replacing variables with values in template file $(TARGET_VAR)..."
+	@cat $@ | \
 	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
 	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
 	sed -e "s/<EMAIL>/$(EMAIL)/g" >$@; \
@@ -90,8 +90,8 @@ $(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a C
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
-	@printf "Replacing variables with values in template file $(TARGET_VAR)..." >$@; \
-	cat $@ | \
+	@printf "Replacing variables with values in template file $(TARGET_VAR)..."
+	@cat $@ | \
 	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
 	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
 	sed -e "s/<EMAIL>/$(EMAIL)/g" >$@; \
@@ -117,12 +117,12 @@ CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
 
 README.md: README.md.download ## Makes a README.md file.
-	@printf "Replacing variables with values in template file $(TARGET_VAR)..." >$@; \
-	cat $@ | \
-	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
-	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
-	sed -e "s/<TRAVIS_USER>/$(TRAVIS_USER)/g" >$@; \
-	$(RESULT)
+	@printf "Replacing variables with values in template file $(TARGET_VAR)..."
+#	@cat $@ | \
+#	sed -e "s/<PROJECT>/$(PROJECT)/g" | \
+#	sed -e "s/<GITHUB_USER>/$(GITHUB_USER)/g" | \
+#	sed -e "s/<TRAVIS_USER>/$(TRAVIS_USER)/g" >$@; \
+#	$(RESULT)
 
 REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
 
