@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 23FEB2019
+# REVISED: 26FEB2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -53,8 +53,6 @@ PROJECT = $(shell basename $(PREFIX))
 BIN_DIR = bin/.
 LOG_DIR = logs/.
 SETUP_DIRS = $(BIN_DIR) $(LOG_DIR)
-
-DIRS = $(SETUP_DIRS) $(RESOURCES_DIRS) $(SOURCES_DIRS)
 
 # Files
 
@@ -158,7 +156,7 @@ help: ## Shows usage documentation.
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
 
-init: init-dirs init-github init-carthage init-cocoapods init-git ## Completes all initial repo setup activities.
+init: init-dirs init-github init-xcode init-git ## Completes all initial repo setup activities.
 
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
@@ -186,7 +184,7 @@ clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 #		printf "$(IGNORE)"; \
 #	fi
 #dirs: $(DUMMY_FILES) ## Completes all directory setup activities.
-init-dirs: $(DIRS) ## Completes all initial directory setup activities.
+init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 
 # Prerequisite phony targets for test activities
 
@@ -228,7 +226,7 @@ test-vars-some: ## Shows only a few custom Makefile variables.
 %.download: | $(LOG) ## Downloads a file.
 #	$(eval FILE = $(basename $@))
 	@printf "Downloading file $(FILE_VAR)..."
-	@curl -s -S -L -f $(GITHUB)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
+	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
 	$(RESULT)
 
