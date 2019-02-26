@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 23FEB2019
+# REVISED: 26FEB2019
 # ==============================================================================
 
 # ==============================================================================
@@ -41,7 +41,7 @@ init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activitie
 	git commit -m "Initial project setup" >>$(LOG) 2>&1; \
 	$(RESULT)
 	@printf "Syncing the initial project with the origin..."
-	@git remote add origin $(ORIGIN) >$(LOG) 2>&1; \
+	@git remote add origin $(ORIGIN_URL) >$(LOG) 2>&1; \
 	git push -u origin master >$(LOG) 2>&1; \
 	$(RESULT)
 
