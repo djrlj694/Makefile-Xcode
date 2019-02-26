@@ -59,7 +59,6 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 .PHONY: init-github-vars init-github-vars
 
 init-github: init-github-vars docs-github ## Completes all initial Github setup activites.
-	@echo "FILE_URL =  $(FILE_URL)"
 
 init-github-vars: ## Completes all GitHub variable setup activites.
 	$(eval PROJECT_REPO = $(GITHUB_USER)/$(PROJECT))
