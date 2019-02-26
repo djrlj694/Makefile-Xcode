@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 23FEB2019
+# REVISED: 26FEB2019
 # ==============================================================================
 
 # ==============================================================================
@@ -34,11 +34,6 @@ DOCS3 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request)
 
 GITHUB_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
 
-# URLs
-
-GITHUB = https://raw.githubusercontent.com/$(GITHUB_USER)/makefile-xcode/master/templates
-ORIGIN = https://github.com/$(GITHUB_USER)/$(PROJECT).git
-
 # ==============================================================================
 # Phony Targets
 #
@@ -61,15 +56,22 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 
 # Prerequisite phony targets for initial setup activities
 
-.PHONY: init-github 
+.PHONY: init-github-vars init-github-vars
 
-init-github: docs-github ## Completes all initial Github setup activites.
+init-github: init-github-vars docs-github ## Completes all initial Github setup activites.
+	@echo "FILE_URL =  $(FILE_URL)"
 
-# Prerequisite phony targets for initial setup activities
+init-github-vars: ## Completes all GitHub variable setup activites.
+	$(eval PROJECT_REPO = $(GITHUB_USER)/$(PROJECT))
+	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-GitHub)
+	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/templates)
+	$(eval ORIGIN_URL = https://github.com/$(PROJECT_REPO).git)
+
+# Prerequisite phony targets for document generation activities
 
 .PHONY: docs-github 
 
-docs-github: $(GITHUB_FILES) ## Completes all GitHub document activites.
+docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activites.
 
 # ==============================================================================
 # File Targets
