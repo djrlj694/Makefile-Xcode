@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 26FEB2019
+# REVISED: 001MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -80,7 +80,7 @@ $(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Mak
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
-	@sed -e 's/{{ cookiecutter.project }}/$(PROJECT)/g' $@ >$@.tmp1
+	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
 	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
 	@sed -e 's/{{EMAIL}}/$(EMAIL)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
