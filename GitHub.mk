@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 001MAR2019
+# REVISED: 02MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -63,7 +63,8 @@ init-github: init-github-vars docs-github ## Completes all initial Github setup 
 init-github-vars: ## Completes all GitHub variable setup activites.
 	$(eval PROJECT_REPO = $(GITHUB_USER)/$(PROJECT))
 	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-GitHub)
-	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/templates)
+#	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/templates)
+	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
 	$(eval ORIGIN_URL = https://github.com/$(PROJECT_REPO).git)
 
 # Prerequisite phony targets for document generation activities
