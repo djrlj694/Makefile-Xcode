@@ -29,10 +29,13 @@ GITHUB_DIR3 = $(GITHUB_DIR1)/PULL_REQUEST_TEMPLATE
 
 # Files
 
-DOCS0 = CHANGELOG README REFERENCES SUPPORT
-DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
+#DOCS0 = CHANGELOG README REFERENCES SUPPORT
+DOCS0 = CHANGELOG CODE_OF_CONDUCT CONTRIBUTING README REFERENCES SUPPORT
+#DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
 DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
 DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_template)
+
+# https://raw.githubusercontent.com/djrlj694/Cookiecutter-GitHub/master/.github/ISSUE_TEMPLATE/bug_report.md
 
 GITHUB_FILES = $(addsuffix .md,$(DOCS0) $(DOCS1) $(DOCS2) $(DOCS3))
 
@@ -79,7 +82,8 @@ docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activit
 # File Targets
 # ==============================================================================
 
-$(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Makes a CODE_OF_CONDUCT.md file.
+#$(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Makes a CODE_OF_CONDUCT.md file.
+CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Makes a CODE_OF_CONDUCT.md file.
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
@@ -88,7 +92,8 @@ $(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Mak
 	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
 
-$(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a CONTRIBUTING.md file.
+#$(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a CONTRIBUTING.md file.
+CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a CONTRIBUTING.md file.
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
