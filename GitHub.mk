@@ -32,7 +32,7 @@ GITHUB_DIR3 = $(GITHUB_DIR1)/PULL_REQUEST_TEMPLATE
 DOCS0 = CHANGELOG ISSUE_TEMPLATE README REFERENCES SUPPORT
 DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
 DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
-DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_request)
+DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_template)
 
 GITHUB_FILES = $(addsuffix .md,$(DOCS0) $(DOCS1) $(DOCS2) $(DOCS3))
 
@@ -107,14 +107,22 @@ $(GITHUB_DIR2)/custom.md: custom.md.download | $$(@D)/. ## Makes a custom.md fil
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
 
+$(GITHUB_DIR2)/ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
+
 $(GITHUB_DIR2)/feature_request.md: feature_request.md.download | $$(@D)/. ## Makes a feature_request.md file.
 	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
 	@mv $(shell basename $(@F)) $(@D); \
 	$(RESULT)
 
-CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
+$(GITHUB_DIR3)/pull_request_template.md: pull_request_template.md.download | $$(@D)/. ## Makes a pull_request_template.md file.
+	@printf "Moving file $(FILE_VAR) to directory $(DIR_VAR)..."
+	@mv $(shell basename $(@F)) $(@D); \
+	$(RESULT)
 
-ISSUE_TEMPLATE.md: ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
+CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
 README.md: README.md.download ## Makes a README.md file.
 	@sed -e 's/{{ cookiecutter.project }}/$(PROJECT)/g' $@ >$@.tmp1
@@ -150,6 +158,8 @@ SUPPORT.md: SUPPORT.md.download ## Makes a SUPPORT.md file.
 .INTERMEDIATE: feature_request.md.download
 
 .INTERMEDIATE: ISSUE_TEMPLATE.md.download
+
+.INTERMEDIATE: pull_request_template.md.download
 
 .INTERMEDIATE: README.md.download
 
