@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 26FEB2019
+# REVISED: 02MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -44,4 +44,5 @@ init-xcode-dirs: $(RESOURCES_DIRS) $(SOURCES_DIRS)
 
 init-xcode-vars: ## Completes all Xcode variable setup activites.
 	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-Xcode)
-	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/templates)
+#	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/templates)
+	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
