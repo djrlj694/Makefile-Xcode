@@ -82,7 +82,7 @@ $(GITHUB_DIR1)/CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download | $$(@D)/. ## Mak
 	$(RESULT)
 	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
 	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/{{EMAIL}}/$(EMAIL)/g' $@.tmp2 >$@
+	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
 
 $(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a CONTRIBUTING.md file.
@@ -91,7 +91,7 @@ $(GITHUB_DIR1)/CONTRIBUTING.md: CONTRIBUTING.md.download | $$(@D)/. ## Makes a C
 	$(RESULT)
 	@sed -e 's/{{ cookiecutter.project }}/$(PROJECT)/g' $@ >$@.tmp1
 	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/{{EMAIL}}/$(EMAIL)/g' $@.tmp2 >$@
+	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp2 >$@
 	@rm -rf $@.tmp*
 
 $(GITHUB_DIR2)/bug_report.md: bug_report.md.download | $$(@D)/.## Makes a bug_report.md file.
