@@ -25,14 +25,16 @@ EMAIL = $(USER)@gmail.com
 
 GITHUB_DIR1 = .github
 GITHUB_DIR2 = $(GITHUB_DIR1)/ISSUE_TEMPLATE
+GITHUB_DIR3 = $(GITHUB_DIR1)/PULL_REQUEST_TEMPLATE
 
 # Files
 
-DOCS1 = CHANGELOG ISSUE_TEMPLATE README REFERENCES SUPPORT
-DOCS2 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
-DOCS3 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request)
+DOCS0 = CHANGELOG ISSUE_TEMPLATE README REFERENCES SUPPORT
+DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
+DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
+DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_request)
 
-GITHUB_FILES = $(addsuffix .md,$(DOCS1) $(DOCS2) $(DOCS3))
+GITHUB_FILES = $(addsuffix .md,$(DOCS0) $(DOCS1) $(DOCS2) $(DOCS3))
 
 # ==============================================================================
 # Phony Targets
