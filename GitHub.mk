@@ -77,7 +77,7 @@ endef
 .PHONY: clean-docs-github
 
 clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
-	@printf "Removing Markdown setup..."
+	@printf "Removing GitHub documents..."
 	@rm -rf $(GITHUB_FILES) $(GITHUB_DIR1) >$(LOG) 2>&1; \
 	$(RESULT)
 
