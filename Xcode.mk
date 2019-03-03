@@ -14,7 +14,9 @@
 # Variables
 # ==============================================================================
 
+# ------------------------------------------------------------------------------
 # Directories
+# ------------------------------------------------------------------------------
 
 RESOURCES = Data Fonts Localization Media UserInterfaces
 RESOURCES_DIRS = $(addprefix $(PROJECT)/Resources/,$(addsuffix /.,$(RESOURCES)))
@@ -33,7 +35,9 @@ SOURCES_DIRS = $(addprefix $(PROJECT)/Sources/,$(addsuffix /.,$(SOURCES)))
 # 2. To improve performance.
 # ==============================================================================
 
+# ------------------------------------------------------------------------------
 # Prerequisite phony targets for initial setup activities
+# ------------------------------------------------------------------------------
 
 .PHONY: init-xcode init-xcode-dirs init-xcode-vars
 
