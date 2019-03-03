@@ -43,10 +43,6 @@ DOCS0 = CHANGELOG CODE_OF_CONDUCT CONTRIBUTING README REFERENCES SUPPORT
 DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
 DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_template)
 
-# https://raw.githubusercontent.com/djrlj694/Cookiecutter-GitHub/master/%7B%7Bcookiecutter.project_name%7D%7D/CHANGELOG.md
-# https://raw.githubusercontent.com/djrlj694/Cookiecutter-GitHub/master/%7B%7Bcookiecutter.project_name%7D%7D/.github/ISSUE_TEMPLATE/ISSUE_TEMPLATE.md
-# https://raw.githubusercontent.com/djrlj694/Cookiecutter-GitHub/master/%7B%7Bcookiecutter.project_name%7D%7D/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md
-
 GITHUB_FILES = $(addsuffix .md,$(DOCS0) $(DOCS1) $(DOCS2) $(DOCS3))
 GITHUB_DOWNLOADED_FILES = $(addsuffix .download,$(GITHUB_FILES))
 
