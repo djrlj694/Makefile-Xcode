@@ -82,6 +82,14 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 	$(RESULT)
 
 # ------------------------------------------------------------------------------
+# Prerequisite phony targets for document generation activities
+# ------------------------------------------------------------------------------
+
+.PHONY: docs-github 
+
+docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activites.
+
+# ------------------------------------------------------------------------------
 # Prerequisite phony targets for initial setup activities
 # ------------------------------------------------------------------------------
 
@@ -96,14 +104,6 @@ init-github-vars: ## Completes all GitHub variable setup activites.
 	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-GitHub)
 	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
 	$(eval ORIGIN_URL = https://github.com/$(PROJECT_REPO).git)
-
-# ------------------------------------------------------------------------------
-# Prerequisite phony targets for document generation activities
-# ------------------------------------------------------------------------------
-
-.PHONY: docs-github 
-
-docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activites.
 
 # ==============================================================================
 # File Targets
