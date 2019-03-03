@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 02MAR2019
+# REVISED: 03MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -35,7 +35,7 @@ SOURCES_DIRS = $(addprefix $(PROJECT)/Sources/,$(addsuffix /.,$(SOURCES)))
 
 # Prerequisite phony targets for initial setup activities
 
-.PHONY: init-xcode init-xcode-vars
+.PHONY: init-xcode init-xcode-dirs init-xcode-vars
 
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
 	@echo "FILE_URL =  $(FILE_URL)"
@@ -44,5 +44,4 @@ init-xcode-dirs: $(RESOURCES_DIRS) $(SOURCES_DIRS)
 
 init-xcode-vars: ## Completes all Xcode variable setup activites.
 	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-Xcode)
-#	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/templates)
 	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
