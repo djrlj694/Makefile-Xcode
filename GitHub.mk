@@ -95,7 +95,7 @@ docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activit
 
 .PHONY: init-github init-github-dirs init-github-vars
 
-init-github: init-github-dirs init-github-vars docs-github ## Completes all initial Github setup activites.
+init-github: init-github-vars init-github-dirs docs-github ## Completes all initial Github setup activites.
 
 init-github-dirs: $(GITHUB_DIRS)
 
