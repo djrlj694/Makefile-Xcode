@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 26FEB2019
+# REVISED: 03MAR2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -226,7 +226,7 @@ test-vars-some: ## Shows only a few custom Makefile variables.
 %.download: | $(LOG) ## Downloads a file.
 #	$(eval FILE = $(basename $@))
 	@printf "Downloading file $(FILE_VAR)..."
-	curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
+	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
 	$(RESULT)
 
