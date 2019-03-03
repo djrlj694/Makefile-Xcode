@@ -89,7 +89,7 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 # Prerequisite phony targets for initial setup activities
 # ------------------------------------------------------------------------------
 
-.PHONY: init-github-dirs init-github-vars
+.PHONY: init-github init-github-dirs init-github-vars
 
 init-github: init-github-dirs init-github-vars docs-github ## Completes all initial Github setup activites.
 
