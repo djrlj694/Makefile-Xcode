@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 03MAR2019
+# REVISED: 04MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -71,7 +71,7 @@ endef
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for cleaning activities
+# Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-docs-github
@@ -82,7 +82,7 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 	$(RESULT)
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for document generation activities
+# Prerequisite phony targets for the "docs" target
 # ------------------------------------------------------------------------------
 
 .PHONY: docs-github 
@@ -90,7 +90,7 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activites.
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for initial setup activities
+# Prerequisite phony targets for the "init" target
 # ------------------------------------------------------------------------------
 
 .PHONY: init-github init-github-dirs init-github-vars
