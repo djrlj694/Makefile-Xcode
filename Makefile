@@ -17,24 +17,34 @@
 # Variables
 # ==============================================================================
 
+# ------------------------------------------------------------------------------
 # Settings
+# ------------------------------------------------------------------------------
 
 SHELL = bash
 
+# ------------------------------------------------------------------------------
 # Special Characters
+# ------------------------------------------------------------------------------
 
 EMPTY =
 SPACE = $(EMPTY) $(EMPTY)
 
+# ------------------------------------------------------------------------------
 # Accounts
+# ------------------------------------------------------------------------------
 
 USER = $(shell whoami)
 
+# ------------------------------------------------------------------------------
 # Commands
+# ------------------------------------------------------------------------------
 
 MKDIR = mkdir -p
 
+# ------------------------------------------------------------------------------
 # Debugging & Error Capture
+# ------------------------------------------------------------------------------
 
 FAILURE = (printf "$(FAILED)" && echo && cat $(LOG) && echo)
 SUCCESS = printf "$(DONE)"
@@ -42,7 +52,9 @@ RESULT = ([ $$? -eq 0 ] && $(SUCCESS)) || $(FAILURE)
 
 VARIABLES_TO_SHOW = MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PREFIX PROJECT PWD USER
 
+# ------------------------------------------------------------------------------
 # Directories
+# ------------------------------------------------------------------------------
 
 MAKEFILE_DIR = $(dir $(realpath $(MAKEFILE)))
 PREFIX = $(PWD)
@@ -54,7 +66,9 @@ BIN_DIR = bin/.
 LOG_DIR = logs/.
 SETUP_DIRS = $(BIN_DIR) $(LOG_DIR)
 
+# ------------------------------------------------------------------------------
 # Files
+# ------------------------------------------------------------------------------
 
 FILE = $(basename $@)
 MAKEFILE = $(firstword $(MAKEFILE_LIST))
@@ -71,7 +85,9 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 #LOG = /tmp/make.$$$$.log
 LOG = make.log
 
+# ------------------------------------------------------------------------------
 # STDOUT format settings
+# ------------------------------------------------------------------------------
 
 RESET = \033[0m
 BOLD = \033[1m
@@ -82,7 +98,9 @@ FG_GREEN = \033[0;32m
 FG_RED = \033[0;31m
 FG_YELLOW = \033[1;33m
 
+# ------------------------------------------------------------------------------
 # Help strings
+# ------------------------------------------------------------------------------
 
 PREFIX_ARG = $(FG_CYAN)<prefix>$(RESET)
 TARGET_ARG = $(FG_CYAN)<target>$(RESET)
@@ -102,7 +120,9 @@ export HELP1
 
 HELP2 = $(FG_CYAN)%-17s$(RESET) %s
 
+# ------------------------------------------------------------------------------
 # Path strings
+# ------------------------------------------------------------------------------
 
 DIR_VAR = $(FG_CYAN)$(@D)$(RESET)
 ###FILE_VAR = $(FG_CYAN)$(FILE)$(RESET) # RLJ: Commented out. 23FEEB2019, RRLJ
@@ -111,7 +131,9 @@ SUBDIR_VAR = $(FG_CYAN)$(SUBDIR)$(RESET)
 
 TARGET_VAR = $(FG_CYAN)$@$(RESET)
 
+# ------------------------------------------------------------------------------
 # Result strings
+# ------------------------------------------------------------------------------
 
 DONE = $(FG_GREEN)done$(RESET).\n
 FAILED = $(FG_RED)failed$(RESET).\n
@@ -128,7 +150,9 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 # 2. To improve performance.
 # ==============================================================================
 
+# ------------------------------------------------------------------------------
 # Main phony targets
+# ------------------------------------------------------------------------------
 
 .PHONY: all build clean docs setup test
 
@@ -156,12 +180,14 @@ help: ## Shows usage documentation.
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
 
-init: init-dirs init-github init-xcode init-git ## Completes all initial repo setup activities.
+init: init-dirs init-github init-xcode init-common init-git ## Completes all initial repo setup activities.
 
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
 
+# ------------------------------------------------------------------------------
 # Prerequisite phony targets for cleaning activities
+# ------------------------------------------------------------------------------
 
 .PHONY: clean-dirs
 
@@ -170,7 +196,9 @@ clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 	@rm -rf $(PROJECT) $(dir $(SETUP_DIRS)) >$(LOG) 2>&1; \
 	$(RESULT)
 
+# ------------------------------------------------------------------------------
 # Prerequisite phony targets for setup activities
+# ------------------------------------------------------------------------------
 
 .PHONY: init-dirs
 
@@ -186,7 +214,9 @@ clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 #dirs: $(DUMMY_FILES) ## Completes all directory setup activities.
 init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 
+# ------------------------------------------------------------------------------
 # Prerequisite phony targets for test activities
+# ------------------------------------------------------------------------------
 
 .PHONY: test-log  test-vars-all test-vars-some
 
@@ -264,8 +294,7 @@ $(LOG): ## Makes a temporary file capturring a shell command error.
 # Makefiles
 # ==============================================================================
 
-include $(MAKEFILE_DIR)/Carthage.mk
-include $(MAKEFILE_DIR)/CocoaPods.mk
+include $(MAKEFILE_DIR)/common.mk
 include $(MAKEFILE_DIR)/git.mk
 include $(MAKEFILE_DIR)/GitHub.mk
 include $(MAKEFILE_DIR)/Xcode.mk
