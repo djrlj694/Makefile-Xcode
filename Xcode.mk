@@ -56,20 +56,7 @@ endef
 
 .PHONY: clean-xcode clean-docs-xcode
 
-clean-xcode: clean-docs-xcode ## Completes all Xocde cleanup activities.
-
-clean-docs-xcode: | $(LOG) ## Completes all Xcode Markdown cleanup activities.
-	@printf "Removing Xcode documents..."
-	@rm -rf $(XCODE_FILES) 2>&1; \
-	$(RESULT)
-
-# ------------------------------------------------------------------------------
-# Prerequisite phony targets for document generation activities
-# ------------------------------------------------------------------------------
-
-.PHONY: docs-xcode 
-
-docs-xcode: $(XCODE_FILES) ## Completes all GitHub document generation activites.
+#clean-xcode: clean-docs-xcode ## Completes all Xocde cleanup activities.
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for initial setup activities
