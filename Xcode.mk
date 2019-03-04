@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 03MAR2019
+# REVISED: 04MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -51,7 +51,7 @@ endef
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for cleaning activities
+# Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-xcode clean-docs-xcode
@@ -59,7 +59,7 @@ endef
 #clean-xcode: clean-docs-xcode ## Completes all Xocde cleanup activities.
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for initial setup activities
+# Prerequisite phony targets for the "init" target
 # ------------------------------------------------------------------------------
 
 .PHONY: init-xcode init-xcode-dirs init-xcode-vars
