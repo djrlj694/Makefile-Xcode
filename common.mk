@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 03MAR2019
+# REVISED: 04MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -48,7 +48,7 @@ endef
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for cleaning activities
+# Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-common clean-docs-common
@@ -61,7 +61,7 @@ clean-docs-common: | $(LOG) ## Completes all common document cleanup activities.
 	$(RESULT)
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for document generation activities
+# Prerequisite phony targets for the "docs" target
 # ------------------------------------------------------------------------------
 
 .PHONY: docs-common 
@@ -69,7 +69,7 @@ clean-docs-common: | $(LOG) ## Completes all common document cleanup activities.
 docs-common: $(COMMON_FILES) ## Completes all common document generation activites.
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for initial setup activities
+# Prerequisite phony targets for the "init" target
 # ------------------------------------------------------------------------------
 
 .PHONY: init-common
