@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 03MAR2019
+# REVISED: 04MAR2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -160,11 +160,13 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 # Main phony targets
 # ------------------------------------------------------------------------------
 
-.PHONY: all build clean docs setup test
+.PHONY: all build clean debug docs log setup test
 
 all: help
 
-clean: clean-git clean-carthage clean-cocoapods  clean-docs-github clean-dirs ## Removes files and directories.
+clean: clean-git clean-carthage clean-cocoapods  clean-docs-github clean-dirs ## Completes all cleaning activities.
+
+debug: debug-vars-some debug-dirs-tree debug-dirs-ll ## Completes all debugging activities.
 
 docs: docs-swift ## Makes API documentation.
 
@@ -178,11 +180,22 @@ help: ## Shows usage documentation.
 
 init: init-dirs init-github init-xcode init-common init-git ## Completes all initial repo setup activities.
 
+log: ## Shows the most recently generated log for a specified release.
+	@echo
+	#@set -e; \
+	#LOG==$$(ls -l $(LOGS_DIR)/* | head -1); \
+	#printf "Showing the most recent log: $(LOG_FILE)\n"; \
+	#echo; \
+	#cat $$LOG
+	printf "Showing the most recent log: $(LOG_FILE)\n"
+	@echo
+	@cat $(LOG_FILE)
+
 test: vars-some ## Completes all test activities.
 	tree $(PREFIX)
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for cleaning activities
+# Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-dirs
@@ -193,7 +206,27 @@ clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 	$(RESULT)
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for setup activities
+# Prerequisite phony targets for the "debug" target
+# ------------------------------------------------------------------------------
+
+.PHONY: debug-dirs-ll debug-dirs-tree debug-vars-all debug-vars-some
+
+debug-dirs-ll: ## Shows the contents of directories in a "long listing" format.
+	ls -alR $(PREFIX)
+
+debug-dirs-tree: ## Shows the contents of directories in a tree-like format.
+	tree $(PREFIX)
+
+debug-vars-all: ## Shows all Makefile variables (i.e., built-in and custom).
+	@echo
+	$(foreach v, $(.VARIABLES), $(info $(v) = $($(v))))
+
+debug-vars-some: ## Shows only a few custom Makefile variables.
+	@echo
+	$(foreach v, $(VARIABLES_TO_SHOW), $(info $(v) = $($(v))))
+
+# ------------------------------------------------------------------------------
+# Prerequisite phony targets for the "init" target
 # ------------------------------------------------------------------------------
 
 .PHONY: init-dirs
@@ -211,29 +244,8 @@ clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for test activities
+# Prerequisite phony targets for the "test" target
 # ------------------------------------------------------------------------------
-
-.PHONY: test-log  test-vars-all test-vars-some
-
-test-log: ## Shows the most recently generated log for a specified release.
-	@echo
-	#@set -e; \
-	#LOG==$$(ls -l $(LOGS_DIR)/* | head -1); \
-	#printf "Showing the most recent log: $(LOG_FILE)\n"; \
-	#echo; \
-	#cat $$LOG
-	printf "Showing the most recent log: $(LOG_FILE)\n"
-	@echo
-	@cat $(LOG_FILE)
-
-test-vars-all: ## Shows all Makefile variables (i.e., built-in and custom).
-	@echo
-	$(foreach v, $(.VARIABLES), $(info $(v) = $($(v))))
-
-test-vars-some: ## Shows only a few custom Makefile variables.
-	@echo
-	$(foreach v, $(VARIABLES_TO_SHOW), $(info $(v) = $($(v))))
 
 # ==============================================================================
 # Directory Targets
