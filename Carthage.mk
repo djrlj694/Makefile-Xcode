@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 03MAR2019
+# REVISED: 04MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -36,7 +36,7 @@ CARTHAGE_FILES = Cartfile Cartfile.private
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for cleaning activities
+# Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-carthage
@@ -47,7 +47,7 @@ clean-carthage: | $(LOG) ## Completes all Carthage cleanup activities.
 	$(RESULT)
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for initial setup activities
+# Prerequisite phony targets for the "init" target
 # ------------------------------------------------------------------------------
 
 .PHONY: init-carthage
