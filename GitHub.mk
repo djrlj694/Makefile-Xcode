@@ -37,13 +37,13 @@ GITHUB_DIRS = $(addsuffix /.,$(GITHUB_DIR2) $(GITHUB_DIR3))
 # Files
 # ------------------------------------------------------------------------------
 
-#DOCS0 = CHANGELOG README REFERENCES SUPPORT
-DOCS0 = CHANGELOG CODE_OF_CONDUCT CONTRIBUTING README REFERENCES SUPPORT
-#DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
-DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
-DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_template)
+GITHUB_DOCS0 = CHANGELOG CODE_OF_CONDUCT CONTRIBUTING SUPPORT
+#GITHUB_DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
+GITHUB_DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
+GITHUB_DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_template)
+GITHUB_DOCS = $(GITHUB_DOCS0) $(GITHUB_DOCS2) $(GITHUB_DOCS3)
 
-GITHUB_FILES = $(addsuffix .md,$(DOCS0) $(DOCS1) $(DOCS2) $(DOCS3))
+GITHUB_FILES = $(addsuffix .md,$(GITHUB_DOCS))
 GITHUB_DOWNLOADED_FILES = $(addsuffix .download,$(GITHUB_FILES))
 
 # ==============================================================================
@@ -109,12 +109,6 @@ init-github-vars: ## Completes all GitHub variable setup activites.
 # File Targets
 # ==============================================================================
 
-CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
-	$(update-github-file)
-
-CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
-	$(update-github-file)
-
 $(GITHUB_DIR2)/bug_report.md: $(GITHUB_DIR2)/bug_report.md.download ## Makes a bug_report.md file.
 
 $(GITHUB_DIR2)/custom.md: $(GITHUB_DIR2)/custom.md.download ## Makes a custom.md file.
@@ -127,10 +121,11 @@ $(GITHUB_DIR3)/pull_request_template.md: $(GITHUB_DIR3)/pull_request_template.md
 
 CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
 
-README.md: README.md.download ## Makes a README.md file.
+CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
 	$(update-github-file)
 
-REFERENCES.md: REFERENCES.md.download ## Makes a REFERRENCES.md file.
+CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
+	$(update-github-file)
 
 SUPPORT.md: SUPPORT.md.download ## Makes a SUPPORT.md file.
 
