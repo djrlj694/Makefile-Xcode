@@ -160,17 +160,7 @@ all: help
 
 clean: clean-git clean-carthage clean-cocoapods  clean-docs-github clean-dirs ## Removes files and directories.
 
-docs: | $(LOG) ## Makes API documentation.
-	@printf "Generating API documentation..."
-	@jazzy \
-		--min-acl internal \
-		--no-hide-documentation-coverage \
-		--theme fullwidth \
-		--output ./docs \
-        --documentation=./*.md \
-		>$(LOG) 2>&1; \
-	$(RESULT)
-	@rm -rf ./build
+docs: docs-swift ## Makes API documentation.
 
 help: ## Shows usage documentation.
 	@printf "$$HELP1"
@@ -297,4 +287,5 @@ $(LOG): ## Makes a temporary file capturring a shell command error.
 include $(MAKEFILE_DIR)/common.mk
 include $(MAKEFILE_DIR)/git.mk
 include $(MAKEFILE_DIR)/GitHub.mk
+include $(MAKEFILE_DIR)/Swift.mk
 include $(MAKEFILE_DIR)/Xcode.mk
