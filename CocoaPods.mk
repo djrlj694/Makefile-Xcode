@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 03MAR2019
+# REVISED: 04MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -32,7 +32,7 @@ COCOAPODS_FILES = Framework.podspec
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for cleaning activities
+# Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-cocoapods
@@ -43,7 +43,7 @@ clean-cocoapods: | $(LOG) ## Completes all CocoaPods cleanup activities.
 	$(RESULT)
 
 # ------------------------------------------------------------------------------
-# Prerequisite phony targets for setup activities
+# Prerequisite phony targets for the "init" target
 # ------------------------------------------------------------------------------
 
 .PHONY: init-cocoapods 
