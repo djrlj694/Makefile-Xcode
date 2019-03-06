@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 04MAR2019
+# REVISED: 06MAR2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -164,7 +164,7 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 
 all: help
 
-clean: clean-git clean-carthage clean-cocoapods  clean-docs-github clean-dirs ## Completes all cleaning activities.
+clean: clean-git clean-xcode clean-github clean-common clean-dirs ## Completes all cleaning activities.
 
 debug: debug-vars-some debug-dirs-tree debug-dirs-ll ## Completes all debugging activities.
 
