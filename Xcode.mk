@@ -116,7 +116,11 @@ clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs ## Completes all Xc
 
 .PHONY: init-xcode init-xcode-dirs init-xcode-vars
 
+ifneq ($(COOKIECUTTER),)
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
+else
+init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
+endif
 
 init-xcode-dirs: $(XCODE_DIRS)
 
