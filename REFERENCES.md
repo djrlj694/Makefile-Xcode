@@ -10,14 +10,17 @@ The following is a list of sources that I found helpful or inspirational when le
 
 ## Makefile
 1. https://www.gnu.org/software/make/manual/make.html#Multi_002dLine
-2. https://stackoverflow.com/questions/11675070/makefile-echo-n-not-working
-3. https://stackoverflow.com/questions/1588013/how-to-write-a-makefile-rule-to-download-a-file-only-if-it-is-missing
-4. https://stackoverflow.com/questions/23494088/makefile-generic-target-rule
-5. https://stackoverflow.com/questions/649246/is-it-possible-to-create-a-multi-line-string-variable-in-a-makefile
-6. https://unix.stackexchange.com/questions/425297/how-can-i-use-files-from-http-as-prerequisites-in-gnu-make
-7. https://stackoverflow.com/questions/26063839/how-can-i-make-a-target-private-in-gnu-make-for-internal-use-only-or-how-to
-8. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
-9. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
+2. https://www.gnu.org/software/make/manual/html_node/Call-Function.html
+3. https://www.oreilly.com/openbook/make3/book/ch04.pdf
+4. https://www.oreilly.com/openbook/make3/book/ch11.pdf
+5. https://unix.stackexchange.com/questions/425297/how-can-i-use-files-from-http-as-prerequisites-in-gnu-make
+6. https://stackoverflow.com/questions/11675070/makefile-echo-n-not-working
+7. https://stackoverflow.com/questions/1588013/how-to-write-a-makefile-rule-to-download-a-file-only-if-it-is-missing
+8. https://stackoverflow.com/questions/23494088/makefile-generic-target-rule
+9. https://stackoverflow.com/questions/649246/is-it-possible-to-create-a-multi-line-string-variable-in-a-makefile
+10. https://stackoverflow.com/questions/26063839/how-can-i-make-a-target-private-in-gnu-make-for-internal-use-only-or-how-to
+11. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
+12. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
 
 ## Open Source
 1. https://opensource.guide
