@@ -52,9 +52,9 @@ MKDIR = mkdir -p
 # Debugging & Error Capture
 # ------------------------------------------------------------------------------
 
-FAILURE = (printf "$(FAILED)" && echo && cat $(LOG) && echo)
-SUCCESS = printf "$(DONE)"
-RESULT = ([ $$? -eq 0 ] && $(SUCCESS)) || $(FAILURE)
+FAILURE = (printf "$(FAILED)\n" && cat $(LOG) && echo)
+RESULT = ([ $$? -eq 0 ] && printf "$(DONE)") || $(FAILURE)
+TEST_RESULT = ([ $$? -eq 0 ] && printf "$(PASSED)") || $(FAILURE)
 
 VARIABLES_TO_SHOW = MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREFIX PROJECT PWD USER
 
@@ -146,6 +146,7 @@ TARGET_VAR = $(FG_CYAN)$@$(RESET)
 DONE = $(FG_GREEN)done$(RESET).\n
 FAILED = $(FG_RED)failed$(RESET).\n
 IGNORE = $(FG_YELLOW)ignore$(RESET).\n
+PASSED = $(FG_GREEN)passed$(RESET).\n
 
 # ==============================================================================
 # Phony Targets
