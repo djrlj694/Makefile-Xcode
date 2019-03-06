@@ -132,15 +132,15 @@ init-xcode-vars: ## Completes all Xcode variable setup activites.
 
 test-xcode: test-xcode-dirs test-xcode-files ## Completes all Xcode test activites.
 
-test-xcode-dirs: expected_xcode_dirs.txt actual_xcode_dirs.txt ## Test Xcode directory setup.
+test-xcode-dirs: expected_xcode_dirs.txt actual_xcode_dirs.txt | $(LOG)  ## Test Xcode directory setup.
 	@printf "Testing Xcode directory setup..."
 	@diff expected_xcode_dirs.txt actual_xcode_dirs.txt >$(LOG) 2>&1; \
-	$(RESULT)
+	$(TEST_RESULT)
 
-test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt ## Test Xcode file setup.
+test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG) ## Test Xcode file setup.
 	@printf "Testing Xcode file setup..."
 	@diff expected_xcode_files.txt actual_xcode_files.txt >$(LOG) 2>&1; \
-	$(RESULT)
+	$(TEST_RESULT)
 
 # ==============================================================================
 # Intermediate Targets
@@ -153,22 +153,22 @@ test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt ## Test Xcode 
 # exist after a "make" run.
 # ==============================================================================
 
-.INTERMEDIATE: actual_xcode_dirs.txt actual_xcode_files.txt actual_xcode_dirs.txt expected_xcode_dirs.txt
+.INTERMEDIATE: actual_xcode_dirs.txt actual_xcode_files.txt expected_xcode_dirs.txt expected_xcode_files.txt
 
 actual_xcode_dirs.txt: ## Makes a temporary file listing expected.
-	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(TARGET_VAR).\n"
 	@find . -type d -not -path "./.git/*" | sort >$@
 
 actual_xcode_files.txt: ## Makes a temporary file listing expected.
-	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(TARGET_VAR).\n"
 	@find . -type f -not \( -path "./.git/*" -or -path "./make.log" -or -path "./*_dirs.txt" -or -path "./*_files.txt" \) | sort >$@
 
 expected_xcode_dirs.txt: ## Makes a temporary file listing expected.
-	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(TARGET_VAR).\n"
 	@echo "$$XCODE_DIRS_TEST" >$@
 
 expected_xcode_files.txt: ## Makes a temporary file listing expected.
-	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(TARGET_VAR).\n"
 	@echo "$$XCODE_FILES_TEST" >$@
 
 # ==============================================================================
