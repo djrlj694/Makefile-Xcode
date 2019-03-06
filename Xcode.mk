@@ -116,15 +116,18 @@ clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs ## Completes all Xc
 
 .PHONY: init-xcode init-xcode-dirs init-xcode-vars
 
+## init-xcode: Completes all initial Xcode setup activites.
 ifneq ($(COOKIECUTTER),)
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
 else
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
 endif
 
+## init-xcode-dirs: Completes all initial Xcode directory setup activites.
 init-xcode-dirs: $(XCODE_DIRS)
 
-init-xcode-vars: ## Completes all Xcode variable setup activites.
+## init-xcode-vars: Completes all Xcode variable setup activites.
+init-xcode-vars:
 	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-Xcode)
 	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
 
@@ -134,14 +137,17 @@ init-xcode-vars: ## Completes all Xcode variable setup activites.
 
 .PHONY: test-xcode test-xcode-dirs test-xcode-files
 
-test-xcode: test-xcode-dirs test-xcode-files ## Completes all Xcode test activites.
+## test-xcode: Completes all Xcode test activites.
+test-xcode: test-xcode-dirs test-xcode-files
 
-test-xcode-dirs: expected_xcode_dirs.txt actual_xcode_dirs.txt | $(LOG)  ## Test Xcode directory setup.
+## test-xcode-dirs: Test Xcode directory setup.
+test-xcode-dirs: expected_xcode_dirs.txt actual_xcode_dirs.txt | $(LOG)
 	@printf "Testing Xcode directory setup..."
 	@diff expected_xcode_dirs.txt actual_xcode_dirs.txt >$(LOG) 2>&1; \
 	$(TEST_RESULT)
 
-test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG) ## Test Xcode file setup.
+## test-xcode-files: Test Xcode file setup.
+test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG)
 	@printf "Testing Xcode file setup..."
 	@diff expected_xcode_files.txt actual_xcode_files.txt >$(LOG) 2>&1; \
 	$(TEST_RESULT)
@@ -159,19 +165,23 @@ test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG) ## Te
 
 .INTERMEDIATE: actual_xcode_dirs.txt actual_xcode_files.txt expected_xcode_dirs.txt expected_xcode_files.txt
 
-actual_xcode_dirs.txt: ## Makes a temporary file listing expected.
+# Makes a temporary file listing expected.
+actual_xcode_dirs.txt:
 #	@printf "Making file $(TARGET_VAR).\n"
 	@find . -type d -not -path "./.git/*" | sort >$@
 
-actual_xcode_files.txt: ## Makes a temporary file listing expected.
+# Makes a temporary file listing expected.
+actual_xcode_files.txt:
 #	@printf "Making file $(TARGET_VAR).\n"
 	@find . -type f -not \( -path "./.git/*" -or -path "./make.log" -or -path "./*_dirs.txt" -or -path "./*_files.txt" \) | sort >$@
 
-expected_xcode_dirs.txt: ## Makes a temporary file listing expected.
+# Makes a temporary file listing expected.
+expected_xcode_dirs.txt:
 #	@printf "Making file $(TARGET_VAR).\n"
 	@echo "$$XCODE_DIRS_TEST" >$@
 
-expected_xcode_files.txt: ## Makes a temporary file listing expected.
+# Makes a temporary file listing expected.
+expected_xcode_files.txt:
 #	@printf "Making file $(TARGET_VAR).\n"
 	@echo "$$XCODE_FILES_TEST" >$@
 

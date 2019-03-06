@@ -27,7 +27,8 @@
 
 .PHONY: docs-swift
 
-docs-swift: | $(LOG) ## Makes Swift API documentation.
+## docs-swift: Generates Swift API documentation.
+docs-swift: | $(LOG)
 	@printf "Generating API documentation..."
 	@jazzy \
 		--min-acl internal \

@@ -52,20 +52,24 @@ clean-carthage: | $(LOG) ## Completes all Carthage cleanup activities.
 
 .PHONY: init-carthage
 
-init-carthage: $(CARTHAGE_FILES) ## Completes all initial Carthage setup activities.
+## init-carthage: Completes all initial Carthage setup activities.
+init-carthage: $(CARTHAGE_FILES)
 
 # ==============================================================================
 # File Targets
 # ==============================================================================
 
-Cartfile: | $(LOG) # Makes a Cartfile file for listing runtime Carthage dependencies.
+# Makes a Cartfile file for listing runtime Carthage dependencies.
+Cartfile: | $(LOG)
 	@printf "Making empty file $(TARGET_VAR)..."
 	@touch $@ >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
 
-Cartfile.private: | $(LOG) # Makes a Cartfile file for listing private Carthage dependencies.
+# Makes a Cartfile file for listing private Carthage dependencies.
+Cartfile.private: | $(LOG)
 	@printf "Making empty file $(TARGET_VAR)..."
 	@touch $@ >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
 
-setup: setup.download ## Makes a setup file.
+## Makes a setup file.
+carthage_setup: setup.download 

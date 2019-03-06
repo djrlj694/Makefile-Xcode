@@ -27,7 +27,8 @@
 
 .PHONY: clean-git
 
-clean-git: | $(LOG) ## Completes all git cleanup activities.
+## clean-git: Completes all git cleanup activities.
+clean-git: | $(LOG)
 	@printf "Removing git setup..."
 	@rm -rf .git .gitignore >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
@@ -38,7 +39,8 @@ clean-git: | $(LOG) ## Completes all git cleanup activities.
 
 .PHONY: init-git
 
-init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activities.
+## init-git: Completes all initial git setup activities.
+init-git: .gitignore .git | $(LOG)
 	@printf "Committing the initial project to the master branch..."
 	@git checkout -b master >$(LOG) 2>&1; \
 	git add . >>$(LOG) 2>&1; \
@@ -50,15 +52,21 @@ init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activitie
 	$(STATUS_RESULT)
 
 # ==============================================================================
-# File Targets
+# Directory Targets
 # ==============================================================================
 
-.git: | $(LOG) ## Makes a git repository.
+## .git: Makes a git repository.
+.git: | $(LOG)
 	@printf "Initializing git repository..."
 	@git init >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
 
-.gitignore: .gitignore.download ## Makes a .gitignore file.
+# ==============================================================================
+# File Targets
+# ==============================================================================
+
+## .gitignore: Makes a .gitignore file.
+.gitignore: .gitignore.download
 
 # ==============================================================================
 # Intermediate Targets

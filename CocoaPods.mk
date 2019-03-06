@@ -37,7 +37,8 @@ COCOAPODS_FILES = Framework.podspec
 
 .PHONY: clean-cocoapods
 
-clean-cocoapods: | $(LOG) ## Completes all CocoaPods cleanup activities.
+## Completes all CocoaPods cleanup activities.
+clean-cocoapods: | $(LOG)
 	@printf "Removing CocoaPods setup..."
 	@rm -rf $(COCOAPODS_FILES) >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
@@ -48,13 +49,15 @@ clean-cocoapods: | $(LOG) ## Completes all CocoaPods cleanup activities.
 
 .PHONY: init-cocoapods 
 
-init-cocoapods: $(COCOAPODS_FILES) ## Completes all initial CocoaPods setup activities.
+## init-cocoapods: Completes all initial CocoaPods setup activities.
+init-cocoapods: $(COCOAPODS_FILES)
 
 # ==============================================================================
 # File Targets
 # ==============================================================================
 
-Framework.podspec: Framework.podspec.download ## Makes a Framework.podspec file.
+# Makes a Framework.podspec file.
+Framework.podspec: Framework.podspec.download
 
 # ==============================================================================
 # Intermediate Targets

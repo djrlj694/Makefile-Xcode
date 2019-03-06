@@ -187,24 +187,33 @@ endef
 all: help
 
 ifneq ($(PROJECT),Makefile-Xcode)
-clean: clean-git clean-xcode clean-github clean-common clean-dirs ## Completes all cleaning activities.
+## clean: Completes all cleaning activities.
+clean: clean-git clean-xcode clean-github clean-common clean-dirs
 endif
 
-debug: debug-vars-some debug-dirs-tree debug-dirs-ll ## Completes all debugging activities.
+## debug: Completes all debugging activities.
+debug: debug-vars-some debug-dirs-tree debug-dirs-ll
 
-docs: docs-swift ## Makes API documentation.
+## docs: Makes API documentation.
+docs: docs-swift
 
-help: ## Shows usage documentation.
+## help: Shows usage documentation.
+help:
 	@printf "$$HELP1"
+#	@cat $(MAKEFILE_LIST) | \
+#	egrep '^[a-zA-Z_-]+:.*?##' | \
+#	sed -e 's/:.* ##/: ##/' | sort -d | \
+#	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@cat $(MAKEFILE_LIST) | \
-	egrep '^[a-zA-Z_-]+:.*?##' | \
-	sed -e 's/:.* ##/: ##/' | sort -d | \
-	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(HELP2)\n", $$1, $$2}'
+	egrep '^## [a-zA-Z_-]+: ' | sed -e 's/## //' | sort -d | \
+	awk 'BEGIN {FS = ": "}; {printf "  $(HELP2)\n", $$1, $$2}'
 	@echo ""
 
-init: init-dirs init-github init-xcode init-common init-git ## Completes all initial repo setup activities.
+## init: Completes all initial repo setup activities.
+init: init-dirs init-github init-xcode init-common init-git
 
-log: ## Shows the most recently generated log for a specified release.
+## log: Shows the most recently generated log for a specified release.
+log:
 	@echo
 	#@set -e; \
 	#LOG==$$(ls -l $(LOGS_DIR)/* | head -1); \
@@ -215,8 +224,8 @@ log: ## Shows the most recently generated log for a specified release.
 	@echo
 	@cat $(LOG_FILE)
 
-test: vars-some ## Completes all test activities.
-	tree $(PREFIX)
+## test: Completes all test activities.
+test: test-xcode
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "clean" target
@@ -224,7 +233,8 @@ test: vars-some ## Completes all test activities.
 
 .PHONY: clean-dirs
 
-clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
+## clean-dirs: Completes all directory cleanup activities.
+clean-dirs: | $(LOG)
 	@printf "Removing directories setup..."
 	@rm -rf $(PROJECT) $(dir $(SETUP_DIRS)) >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
@@ -235,17 +245,21 @@ clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 
 .PHONY: debug-dirs-ll debug-dirs-tree debug-vars-all debug-vars-some
 
-debug-dirs-ll: ## Shows the contents of directories in a "long listing" format.
+## debug-dirs-ll: Shows the contents of directories in a "long listing" format.
+debug-dirs-ll:
 	ls -alR $(PREFIX)
 
-debug-dirs-tree: ## Shows the contents of directories in a tree-like format.
+## debug-dirs-tree: Shows the contents of directories in a tree-like format.
+debug-dirs-tree:
 	tree $(PREFIX)
 
-debug-vars-all: ## Shows all Makefile variables (i.e., built-in and custom).
+## debug-vars-all: Shows all Makefile variables (i.e., built-in and custom).
+debug-vars-all:
 	@echo
 	$(foreach v, $(.VARIABLES), $(info $(v) = $($(v))))
 
-debug-vars-some: ## Shows only a few custom Makefile variables.
+## debug-vars-some: Shows only a few custom Makefile variables.
+debug-vars-some:
 	@echo
 	$(foreach v, $(VARIABLES_TO_SHOW), $(info $(v) = $($(v))))
 
@@ -255,7 +269,8 @@ debug-vars-some: ## Shows only a few custom Makefile variables.
 
 .PHONY: init-dirs
 
-#dirs: ## Completes all directory setup activities.
+## init-dirs: Completes all initial directory setup activities.
+init-dirs: $(INIT_DIRS)
 #	@printf "Setting up directory tree rooted in ./$(PROJECT)..."
 #	@if [ ! -d "$(PROJECT)" ]; then \
 #		mkdir -p $(@D) ./$(PROJECT)/{$(SOURCES),$(RESOURCES)} \
@@ -264,18 +279,13 @@ debug-vars-some: ## Shows only a few custom Makefile variables.
 #	else \
 #		printf "$(IGNORE)"; \
 #	fi
-#dirs: $(DUMMY_FILES) ## Completes all directory setup activities.
-init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
-
-# ------------------------------------------------------------------------------
-# Prerequisite phony targets for the "test" target
-# ------------------------------------------------------------------------------
 
 # ==============================================================================
 # Directory Targets
 # ==============================================================================
 
-%/.: | $(LOG) ## Makes a directory tree.
+# Makes a directory tree.
+%/.: | $(LOG)
 	@printf "Making directory tree $(DIR_VAR)..."
 	@mkdir -p $(@D) >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
@@ -284,15 +294,17 @@ init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 # File Targets
 # ==============================================================================
 
+# Downloads a file.
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
-%.download: | $(LOG) ## Downloads a file.
+%.download: | $(LOG) 
 #	$(eval FILE = $(basename $@))
 	@printf "Downloading file $(FILE_VAR)..."
 	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
 	$(STATUS_RESULT)
 
-#%/.dummy: ## Makes a special empty file for marking that a directory tree has been generated.
+# Makes a special empty file for marking that a directory tree has been generated.
+#%/.dummy:
 #	@printf "Making directory tree for marker file $(TARGET_VAR)..."
 #	@printf "Making marker file $(TARGET_VAR) and its directory tree..."
 #	@mkdir -p $(@D); $(STATUS_RESULT)
@@ -312,7 +324,8 @@ init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 
 .INTERMEDIATE: $(LOG)
 
-$(LOG): ## Makes a temporary file capturring a shell command error.
+# Makes a temporary file capturring a shell command error.
+$(LOG):
 	@touch $@
 
 # ==============================================================================

@@ -76,9 +76,11 @@ endef
 
 .PHONY: clean-docs-github
 
-clean-github: clean-docs-github ## Completes all GitHub cleanup activities.
+## clean-github: Completes all GitHub cleanup activities.
+clean-github: clean-docs-github
 
-clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
+## clean-docs-github: Completes all GitHub Markdown cleanup activities.
+clean-docs-github: | $(LOG)
 	@printf "Removing GitHub documents..."
 	@rm -rf $(GITHUB_FILES) $(GITHUB_DIR1) >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
@@ -89,7 +91,8 @@ clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 
 .PHONY: docs-github 
 
-docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activites.
+## docs-github: Completes all GitHub document generation activites.
+docs-github: $(GITHUB_FILES)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
@@ -97,11 +100,14 @@ docs-github: $(GITHUB_FILES) ## Completes all GitHub document generation activit
 
 .PHONY: init-github init-github-dirs init-github-vars
 
-init-github: init-github-vars init-github-dirs docs-github ## Completes all initial Github setup activites.
+## init-github: Completes all initial Github setup activites.
+init-github: init-github-vars init-github-dirs docs-github
 
+## init-github-dirs: Completes all initial Github directorry setup activites.
 init-github-dirs: $(GITHUB_DIRS)
 
-init-github-vars: ## Completes all GitHub variable setup activites.
+## init-github-vars: Completes all GitHub variable setup activites.
+init-github-vars:
 	$(eval PROJECT_REPO = $(GITHUB_USER)/$(PROJECT))
 	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-GitHub)
 	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
@@ -111,25 +117,34 @@ init-github-vars: ## Completes all GitHub variable setup activites.
 # File Targets
 # ==============================================================================
 
-$(GITHUB_DIR2)/bug_report.md: $(GITHUB_DIR2)/bug_report.md.download ## Makes a bug_report.md file.
+# Makes a bug_report.md file.
+$(GITHUB_DIR2)/bug_report.md: $(GITHUB_DIR2)/bug_report.md.download
 
-$(GITHUB_DIR2)/custom.md: $(GITHUB_DIR2)/custom.md.download ## Makes a custom.md file.
+# Makes a custom.md file.
+$(GITHUB_DIR2)/custom.md: $(GITHUB_DIR2)/custom.md.download
 
-$(GITHUB_DIR2)/feature_request.md: $(GITHUB_DIR2)/feature_request.md.download ## Makes a feature_request.md file.
+# Makes a feature_request.md file.
+$(GITHUB_DIR2)/feature_request.md: $(GITHUB_DIR2)/feature_request.md.download
 
-$(GITHUB_DIR2)/ISSUE_TEMPLATE.md: $(GITHUB_DIR2)/ISSUE_TEMPLATE.md.download ## Makes a ISSUE_TEMPLATE.md file.
+# Makes a ISSUE_TEMPLATE.md file.
+$(GITHUB_DIR2)/ISSUE_TEMPLATE.md: $(GITHUB_DIR2)/ISSUE_TEMPLATE.md.download
 
-$(GITHUB_DIR3)/pull_request_template.md: $(GITHUB_DIR3)/pull_request_template.md.download ## Makes a pull_request_template.md file.
+# Makes a pull_request_template.md file.
+$(GITHUB_DIR3)/pull_request_template.md: $(GITHUB_DIR3)/pull_request_template.md.download
 
-CHANGELOG.md: CHANGELOG.md.download ## Makes a CHANGELOG.md file.
+# Makes a CHANGELOG.md file.
+CHANGELOG.md: CHANGELOG.md.download
 
-CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download ## Makes a CODE_OF_CONDUCT.md file.
+# Makes a CODE_OF_CONDUCT.md file.
+CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download
 	$(update-github-file)
 
-CONTRIBUTING.md: CONTRIBUTING.md.download ## Makes a CONTRIBUTING.md file.
+# Makes a CONTRIBUTING.md file.
+CONTRIBUTING.md: CONTRIBUTING.md.download
 	$(update-github-file)
 
-SUPPORT.md: SUPPORT.md.download ## Makes a SUPPORT.md file.
+# Makes a SUPPORT.md file.
+SUPPORT.md: SUPPORT.md.download
 
 # ==============================================================================
 # Intermediate Targets
