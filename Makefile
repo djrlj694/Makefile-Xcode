@@ -56,7 +56,7 @@ FAILURE = (printf "$(FAILED)" && echo && cat $(LOG) && echo)
 SUCCESS = printf "$(DONE)"
 RESULT = ([ $$? -eq 0 ] && $(SUCCESS)) || $(FAILURE)
 
-VARIABLES_TO_SHOW = MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PREFIX PROJECT PWD USER
+VARIABLES_TO_SHOW = MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREFIX PROJECT PWD USER
 
 # ------------------------------------------------------------------------------
 # Directories
@@ -67,6 +67,7 @@ PREFIX = $(PWD)
 SUBDIR = $(shell basename $(@D))
 
 PROJECT = $(shell basename $(PREFIX))
+PACKAGE = $(PROJECT)
 
 BIN_DIR = bin/.
 LOG_DIR = logs/.
@@ -108,11 +109,12 @@ FG_YELLOW = \033[1;33m
 # Help strings
 # ------------------------------------------------------------------------------
 
+PACKAGE_ARG = $(FG_CYAN)<package>$(RESET)
 PREFIX_ARG = $(FG_CYAN)<prefix>$(RESET)
 TARGET_ARG = $(FG_CYAN)<target>$(RESET)
 USER_ARG = $(FG_CYAN)<user>$(RESET)
 
-MAKE = make $(TARGET_ARG) [PREFIX=$(PREFIX_ARG)] [USER=$(USER_ARG)]
+MAKE = make $(TARGET_ARG) [PACKAGE=$(PACKAGE_ARG)] [PREFIX=$(PREFIX_ARG)] [USER=$(USER_ARG)]
 
 define HELP1
 
@@ -164,7 +166,9 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 
 all: help
 
+ifneq ($(PROJECT),Makefile-Xcode)
 clean: clean-git clean-xcode clean-github clean-common clean-dirs ## Completes all cleaning activities.
+endif
 
 debug: debug-vars-some debug-dirs-tree debug-dirs-ll ## Completes all debugging activities.
 
