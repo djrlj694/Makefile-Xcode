@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 04MAR2019
+# REVISED: 06MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -58,7 +58,7 @@ clean-common: clean-docs-common ## Completes all Xcode cleanup activities.
 clean-docs-common: | $(LOG) ## Completes all common document cleanup activities.
 	@printf "Removing common documents..."
 	@rm -rf $(COMMON_FILES) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "docs" target
