@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 04MAR2019
+# REVISED: 06MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -36,5 +36,5 @@ docs-swift: | $(LOG) ## Makes Swift API documentation.
 		--output ./docs \
         --documentation=./*.md \
 		>$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 	@rm -rf ./build
