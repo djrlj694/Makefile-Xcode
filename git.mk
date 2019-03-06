@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 04MAR2019
+# REVISED: 06MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -30,7 +30,7 @@
 clean-git: | $(LOG) ## Completes all git cleanup activities.
 	@printf "Removing git setup..."
 	@rm -rf .git .gitignore >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
@@ -43,11 +43,11 @@ init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activitie
 	@git checkout -b master >$(LOG) 2>&1; \
 	git add . >>$(LOG) 2>&1; \
 	git commit -m "Initial project setup" >>$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 	@printf "Syncing the initial project with the origin..."
 	@git remote add origin $(ORIGIN_URL) >$(LOG) 2>&1; \
 	git push -u origin master >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ==============================================================================
 # File Targets
@@ -56,7 +56,7 @@ init-git:  .gitignore .git | $(LOG) ## Completes all initial git setup activitie
 .git: | $(LOG) ## Makes a git repository.
 	@printf "Initializing git repository..."
 	@git init >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 .gitignore: .gitignore.download ## Makes a .gitignore file.
 
