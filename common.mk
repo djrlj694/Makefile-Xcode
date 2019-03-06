@@ -53,7 +53,7 @@ endef
 
 .PHONY: clean-common clean-docs-common
 
-clean-common: clean-docs-common ## Completes all Xocde cleanup activities.
+clean-common: clean-docs-common ## Completes all Xcode cleanup activities.
 
 clean-docs-common: | $(LOG) ## Completes all common document cleanup activities.
 	@printf "Removing common documents..."
