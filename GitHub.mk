@@ -81,7 +81,7 @@ clean-github: clean-docs-github ## Completes all GitHub cleanup activities.
 clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 	@printf "Removing GitHub documents..."
 	@rm -rf $(GITHUB_FILES) $(GITHUB_DIR1) >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "docs" target
