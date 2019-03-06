@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 04MAR2019
+# REVISED: 06MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -19,10 +19,10 @@
 # ------------------------------------------------------------------------------
 
 XCODE_RESOURCES = Data Fonts Localization Media UserInterfaces
-XCODE_RESOURCES_DIRS = $(addprefix $(PROJECT)/Resources/,$(XCODE_RESOURCES))
+XCODE_RESOURCES_DIRS = $(addprefix $(PACKAGE)/Resources/,$(XCODE_RESOURCES))
 
 XCODE_SOURCES = Controllers Extensions Models Protocols ViewModels Views
-XCODE_SOURCES_DIRS = $(addprefix $(PROJECT)/Sources/,$(XCODE_SOURCES))
+XCODE_SOURCES_DIRS = $(addprefix $(PACKAGE)/Sources/,$(XCODE_SOURCES))
 
 XCODE_DIRS = $(addsuffix /.,$(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS))
 
@@ -54,9 +54,14 @@ endef
 # Prerequisite phony targets for the "clean" target
 # ------------------------------------------------------------------------------
 
-.PHONY: clean-xcode clean-docs-xcode
+#.PHONY: clean-xcode clean-xcode-dirs clean-docs-xcode
+.PHONY: clean-xcode clean-xcode-dirs
 
-#clean-xcode: clean-docs-xcode ## Completes all Xocde cleanup activities.
+#clean-xcode: clean-docs-xcode ## Completes all Xcode cleanup activities.
+clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs ## Completes all Xcode cleanup activities.
+	@printf "Removing Xcode setup..."
+	@rm -rf $(PACKAGE) >$(LOG) 2>&1; \
+	$(RESULT)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
@@ -64,7 +69,7 @@ endef
 
 .PHONY: init-xcode init-xcode-dirs init-xcode-vars
 
-init-xcode: init-xcode-vars init-xcode-dirs docs-xcode init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
+init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
 
 init-xcode-dirs: $(XCODE_DIRS)
 
