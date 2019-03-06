@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 04MAR2019
+# REVISED: 06MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -75,6 +75,8 @@ endef
 # ------------------------------------------------------------------------------
 
 .PHONY: clean-docs-github
+
+clean-github: clean-docs-github ## Completes all GitHub cleanup activities.
 
 clean-docs-github: | $(LOG) ## Completes all GitHub Markdown cleanup activities.
 	@printf "Removing GitHub documents..."
