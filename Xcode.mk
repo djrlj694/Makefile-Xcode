@@ -108,7 +108,7 @@ endef
 clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs ## Completes all Xcode cleanup activities.
 	@printf "Removing Xcode setup..."
 	@rm -rf $(PACKAGE) >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
