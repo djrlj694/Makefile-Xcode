@@ -52,9 +52,8 @@ MKDIR = mkdir -p
 # Debugging & Error Capture
 # ------------------------------------------------------------------------------
 
-FAILURE = (printf "$(FAILED)\n" && cat $(LOG) && echo)
-RESULT = ([ $$? -eq 0 ] && printf "$(DONE)") || $(FAILURE)
-TEST_RESULT = ([ $$? -eq 0 ] && printf "$(PASSED)") || $(FAILURE)
+STATUS_RESULT = $(call print-result,$(DONE))
+TEST_RESULT = $(call print-result,$(PASSED))
 
 VARIABLES_TO_SHOW = MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREFIX PROJECT PWD USER
 
@@ -149,6 +148,26 @@ IGNORE = $(FG_YELLOW)ignore$(RESET).\n
 PASSED = $(FG_GREEN)passed$(RESET).\n
 
 # ==============================================================================
+# User-Defined Functions
+#
+# A user-defined function is a variable or macro that includes one or more
+# temporary variables ($1, $2, etc.) in its definition. By convention, user-
+# defined function names use lowercase words separated by dashes.  For more
+# info, see:
+# 1. https://www.gnu.org/software/make/manual/html_node/Call-Function.html
+# 2. https://www.oreilly.com/openbook/make3/book/ch11.pdf
+# 3. https://www.oreilly.com/openbook/make3/book/ch04.pdf
+# ==============================================================================
+
+# $(call print-result, formatted-success-string)
+#	Print success string -- $(DONE) or $(PASSED) if the most recent return code
+#	value equals 0; otherwise, print $(FAILED) and the associated error message.
+define print-result
+	([ $$? -eq 0 ] && printf "$1") || \
+	(printf "$(FAILED)\n" && cat $(LOG) && echo)
+endef
+
+# ==============================================================================
 # Phony Targets
 #
 # A phony target is a convenient name for a set of commands to be executed when
@@ -208,7 +227,7 @@ test: vars-some ## Completes all test activities.
 clean-dirs: | $(LOG) ## Completes all directory cleanup activities.
 	@printf "Removing directories setup..."
 	@rm -rf $(PROJECT) $(dir $(SETUP_DIRS)) >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "debug" target
@@ -259,7 +278,7 @@ init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 %/.: | $(LOG) ## Makes a directory tree.
 	@printf "Making directory tree $(DIR_VAR)..."
 	@mkdir -p $(@D) >$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 # ==============================================================================
 # File Targets
@@ -271,14 +290,14 @@ init-dirs: $(INIT_DIRS) ## Completes all initial directory setup activities.
 	@printf "Downloading file $(FILE_VAR)..."
 	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
-	$(RESULT)
+	$(STATUS_RESULT)
 
 #%/.dummy: ## Makes a special empty file for marking that a directory tree has been generated.
 #	@printf "Making directory tree for marker file $(TARGET_VAR)..."
 #	@printf "Making marker file $(TARGET_VAR) and its directory tree..."
-#	@mkdir -p $(@D); $(RESULT)
+#	@mkdir -p $(@D); $(STATUS_RESULT)
 #	@printf "Making marker file $(TARGET_VAR)..."
-#	@touch $@; $(RESULT)
+#	@touch $@; $(STATUS_RESULT)
 
 # ==============================================================================
 # Intermediate Targets
