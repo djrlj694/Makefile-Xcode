@@ -47,19 +47,6 @@ GITHUB_FILES = $(addsuffix .md,$(GITHUB_DOCS))
 GITHUB_DOWNLOADED_FILES = $(addsuffix .download,$(GITHUB_FILES))
 
 # ==============================================================================
-# Macros
-# ==============================================================================
-
-define update-github-file
-	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
-	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp2 >$@.tmp3
-	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp3 >$@.tmp4
-	@sed -e 's/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g' $@.tmp4 >$@
-	@rm -rf $@.tmp*
-endef
-
-# ==============================================================================
 # Phony Targets
 #
 # A phony target is a convenient name for a set of commands to be executed when
@@ -137,11 +124,11 @@ CHANGELOG.md: CHANGELOG.md.download
 
 # Makes a CODE_OF_CONDUCT.md file.
 CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download
-	$(update-github-file)
+	$(update-template-file)
 
 # Makes a CONTRIBUTING.md file.
 CONTRIBUTING.md: CONTRIBUTING.md.download
-	$(update-github-file)
+	$(update-template-file)
 
 # Makes a SUPPORT.md file.
 SUPPORT.md: SUPPORT.md.download
