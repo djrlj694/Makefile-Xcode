@@ -52,10 +52,10 @@ MKDIR = mkdir -p
 # Debugging & Error Capture
 # ------------------------------------------------------------------------------
 
-STATUS_RESULT = $(call print-result,$(DONE))
-TEST_RESULT = $(call print-result,$(PASSED))
+STATUS_RESULT = $(call result,$(DONE))
+TEST_RESULT = $(call result,$(PASSED))
 
-VARIABLES_TO_SHOW = MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREFIX PROJECT PWD USER
+VARIABLES_TO_SHOW = EMAIL_REGEX MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREFIX PROJECT PWD USER
 
 # ------------------------------------------------------------------------------
 # Directories
@@ -159,12 +159,25 @@ PASSED = $(FG_GREEN)passed$(RESET).\n
 # 3. https://www.oreilly.com/openbook/make3/book/ch04.pdf
 # ==============================================================================
 
-# $(call print-result, formatted-success-string)
-#	Print success string -- $(DONE) or $(PASSED) if the most recent return code
-#	value equals 0; otherwise, print $(FAILED) and the associated error message.
-define print-result
+# $(call result, formatted-success-string)
+#	Print success string -- $(DONE) or $(PASSED) -- if the most recent return
+#	code value equals 0; otherwise, print $(FAILED) and the associated error
+#	message.
+define result
 	([ $$? -eq 0 ] && printf "$1") || \
 	(printf "$(FAILED)\n" && cat $(LOG) && echo)
+endef
+
+# ==============================================================================
+# Macros
+# ==============================================================================
+
+define update-template-file
+	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
+	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp1 >$@.tmp2
+	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp2 >$@.tmp3
+	@sed -e 's/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g' $@.tmp3 >$@
+	@rm -rf $@.tmp*
 endef
 
 # ==============================================================================
@@ -251,7 +264,7 @@ debug-dirs-ll:
 
 ## debug-dirs-tree: Shows the contents of directories in a tree-like format.
 debug-dirs-tree:
-	tree $(PREFIX)
+	tree -a $(PREFIX)
 
 ## debug-vars-all: Shows all Makefile variables (i.e., built-in and custom).
 debug-vars-all:
