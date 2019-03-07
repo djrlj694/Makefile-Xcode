@@ -74,19 +74,6 @@ endef
 export XCODE_FILES_TEST
 
 # ==============================================================================
-# Macros
-# ==============================================================================
-
-define update-xcode-file
-	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
-	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp2 >$@.tmp3
-	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp3 >$@.tmp4
-	@sed -e 's/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g' $@.tmp4 >$@
-	@rm -rf $@.tmp*
-endef
-
-# ==============================================================================
 # Phony Targets
 #
 # A phony target is a convenient name for a set of commands to be executed when
@@ -105,7 +92,7 @@ endef
 .PHONY: clean-xcode clean-xcode-dirs
 
 #clean-xcode: clean-docs-xcode ## Completes all Xcode cleanup activities.
-clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs ## Completes all Xcode cleanup activities.
+clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs
 	@printf "Removing Xcode setup..."
 	@rm -rf $(PACKAGE) >$(LOG) 2>&1; \
 	$(STATUS_RESULT)
@@ -118,9 +105,9 @@ clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs ## Completes all Xc
 
 ## init-xcode: Completes all initial Xcode setup activites.
 ifneq ($(COOKIECUTTER),)
-init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
+init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 else
-init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods ## Completes all initial Xcode setup activites.
+init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 endif
 
 ## init-xcode-dirs: Completes all initial Xcode directory setup activites.
