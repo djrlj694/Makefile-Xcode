@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 06MAR2019
+# REVISED: 08MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -55,7 +55,8 @@ clean-docs-common: | $(LOG)
 
 .PHONY: docs-common 
 
-docs-common: $(COMMON_FILES) ## Completes all common document generation activites.
+## docs-common: Completes all common document generation activites.
+docs-common: $(COMMON_FILES)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
@@ -63,16 +64,20 @@ docs-common: $(COMMON_FILES) ## Completes all common document generation activit
 
 .PHONY: init-common
 
-init-common: docs-common ## Completes all initial common setup activites.
+## init-common: Completes all initial common setup activites.
+init-common: docs-common
 
 # ==============================================================================
 # File Targets
 # ==============================================================================
 
-README.md: README.md.download ## Makes a README.md file.
+## README.md: Makes a README.md file.
+#README.md: REGEXES = $(PROJECT_REGEX) $(EMAIL_REGEX) $(GITHUB_USER_REGEX) $(GITHUB_USER_REGEX)
+README.md: README.md.download update.sed
 	$(update-template-file)
 
-REFERENCES.md: REFERENCES.md.download ## Makes a REFERENCES.md file.
+## REFERENCES.md: Makes a REFERENCES.md file.
+REFERENCES.md: REFERENCES.md.download
 
 # ==============================================================================
 # Intermediate Targets

@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 06MAR2019
+# REVISED: 08MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -123,11 +123,11 @@ $(GITHUB_DIR3)/pull_request_template.md: $(GITHUB_DIR3)/pull_request_template.md
 CHANGELOG.md: CHANGELOG.md.download
 
 # Makes a CODE_OF_CONDUCT.md file.
-CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download
+CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download update.sed
 	$(update-template-file)
 
 # Makes a CONTRIBUTING.md file.
-CONTRIBUTING.md: CONTRIBUTING.md.download
+CONTRIBUTING.md: CONTRIBUTING.md.download update.sed
 	$(update-template-file)
 
 # Makes a SUPPORT.md file.
