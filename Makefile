@@ -361,7 +361,7 @@ init-dirs: $(INIT_DIRS)
 %.sed: | $(LOG)
 #	@touch $@
 	@echo '$(PROJECT_REGEX)' >> $@
-	@echo '$(EMAIL_RREGEX)' >> $@
+	@echo '$(EMAIL_REGEX)' >> $@
 	@echo '$(GITHUB_USER_REGEX)' >> $@
 	@echo '$(TRAVIS_USER_REGEX)' >> $@
 	@cp -p $@ $@.bak
