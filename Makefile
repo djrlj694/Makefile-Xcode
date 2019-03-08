@@ -61,7 +61,7 @@ VARIABLES_TO_SHOW = EMAIL_REGEX MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREF
 # Directories
 # ------------------------------------------------------------------------------
 
-MAKEFILE_DIR = $(dir $(realpath $(MAKEFILE)))
+MAKEFILE_DIR = $(dir $(realpath $(MAKEFILE)))/.make
 PREFIX = $(PWD)
 SUBDIR = $(shell basename $(@D))
 
@@ -90,6 +90,15 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 #LOG = $(shell mktemp)
 #LOG = /tmp/make.$$$$.log
 LOG = make.log
+
+# ------------------------------------------------------------------------------
+# Regular Expressions
+# ------------------------------------------------------------------------------
+
+PROJECT_REGEX =	s/{{ cookiecutter.project_name }}/$(PROJECT)/g
+EMAIL_REGEX	= s/{{ cookiecutter.email }}/$(EMAIL)/g
+GITHUB_USER_REGEX =	s/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g
+TRAVIS_USER_REGEX =	s/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g
 
 # ------------------------------------------------------------------------------
 # STDOUT format settings
@@ -160,7 +169,7 @@ PASSED = $(FG_GREEN)passed$(RESET).\n
 # ==============================================================================
 
 # $(call result, formatted-success-string)
-#	Print success string -- $(DONE) or $(PASSED) -- if the most recent return
+#	Prints success string -- $(DONE) or $(PASSED) -- if the most recent return
 #	code value equals 0; otherwise, print $(FAILED) and the associated error
 #	message.
 define result
@@ -168,17 +177,41 @@ define result
 	(printf "$(FAILED)\n" && cat $(LOG) && echo)
 endef
 
+# $(call update-file, file, reg-ex, replacement)
+#	Replaces all occurances in "file" matching "reg-ex" with "replacement".
+define update-file
+	sed -e 's/$2/$3/g' $1 >$1.tmp
+	mv $1.tmp $1
+endef
+
 # ==============================================================================
 # Macros
 # ==============================================================================
 
 define update-template-file
-	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
-	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp1 >$@.tmp2
-	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp2 >$@.tmp3
-	@sed -e 's/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g' $@.tmp3 >$@
-	@rm -rf $@.tmp*
+	@sed -f update.sed $@ > $@.tmp
+	@mv $@.tmp $@
 endef
+
+#	sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp
+#	mv $@.tmp $@
+#	sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@ >$@.tmp
+#	mv $@.tmp $@
+#	sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@ >$@.tmp
+#	mv $@.tmp $@
+#	sed -e 's/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g' $@.tmp >$@
+#	mv $@.tmp $@
+
+#	@sed -e 's/{{ cookiecutter.project_name }}/$(PROJECT)/g' $@ >$@.tmp1
+#	@sed -e 's/{{ cookiecutter.email }}/$(EMAIL)/g' $@.tmp1 >$@.tmp2
+#	@sed -e 's/{{ cookiecutter.github_user }}/$(GITHUB_USER)/g' $@.tmp2 >$@.tmp3
+#	@sed -e 's/{{ cookiecutter.travis_user }}/$(TRAVIS_USER)/g' $@.tmp3 >$@
+#	@rm -rf $@.tmp*
+
+#	@$(call update-file, $@, {{ cookiecutter.project_name }}, $(PROJECT))
+#	@$(call update-file, $@, {{ cookiecutter.email }}, $(EMAIL))
+#	@$(call update-file, $@, {{ cookiecutter.github_user }}, $(GITHUB_USER))
+#	@$(call update-file, $@, {{ cookiecutter.travis_user }}, $(TRAVIS_USER))
 
 # ==============================================================================
 # Phony Targets
@@ -324,6 +357,19 @@ init-dirs: $(INIT_DIRS)
 #	@printf "Making marker file $(TARGET_VAR)..."
 #	@touch $@; $(STATUS_RESULT)
 
+# Makes a sed script.
+%.sed: | $(LOG)
+#	@touch $@
+	@echo '$(PROJECT_REGEX)' >> $@
+	@echo '$(EMAIL_RREGEX)' >> $@
+	@echo '$(GITHUB_USER_REGEX)' >> $@
+	@echo '$(TRAVIS_USER_REGEX)' >> $@
+	@cp -p $@ $@.bak
+
+#	@for regex in $(REGEXES); do \
+#		echo '${regex}' >> $@; \
+#	done
+
 # ==============================================================================
 # Intermediate Targets
 #
@@ -335,11 +381,14 @@ init-dirs: $(INIT_DIRS)
 # exist after a "make" run.
 # ==============================================================================
 
-.INTERMEDIATE: $(LOG)
+.INTERMEDIATE: $(LOG) update.sed
 
 # Makes a temporary file capturring a shell command error.
 $(LOG):
 	@touch $@
+
+## usage.sed: Make a sed script.
+#usage.sed: REGEXES = $(PROJECT_REGEX) $(EMAIL_REGEX) $(GITHUB_USER_REGEX) $(GITHUB_USER_REGEX)
 
 # ==============================================================================
 # Second Expansion Targets
