@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 08MAR2019
+# REVISED: 09MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -123,12 +123,24 @@ $(GITHUB_DIR3)/pull_request_template.md: $(GITHUB_DIR3)/pull_request_template.md
 CHANGELOG.md: CHANGELOG.md.download
 
 # Makes a CODE_OF_CONDUCT.md file.
-CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.md.download update.sed
-	$(update-template-file)
+CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.sed CODE_OF_CONDUCT.md.download
+	$(update-file)
+
+# Makes a sed script for file CODE_OF_CONDUCT.sed.
+CODE_OF_CONDUCT.sed:
+	@echo $(PROJECT_CMD) >> $@
+	@echo $(EMAIL_CMD) >> $@
+	@echo $(GITHUB_USER_CMD) >> $@
 
 # Makes a CONTRIBUTING.md file.
-CONTRIBUTING.md: CONTRIBUTING.md.download update.sed
-	$(update-template-file)
+CONTRIBUTING.md: CONTRIBUTING.sed CONTRIBUTING.md.download
+	$(update-file)
+
+# Makes a sed script for file CONTRIBUTING.sed.
+CONTRIBUTING.sed:
+	@echo $(PROJECT_CMD) >> $@
+	@echo $(EMAIL_CMD) >> $@
+	@echo $(GITHUB_USER_CMD) >> $@
 
 # Makes a SUPPORT.md file.
 SUPPORT.md: SUPPORT.md.download
@@ -144,4 +156,4 @@ SUPPORT.md: SUPPORT.md.download
 # exist after a "make" run.
 # ==============================================================================
 
-.INTERMEDIATE: $(GITHUB_DOWNLOADED_FILES)
+.INTERMEDIATE: $(GITHUB_DOWNLOADED_FILES) CODE_OF_CONDUCT.sed CONTRIBUTING.sed
