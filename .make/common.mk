@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 08MAR2019
+# REVISED: 09MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -72,9 +72,15 @@ init-common: docs-common
 # ==============================================================================
 
 ## README.md: Makes a README.md file.
-#README.md: REGEXES = $(PROJECT_REGEX) $(EMAIL_REGEX) $(GITHUB_USER_REGEX) $(GITHUB_USER_REGEX)
-README.md: README.md.download update.sed
-	$(update-template-file)
+README.md: README.sed README.md.download
+	$(update-file)
+
+# Makes a sed script for file README.sed.
+README.sed:
+	@echo $(PROJECT_CMD) >> $@
+	@echo $(EMAIL_CMD) >> $@
+	@echo $(GITHUB_USER_CMD) >> $@
+	@echo $(TRAVIS_USER_CMD) >> $@
 
 ## REFERENCES.md: Makes a REFERENCES.md file.
 REFERENCES.md: REFERENCES.md.download
@@ -90,4 +96,4 @@ REFERENCES.md: REFERENCES.md.download
 # exist after a "make" run.
 # ==============================================================================
 
-.INTERMEDIATE: $(COMMON_DOWNLOADED_FILES)
+.INTERMEDIATE: $(COMMON_DOWNLOADED_FILES) README.sed
