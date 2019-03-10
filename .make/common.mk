@@ -47,7 +47,7 @@ clean-common: clean-docs-common
 clean-docs-common: | $(LOG)
 	@printf "Removing common documents..."
 	@rm -rf $(COMMON_FILES) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "docs" target
