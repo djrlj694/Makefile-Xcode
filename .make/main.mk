@@ -125,13 +125,13 @@ test_result = $(call result,$(PASSED))
 # Directories
 # ------------------------------------------------------------------------------
 
-SUBDIR = $(shell basename $(@D))
+subdir = $(shell basename $(@D))
 
 # ------------------------------------------------------------------------------
 # Files
 # ------------------------------------------------------------------------------
 
-FILE = $(basename $@)
+file = $(basename $@)
 
 # ------------------------------------------------------------------------------
 # Help strings
@@ -143,12 +143,12 @@ target_help = $(FG_CYAN)%-17s$(RESET) %s
 # Path strings
 # ------------------------------------------------------------------------------
 
-DIR_VAR = $(FG_CYAN)$(@D)$(RESET)
-###FILE_VAR = $(FG_CYAN)$(FILE)$(RESET) # RLJ: Commented out. 23FEEB2019, RRLJ
-FILE_VAR = $(FG_CYAN)$(@F)$(RESET)
-SUBDIR_VAR = $(FG_CYAN)$(SUBDIR)$(RESET)
+dir_var = $(FG_CYAN)$(@D)$(RESET)
+###file_var = $(FG_CYAN)$(file)$(RESET) # RLJ: Commented out. 23FEEB2019, RRLJ
+file_var = $(FG_CYAN)$(@F)$(RESET)
+subdir_var = $(FG_CYAN)$(subdir)$(RESET)
 
-TARGET_VAR = $(FG_CYAN)$@$(RESET)
+target_var = $(FG_CYAN)$@$(RESET)
 
 # ==============================================================================
 # Macros
@@ -268,7 +268,7 @@ debug-vars-some:
 
 # Makes a directory tree.
 #%/.: | $(LOG)
-#	@printf "Making directory tree $(DIR_VAR)..."
+#	@printf "Making directory tree $(dir_var)..."
 #	@mkdir -p $(@D) >$(LOG) 2>&1; \
 #	$(status_result)
 
@@ -280,17 +280,17 @@ debug-vars-some:
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
 #%.download: | $(LOG) 
 ##	$(eval FILE = $(basename $@))
-#	@printf "Downloading file $(FILE_VAR)..."
+#	@printf "Downloading file $(file_var)..."
 #	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 #	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
 #	$(status_result)
 
 # Makes a special empty file for marking that a directory tree has been generated.
 #%/.gitkeep:
-#	@printf "Making directory tree for marker file $(TARGET_VAR)..."
-#	@printf "Making marker file $(TARGET_VAR) and its directory tree..."
+#	@printf "Making directory tree for marker file $(target_var)..."
+#	@printf "Making marker file $(target_var) and its directory tree..."
 #	@mkdir -p $(@D); $(status_result)
-#	@printf "Making marker file $(TARGET_VAR)..."
+#	@printf "Making marker file $(target_var)..."
 #	@touch $@; $(status_result)
 
 # ==============================================================================
