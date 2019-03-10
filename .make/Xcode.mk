@@ -131,13 +131,13 @@ test-xcode: test-xcode-dirs test-xcode-files
 test-xcode-dirs: expected_xcode_dirs.txt actual_xcode_dirs.txt | $(LOG)
 	@printf "Testing Xcode directory setup..."
 	@diff expected_xcode_dirs.txt actual_xcode_dirs.txt >$(LOG) 2>&1; \
-	$(TEST_RESULT)
+	$(test_result)
 
 ## test-xcode-files: Test Xcode file setup.
 test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG)
 	@printf "Testing Xcode file setup..."
 	@diff expected_xcode_files.txt actual_xcode_files.txt >$(LOG) 2>&1; \
-	$(TEST_RESULT)
+	$(test_result)
 
 # ==============================================================================
 # Intermediate Targets
