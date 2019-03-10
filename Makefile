@@ -131,7 +131,7 @@ test: test-xcode
 clean-dirs: | $(LOG)
 	@printf "Removing directories setup..."
 	@rm -rf $(PROJECT) $(dir $(SETUP_DIRS)) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
