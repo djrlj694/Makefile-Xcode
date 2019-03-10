@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 06MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -40,7 +40,11 @@ clean-git: | $(LOG)
 .PHONY: init-git
 
 ## init-git: Completes all initial git setup activities.
+ifeq ($(COOKIECUTTER),)
 init-git: .gitignore .git | $(LOG)
+else
+init-git: .git | $(LOG)
+endif
 	@printf "Committing the initial project to the master branch..."
 	@git checkout -b master >$(LOG) 2>&1; \
 	git add . >>$(LOG) 2>&1; \
