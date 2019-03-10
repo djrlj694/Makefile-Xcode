@@ -119,7 +119,7 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 # ------------------------------------------------------------------------------
 
 status_result = $(call result,$(DONE))
-TEST_RESULT = $(call result,$(PASSED))
+test_result = $(call result,$(PASSED))
 
 # ------------------------------------------------------------------------------
 # Directories
