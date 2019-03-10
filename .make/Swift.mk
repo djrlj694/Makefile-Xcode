@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 07MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -37,5 +37,5 @@ docs-swift: | $(LOG)
 		--output ./docs \
         --documentation=./*.md \
 		>$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 	@rm -rf ./build
