@@ -336,4 +336,4 @@ $(LOG):
 # ==============================================================================
 
 .SECONDEXPANSION:
-#$(PREFIX)/%.dummy: $$(@D)/.dummy | $$(@D)/. ## Make a directory tree.
+#$(PREFIX)/%.gitkeep: $$(@D)/.gitkeep | $$(@D)/. ## Make a directory tree.
