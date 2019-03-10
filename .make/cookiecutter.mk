@@ -52,6 +52,12 @@ COOKIECUTTER ?= $(shell which cookiecutter)
 
 COOKIECUTTER_VARS := COOKIECUTTER
 
+# ------------------------------------------------------------------------------
+# Help strings
+# ------------------------------------------------------------------------------
+
+MAKE_ARGS += [COOKIECUTTER=]
+
 # ==============================================================================
 # Internal Variables
 #
@@ -72,7 +78,7 @@ COOKIECUTTER_VARS := COOKIECUTTER
 # Sed Commands
 # ------------------------------------------------------------------------------
 
-ifneq ($(COOKIECUTTER),)
+ifeq ($(COOKIECUTTER),)
 PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
 EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
 GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
@@ -89,7 +95,7 @@ endif
 # macros are written in lowercase, and their words are separated by underscores.
 # ==============================================================================
 
-ifneq ($(COOKIECUTTER),)
+ifeq ($(COOKIECUTTER),)
 define update-file
 	@sed -f $< $@ > $@.tmp
 	@mv $@.tmp $@
@@ -111,7 +117,7 @@ endif
 # $(call sed-cmd,template-var,replacement)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
-ifneq ($(COOKIECUTTER),)
+ifeq ($(COOKIECUTTER),)
 define sed-cmd
 	's/{{ cookiecutter.$1 }}/$2/g'
 endef
@@ -122,7 +128,7 @@ endif
 # ==============================================================================
 
 # Makes a directory tree.
-ifneq ($(COOKIECUTTER),)
+ifeq ($(COOKIECUTTER),)
 %/.: | $(LOG)
 	@printf "Making directory tree $(DIR_VAR)..."
 	@mkdir -p $(@D) >$(LOG) 2>&1; \
@@ -135,7 +141,7 @@ endif
 
 # Downloads a file.
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
-ifneq ($(COOKIECUTTER),)
+ifeq ($(COOKIECUTTER),)
 %.download: | $(LOG) 
 #	$(eval FILE = $(basename $@))
 	@printf "Downloading file $(FILE_VAR)..."
