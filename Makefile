@@ -35,11 +35,11 @@
 USER ?= $(shell whoami)
 
 # ------------------------------------------------------------------------------
-# Project
+# Directories
 # ------------------------------------------------------------------------------
 
+PREFIX = $(PWD)
 PROJECT ?= $(shell basename $(PREFIX))
-
 PACKAGE ?= $(PROJECT)
 
 # ==============================================================================
@@ -61,8 +61,8 @@ PACKAGE ?= $(PROJECT)
 # Debugging & Error Capture
 # ------------------------------------------------------------------------------
 
-VARIABLES_TO_SHOW := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PWD
-VARIABLES_TO_SHOW += PACKAGE PROJECT USER
+VARIABLES_TO_SHOW := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST
+VARIABLES_TO_SHOW += PACKAGE PREFIX PROJECT PWD USER
 
 # ------------------------------------------------------------------------------
 # Directories
