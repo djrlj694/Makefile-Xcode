@@ -39,7 +39,7 @@ MKDIR := mkdir -p
 STATUS_RESULT = $(call result,$(DONE))
 TEST_RESULT = $(call result,$(PASSED))
 
-VARIABLES_TO_SHOW = EMAIL_REGEX MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PREFIX PROJECT PWD USER
+MAIN_VARS := PREFIX
 
 # ------------------------------------------------------------------------------
 # Files
@@ -118,7 +118,7 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 # Command Output
 # ------------------------------------------------------------------------------
 
-COOKIECUTTER = $(shell which cookiecutter)
+#COOKIECUTTER = $(shell which cookiecutter)
 
 # ------------------------------------------------------------------------------
 # Debugging & Error Capture
@@ -144,10 +144,10 @@ FILE = $(basename $@)
 # Sed Commands
 # ------------------------------------------------------------------------------
 
-PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
-EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
-GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
-TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
+#PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
+#EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
+#GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
+#TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
 
 # ------------------------------------------------------------------------------
 # Help strings
@@ -186,10 +186,10 @@ Targets:
 endef
 export usage_help
 
-define update-file
-	@sed -f $< $@ > $@.tmp
-	@mv $@.tmp $@
-endef
+#define update-file
+#	@sed -f $< $@ > $@.tmp
+#	@mv $@.tmp $@
+#endef
 
 # ==============================================================================
 # User-Defined Functions
@@ -214,9 +214,9 @@ endef
 # $(call sed-cmd,template-var,replacement)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
-define sed-cmd
-	's/{{ cookiecutter.$1 }}/$2/g'
-endef
+#define sed-cmd
+#	's/{{ cookiecutter.$1 }}/$2/g'
+#endef
 
 # ==============================================================================
 # Phony Targets
@@ -288,10 +288,10 @@ debug-vars-some:
 # ==============================================================================
 
 # Makes a directory tree.
-%/.: | $(LOG)
-	@printf "Making directory tree $(DIR_VAR)..."
-	@mkdir -p $(@D) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+#%/.: | $(LOG)
+#	@printf "Making directory tree $(DIR_VAR)..."
+#	@mkdir -p $(@D) >$(LOG) 2>&1; \
+#	$(STATUS_RESULT)
 
 # ==============================================================================
 # File Targets
@@ -299,12 +299,12 @@ debug-vars-some:
 
 # Downloads a file.
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
-%.download: | $(LOG) 
-#	$(eval FILE = $(basename $@))
-	@printf "Downloading file $(FILE_VAR)..."
-	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
-	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+#%.download: | $(LOG) 
+##	$(eval FILE = $(basename $@))
+#	@printf "Downloading file $(FILE_VAR)..."
+#	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
+#	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
+#	$(STATUS_RESULT)
 
 # Makes a special empty file for marking that a directory tree has been generated.
 #%/.gitkeep:
