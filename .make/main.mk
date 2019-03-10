@@ -142,15 +142,6 @@ SUBDIR = $(shell basename $(@D))
 FILE = $(basename $@)
 
 # ------------------------------------------------------------------------------
-# Sed Commands
-# ------------------------------------------------------------------------------
-
-#PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
-#EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
-#GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
-#TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
-
-# ------------------------------------------------------------------------------
 # Help strings
 # ------------------------------------------------------------------------------
 
