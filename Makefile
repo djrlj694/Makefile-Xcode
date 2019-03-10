@@ -41,6 +41,28 @@ PACKAGE ?= {{ PACKAGE }}
 PROJECT ?= {{ PROJECT }}
 
 # ==============================================================================
+# Internal Constants
+#
+# An internal constant represents a variable that is intended to:
+#
+# 1. Have a fixed value;
+# 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
+# ".mk" file).
+#
+# Because its value does not intended to change, its right-hand side is "simply"
+# expanded -- # i.e., any variables thererin are immediately evaluated, and the
+# resulting text is saved as final the value. As such, it is defined using the
+# ":=" assignment operator. By convention, internal constants use uppercase
+# words, separated by dashes.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Debugging & Error Capture
+# ------------------------------------------------------------------------------
+
+MAKEFILE_VARS := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PROJECT PWD USER
+
+# ==============================================================================
 # Internal Variables
 #
 # An internal variable represents a variable that is intended to:
@@ -55,6 +77,12 @@ PROJECT ?= {{ PROJECT }}
 # is defined using the "=" assignment operator. By convention, internal
 # variables are lowercase words, separated by underscores.
 # ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Debugging & Error Capture
+# ------------------------------------------------------------------------------
+
+VARIABLES_TO_SHOW = $(COOKIECUTTER_VARS) $(MAKEFILE_VARS) $(MAIN_VARS)
 
 # ------------------------------------------------------------------------------
 # Directories
