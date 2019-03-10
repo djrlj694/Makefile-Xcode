@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 06MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -41,7 +41,7 @@ COCOAPODS_FILES = Framework.podspec
 clean-cocoapods: | $(LOG)
 	@printf "Removing CocoaPods setup..."
 	@rm -rf $(COCOAPODS_FILES) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
