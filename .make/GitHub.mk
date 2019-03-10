@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 09MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -88,7 +88,9 @@ docs-github: $(GITHUB_FILES)
 .PHONY: init-github init-github-dirs init-github-vars
 
 ## init-github: Completes all initial Github setup activites.
+ifeq ($(COOKIECUTTER),)
 init-github: init-github-vars init-github-dirs docs-github
+endif
 
 ## init-github-dirs: Completes all initial Github directorry setup activites.
 init-github-dirs: $(GITHUB_DIRS)
