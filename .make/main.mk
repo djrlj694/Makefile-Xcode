@@ -16,8 +16,7 @@
 # An internal constant represents a variable that is intended to:
 #
 # 1. Have a fixed value;
-# 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
-# ".mk" file).
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
 #
 # It is typically defined using the ":=" assignment operator to "simply" expand
 # its right-hand side -- i.e., immediately evaluate any variables thererin,
