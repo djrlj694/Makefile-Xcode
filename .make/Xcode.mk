@@ -95,7 +95,7 @@ export XCODE_FILES_TEST
 clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs
 	@printf "Removing Xcode setup..."
 	@rm -rf $(PACKAGE) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
