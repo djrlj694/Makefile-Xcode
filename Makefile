@@ -21,10 +21,11 @@
 # 1. Have a fixed value;
 # 2. Be set at the command line or by the environment.
 #
-# Typically, its right-hand side is conditionally expanded -- i.e., it is
-# evaluated only if a value for the variable has not been set. As such, it is
-# defined using the "?=" assignment operator. By convention, external variables
-# are written in uppercase.
+# It is typically defined using the "?=" assignment operator to "conditionally"
+# assign its right-hand side -- i.e., to assign only if a value for the
+# variable has not been externally set.
+#
+# By convention, external constants use uppercase words, separated by dashes.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -46,43 +47,21 @@ PROJECT ?= {{ PROJECT }}
 # An internal constant represents a variable that is intended to:
 #
 # 1. Have a fixed value;
-# 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
-# ".mk" file).
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
 #
-# Because its value does not intended to change, its right-hand side is "simply"
-# expanded -- # i.e., any variables thererin are immediately evaluated, and the
-# resulting text is saved as final the value. As such, it is defined using the
-# ":=" assignment operator. By convention, internal constants use uppercase
-# words, separated by dashes.
+# It is typically defined using the ":=" assignment operator to "simply" expand
+# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# saving the resulting text as final the value.
+#
+# By convention, internal constants use uppercase words, separated by dashes.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
 # Debugging & Error Capture
 # ------------------------------------------------------------------------------
 
-MAKEFILE_VARS := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PACKAGE PROJECT PWD USER
-
-# ==============================================================================
-# Internal Variables
-#
-# An internal variable represents a variable that is intended to:
-#
-# 1. Have a value that depends on other variables, shell commands, etc. in its
-#    definition;
-# 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
-#    ".mk" file).
-#
-# Typically, its right-hand side is recursively expanded -- i.e.,
-# right-hand side evaluation is deferred until the variable is used. As such, it
-# is defined using the "=" assignment operator. By convention, internal
-# variables are lowercase words, separated by underscores.
-# ==============================================================================
-
-# ------------------------------------------------------------------------------
-# Debugging & Error Capture
-# ------------------------------------------------------------------------------
-
-VARIABLES_TO_SHOW = $(COOKIECUTTER_VARS) $(MAKEFILE_VARS) $(MAIN_VARS)
+VARIABLES_TO_SHOW := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST PWD
+VARIABLES_TO_SHOW += PACKAGE PROJECT USER
 
 # ------------------------------------------------------------------------------
 # Directories
