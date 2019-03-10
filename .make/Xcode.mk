@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 06MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -104,10 +104,10 @@ clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs
 .PHONY: init-xcode init-xcode-dirs init-xcode-vars
 
 ## init-xcode: Completes all initial Xcode setup activites.
-ifneq ($(COOKIECUTTER),)
+ifeq ($(COOKIECUTTER),)
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 else
-init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
+#init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 endif
 
 ## init-xcode-dirs: Completes all initial Xcode directory setup activites.
