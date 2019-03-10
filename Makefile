@@ -38,8 +38,9 @@ USER ?= $(shell whoami)
 # Project
 # ------------------------------------------------------------------------------
 
-PACKAGE ?= {{ PACKAGE }}
-PROJECT ?= {{ PROJECT }}
+PROJECT ?= $(shell basename $(PREFIX))
+
+PACKAGE ?= $(PROJECT)
 
 # ==============================================================================
 # Internal Constants
@@ -68,9 +69,6 @@ VARIABLES_TO_SHOW += PACKAGE PROJECT USER
 # ------------------------------------------------------------------------------
 
 MAKEFILE_DIR = $(dir $(realpath $(MAKEFILE)))/.make
-
-PROJECT = $(shell basename $(PREFIX))
-PACKAGE = $(PROJECT)
 
 BIN_DIR = bin/.
 LOG_DIR = logs/.
