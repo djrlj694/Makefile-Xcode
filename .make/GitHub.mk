@@ -70,7 +70,7 @@ clean-github: clean-docs-github
 clean-docs-github: | $(LOG)
 	@printf "Removing GitHub documents..."
 	@rm -rf $(GITHUB_FILES) $(GITHUB_DIR1) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "docs" target
