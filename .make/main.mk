@@ -19,11 +19,11 @@
 # 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
 # ".mk" file).
 #
-# Because its value does not intended to change, its right-hand side is "simply"
-# expanded -- # i.e., any variables thererin are immediately evaluated, and the
-# resulting text is saved as final the value. As such, it is defined using the
-# ":=" assignment operator. By convention, internal constants use uppercase
-# words, separated by dashes.
+# It is typically defined using the ":=" assignment operator to "simply" expand
+# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# saving the resulting text as final the value.
+#
+# By convention, internal constants use uppercase words, separated by dashes.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ MKDIR := mkdir -p
 STATUS_RESULT = $(call result,$(DONE))
 TEST_RESULT = $(call result,$(PASSED))
 
-MAIN_VARS := PREFIX
+VARIABLES_TO_SHOW += PREFIX
 
 # ------------------------------------------------------------------------------
 # Files
@@ -105,13 +105,14 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 #
 # 1. Have a value that depends on other variables, shell commands, etc. in its
 #    definition;
-# 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
-#    ".mk" file).
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
 #
-# Typically, its right-hand side is recursively expanded -- i.e.,
-# right-hand side evaluation is deferred until the variable is used. As such, it
-# is defined using the "=" assignment operator. By convention, internal
-# variables are lowercase words, separated by underscores.
+# It is typically defined using the "=" assignment operator to "recursively"
+# expand its right-hand side -- i.e., defer evaluation until the variable is
+# used.
+#
+# By convention, internal variables are lowercase words, separated by
+# underscores.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
