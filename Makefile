@@ -150,6 +150,7 @@ init-dirs: $(INIT_DIRS)
 # ==============================================================================
 
 include $(MAKEFILE_DIR)/main.mk
+include $(MAKEFILE_DIR)/cookiecutter.mk
 
 include $(MAKEFILE_DIR)/common.mk
 include $(MAKEFILE_DIR)/git.mk
