@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 09MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -65,7 +65,9 @@ docs-common: $(COMMON_FILES)
 .PHONY: init-common
 
 ## init-common: Completes all initial common setup activites.
+ifeq ($(COOKIECUTTER),)
 init-common: docs-common
+endif
 
 # ==============================================================================
 # File Targets
