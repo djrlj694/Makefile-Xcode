@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 06MAR2019
+# REVISED: 10MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -44,7 +44,7 @@ CARTHAGE_FILES = Cartfile Cartfile.private
 clean-carthage: | $(LOG) ## Completes all Carthage cleanup activities.
 	@printf "Removing Carthage setup..."
 	@rm -rf $(CARTHAGE_FILES) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
@@ -63,13 +63,13 @@ init-carthage: $(CARTHAGE_FILES)
 Cartfile: | $(LOG)
 	@printf "Making empty file $(TARGET_VAR)..."
 	@touch $@ >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # Makes a Cartfile file for listing private Carthage dependencies.
 Cartfile.private: | $(LOG)
 	@printf "Making empty file $(TARGET_VAR)..."
 	@touch $@ >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 ## Makes a setup file.
 carthage_setup: setup.download 
