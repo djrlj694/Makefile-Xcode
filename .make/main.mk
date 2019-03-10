@@ -119,7 +119,7 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 # Debugging & Error Capture
 # ------------------------------------------------------------------------------
 
-STATUS_RESULT = $(call result,$(DONE))
+status_result = $(call result,$(DONE))
 TEST_RESULT = $(call result,$(PASSED))
 
 # ------------------------------------------------------------------------------
@@ -272,7 +272,7 @@ debug-vars-some:
 #%/.: | $(LOG)
 #	@printf "Making directory tree $(DIR_VAR)..."
 #	@mkdir -p $(@D) >$(LOG) 2>&1; \
-#	$(STATUS_RESULT)
+#	$(status_result)
 
 # ==============================================================================
 # File Targets
@@ -285,15 +285,15 @@ debug-vars-some:
 #	@printf "Downloading file $(FILE_VAR)..."
 #	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 #	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
-#	$(STATUS_RESULT)
+#	$(status_result)
 
 # Makes a special empty file for marking that a directory tree has been generated.
 #%/.gitkeep:
 #	@printf "Making directory tree for marker file $(TARGET_VAR)..."
 #	@printf "Making marker file $(TARGET_VAR) and its directory tree..."
-#	@mkdir -p $(@D); $(STATUS_RESULT)
+#	@mkdir -p $(@D); $(status_result)
 #	@printf "Making marker file $(TARGET_VAR)..."
-#	@touch $@; $(STATUS_RESULT)
+#	@touch $@; $(status_result)
 
 # ==============================================================================
 # Intermediate Targets
