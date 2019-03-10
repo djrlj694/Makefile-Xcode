@@ -61,13 +61,13 @@ init-carthage: $(CARTHAGE_FILES)
 
 # Makes a Cartfile file for listing runtime Carthage dependencies.
 Cartfile: | $(LOG)
-	@printf "Making empty file $(TARGET_VAR)..."
+	@printf "Making empty file $(target_var)..."
 	@touch $@ >$(LOG) 2>&1; \
 	$(status_result)
 
 # Makes a Cartfile file for listing private Carthage dependencies.
 Cartfile.private: | $(LOG)
-	@printf "Making empty file $(TARGET_VAR)..."
+	@printf "Making empty file $(target_var)..."
 	@touch $@ >$(LOG) 2>&1; \
 	$(status_result)
 
