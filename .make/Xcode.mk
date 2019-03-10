@@ -154,22 +154,22 @@ test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG)
 
 # Makes a temporary file listing expected.
 actual_xcode_dirs.txt:
-#	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(target_var).\n"
 	@find . -type d -not -path "./.git/*" | sort >$@
 
 # Makes a temporary file listing expected.
 actual_xcode_files.txt:
-#	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(target_var).\n"
 	@find . -type f -not \( -path "./.git/*" -or -path "./make.log" -or -path "./*_dirs.txt" -or -path "./*_files.txt" \) | sort >$@
 
 # Makes a temporary file listing expected.
 expected_xcode_dirs.txt:
-#	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(target_var).\n"
 	@echo "$$XCODE_DIRS_TEST" >$@
 
 # Makes a temporary file listing expected.
 expected_xcode_files.txt:
-#	@printf "Making file $(TARGET_VAR).\n"
+#	@printf "Making file $(target_var).\n"
 	@echo "$$XCODE_FILES_TEST" >$@
 
 # ==============================================================================
