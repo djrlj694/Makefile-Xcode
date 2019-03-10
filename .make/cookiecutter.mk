@@ -134,7 +134,7 @@ ifeq ($(COOKIECUTTER),)
 %/.: | $(LOG)
 	@printf "Making directory tree $(DIR_VAR)..."
 	@mkdir -p $(@D) >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 endif
 
 # ==============================================================================
@@ -149,7 +149,7 @@ ifeq ($(COOKIECUTTER),)
 	@printf "Downloading file $(FILE_VAR)..."
 	@curl -s -S -L -f $(FILE_URL)/$(FILE) -z $(FILE) -o $@ >$(LOG) 2>&1; \
 	mv -n $@ $(FILE) >>$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 endif
 
 # Makes a special empty file for marking that a directory tree has been generated.
@@ -157,9 +157,9 @@ endif
 #%/.gitkeep:
 #	@printf "Making directory tree for marker file $(TARGET_VAR)..."
 #	@printf "Making marker file $(TARGET_VAR) and its directory tree..."
-#	@mkdir -p $(@D); $(STATUS_RESULT)
+#	@mkdir -p $(@D); $(status_result)
 #	@printf "Making marker file $(TARGET_VAR)..."
-#	@touch $@; $(STATUS_RESULT)
+#	@touch $@; $(status_result)
 #endif
 
 # ==============================================================================
