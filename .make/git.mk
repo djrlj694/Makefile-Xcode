@@ -31,7 +31,7 @@
 clean-git: | $(LOG)
 	@printf "Removing git setup..."
 	@rm -rf .git .gitignore >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ------------------------------------------------------------------------------
 # Prerequisite phony targets for the "init" target
@@ -49,11 +49,11 @@ endif
 	@git checkout -b master >$(LOG) 2>&1; \
 	git add . >>$(LOG) 2>&1; \
 	git commit -m "Initial project setup" >>$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 	@printf "Syncing the initial project with the origin..."
 	@git remote add origin $(ORIGIN_URL) >$(LOG) 2>&1; \
 	git push -u origin master >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ==============================================================================
 # Directory Targets
@@ -63,7 +63,7 @@ endif
 .git: | $(LOG)
 	@printf "Initializing git repository..."
 	@git init >$(LOG) 2>&1; \
-	$(STATUS_RESULT)
+	$(status_result)
 
 # ==============================================================================
 # File Targets
