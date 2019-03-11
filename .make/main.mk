@@ -100,7 +100,7 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 # ==============================================================================
 # Internal Variables
 #
-# An internal variable represents a variable that is intended to:
+# An internal variable is one that is intended to:
 #
 # 1. Have a value that depends on other variables, shell commands, etc. in its
 #    definition;
@@ -206,9 +206,11 @@ endef
 # ==============================================================================
 # Phony Targets
 #
-# A phony target is a convenient name for a set of commands to be executed when
-# an explicit request is made.  Its commands won't run if a file of the same
-# name exists.  Two reasons to use a phony target are:
+# A phony target is one that does not represent a file or directory. It can be
+# thought of as an embedded shell script to be run when an explicit request
+# is made unless uness a file of the same name exists.
+#
+# Two reasons to use a phony target are:
 #
 # 1. To avoid a conflict with a file of the same name;
 # 2. To improve performance.
