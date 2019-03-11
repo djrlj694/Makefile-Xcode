@@ -7,15 +7,17 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 10MAR2019
+# REVISED: 11MAR2019
 # ==============================================================================
 
 # ==============================================================================
 # Phony Targets
 #
-# A phony target is a convenient name for a set of commands to be executed when
-# an explicit request is made.  Its commands won't run if a file of the same
-# name exists.  Two reasons to use a phony target are:
+# A phony target is one that does not represent a file or directory. It can be
+# thought of as an embedded shell script to be run when an explicit request
+# is made unless uness a file of the same name exists.
+#
+# Two reasons to use a phony target are:
 #
 # 1. To avoid a conflict with a file of the same name;
 # 2. To improve performance.
