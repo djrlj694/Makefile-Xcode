@@ -13,7 +13,7 @@
 # ==============================================================================
 # External Constants
 #
-# An external constant represents a variable that is intended to:
+# An external constant is a variable that is intended to:
 #
 # 1. Have a fixed value;
 # 2. Be set at the command line or by the environment.
@@ -34,7 +34,7 @@ COOKIECUTTER ?= $(shell which cookiecutter)
 # ==============================================================================
 # Internal Constants
 #
-# An internal constant represents a variable that is intended to:
+# An internal constant is a variable that is intended to:
 #
 # 1. Have a fixed value;
 # 2. Be set within a makefile (i.e., the "Makefile" itself or an "include"-ed
@@ -62,7 +62,7 @@ MAKE_ARGS += [COOKIECUTTER=]
 # ==============================================================================
 # Internal Variables
 #
-# An internal variable represents a variable that is intended to:
+# An internal variable is a variable that is intended to:
 #
 # 1. Have a value that depends on other variables, shell commands, etc. in its
 #    definition;
