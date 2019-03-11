@@ -23,7 +23,7 @@ make [ -f MAKEFILE] [ OPTIONS ] ... [ TARGETS ] ...
 	* Print the commands that would be executed, but do not execute them.
 	* This is a handy option for debugging makefiles. 
 
-For all other options, refer to the manpage (`man make`).
+For all other options, refer to the [`make` man page](https://linux.die.net/man/1/make).
 
 ### Targets
 
