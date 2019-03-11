@@ -7,25 +7,48 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 10MAR2019
+# REVISED: 11MAR2019
 # ==============================================================================
 
 # ==============================================================================
-# Variables
+# Internal Constants
+#
+# An internal constant represents a variable that is intended to:
+#
+# 1. Have a fixed value;
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
+#
+# It is typically defined using the ":=" assignment operator to "simply" expand
+# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# saving the resulting text as final the value.
+#
+# By convention, internal constants use uppercase words, separated by dashes.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
 # Directories
 # ------------------------------------------------------------------------------
 
-XCODE_RESOURCES = Data Fonts Localization Media UserInterfaces
-XCODE_RESOURCES_DIRS = $(addprefix $(PACKAGE)/Resources/,$(XCODE_RESOURCES))
+XCODE_RESOURCES := Data Fonts Localization Media UserInterfaces
+XCODE_RESOURCES_DIRS := $(addprefix $(PACKAGE)/Resources/,$(XCODE_RESOURCES))
 
-XCODE_SOURCES = Controllers Extensions Models Protocols ViewModels Views
-XCODE_SOURCES_DIRS = $(addprefix $(PACKAGE)/Sources/,$(XCODE_SOURCES))
+XCODE_SOURCES := Controllers Extensions Models Protocols ViewModels Views
+XCODE_SOURCES_DIRS := $(addprefix $(PACKAGE)/Sources/,$(XCODE_SOURCES))
 
-XCODE_DIRS = $(addsuffix /.,$(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS))
-#XCODE_DIRS = $(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS)
+XCODE_DIRS := $(addsuffix /.,$(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS))
+#XCODE_DIRS := $(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS)
+
+# ==============================================================================
+# Macros
+#
+# A macro is a convenient way of defining a multi-line variable. Although the
+# terms "macro" and "variable" are uused interchangeably in the GNU "make"
+# manual, "macro" here will mean a variable that is defined using the "define"
+# directive, not one that is defined using an asignment operator.
+#
+# By convention, macros are written in lowercase, and their words are separated
+# by underscores.
+# ==============================================================================
 
 # ------------------------------------------------------------------------------
 # Test strings
