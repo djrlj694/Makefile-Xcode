@@ -66,12 +66,16 @@ SPACE := $(EMPTY) $(EMPTY)
 
 # ------------------------------------------------------------------------------
 # STDOUT format settings
+#
+# NOTE: "\033" is a C-style octal code representing an ASCI escape character.
 # ------------------------------------------------------------------------------
 
+# ANSI escape sequences for setting the text intensity/emphasis of STDOUT.
 RESET := \033[0m
 BOLD := \033[1m
 DIM := \033[2m
 
+# ANSI escape sequences for setting the text color of STDOUT.
 FG_CYAN := \033[0;36m
 FG_GREEN := \033[0;32m
 FG_RED := \033[0;31m
