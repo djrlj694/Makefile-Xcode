@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 10MAR2019
+# REVISED: 11MAR2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -16,7 +16,7 @@
 # ==============================================================================
 # External Constants
 #
-# An external constant represents a variable that is intended to:
+# An external constant is a variable that is intended to:
 #
 # 1. Have a fixed value;
 # 2. Be set at the command line or by the environment.
@@ -45,7 +45,7 @@ PACKAGE ?= $(PROJECT)
 # ==============================================================================
 # Internal Constants
 #
-# An internal constant represents a variable that is intended to:
+# An internal constant is a variable that is intended to:
 #
 # 1. Have a fixed value;
 # 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
