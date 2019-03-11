@@ -62,7 +62,7 @@ MAKE_ARGS += [COOKIECUTTER=]
 # ==============================================================================
 # Internal Variables
 #
-# An internal variable is a variable that is intended to:
+# An internal variable is one that is intended to:
 #
 # 1. Have a value that depends on other variables, shell commands, etc. in its
 #    definition;
