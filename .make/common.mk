@@ -7,21 +7,32 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 10MAR2019
+# REVISED: 11MAR2019
 # ==============================================================================
 
 # ==============================================================================
-# Variables
+# Internal Constants
+#
+# An internal constant represents a variable that is intended to:
+#
+# 1. Have a fixed value;
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
+#
+# It is typically defined using the ":=" assignment operator to "simply" expand
+# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# saving the resulting text as final the value.
+#
+# By convention, internal constants use uppercase words, separated by dashes.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
 # Files
 # ------------------------------------------------------------------------------
 
-COMMON_DOCS = README REFERENCES
+COMMON_DOCS := README REFERENCES
 
-COMMON_FILES = $(addsuffix .md,$(COMMON_DOCS))
-COMMON_DOWNLOADED_FILES = $(addsuffix .download,$(COMMON_FILES))
+COMMON_FILES := $(addsuffix .md,$(COMMON_DOCS))
+COMMON_DOWNLOADED_FILES := $(addsuffix .download,$(COMMON_FILES))
 
 # ==============================================================================
 # Phony Targets
