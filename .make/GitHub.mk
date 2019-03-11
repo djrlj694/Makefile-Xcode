@@ -7,44 +7,55 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 10MAR2019
+# REVISED: 11MAR2019
 # ==============================================================================
 
 # ==============================================================================
-# Variables
+# Internal Constants
+#
+# An internal constant represents a variable that is intended to:
+#
+# 1. Have a fixed value;
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
+#
+# It is typically defined using the ":=" assignment operator to "simply" expand
+# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# saving the resulting text as final the value.
+#
+# By convention, internal constants use uppercase words, separated by dashes.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
 # Accounts
 # ------------------------------------------------------------------------------
 
-GITHUB_USER = $(USER)
-TRAVIS_USER = $(USER)
+GITHUB_USER := $(USER)
+TRAVIS_USER := $(USER)
 
-EMAIL = $(USER)@gmail.com
+EMAIL := $(USER)@gmail.com
 
 # ------------------------------------------------------------------------------
 # Directories
 # ------------------------------------------------------------------------------
 
-GITHUB_DIR1 = .github
-GITHUB_DIR2 = $(GITHUB_DIR1)/ISSUE_TEMPLATE
-GITHUB_DIR3 = $(GITHUB_DIR1)/PULL_REQUEST_TEMPLATE
+GITHUB_DIR1 := .github
+GITHUB_DIR2 := $(GITHUB_DIR1)/ISSUE_TEMPLATE
+GITHUB_DIR3 := $(GITHUB_DIR1)/PULL_REQUEST_TEMPLATE
 
-GITHUB_DIRS = $(addsuffix /.,$(GITHUB_DIR2) $(GITHUB_DIR3))
+GITHUB_DIRS := $(addsuffix /.,$(GITHUB_DIR2) $(GITHUB_DIR3))
 
 # ------------------------------------------------------------------------------
 # Files
 # ------------------------------------------------------------------------------
 
-GITHUB_DOCS0 = CHANGELOG CODE_OF_CONDUCT CONTRIBUTING SUPPORT
-#GITHUB_DOCS1 = $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
-GITHUB_DOCS2 = $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
-GITHUB_DOCS3 = $(addprefix $(GITHUB_DIR3)/,pull_request_template)
-GITHUB_DOCS = $(GITHUB_DOCS0) $(GITHUB_DOCS2) $(GITHUB_DOCS3)
+GITHUB_DOCS0 := CHANGELOG CODE_OF_CONDUCT CONTRIBUTING SUPPORT
+#GITHUB_DOCS1 := $(addprefix $(GITHUB_DIR1)/,CODE_OF_CONDUCT CONTRIBUTING) 
+GITHUB_DOCS2 := $(addprefix $(GITHUB_DIR2)/,bug_report custom feature_request ISSUE_TEMPLATE)
+GITHUB_DOCS3 := $(addprefix $(GITHUB_DIR3)/,pull_request_template)
+GITHUB_DOCS := $(GITHUB_DOCS0) $(GITHUB_DOCS2) $(GITHUB_DOCS3)
 
-GITHUB_FILES = $(addsuffix .md,$(GITHUB_DOCS))
-GITHUB_DOWNLOADED_FILES = $(addsuffix .download,$(GITHUB_FILES))
+GITHUB_FILES := $(addsuffix .md,$(GITHUB_DOCS))
+GITHUB_DOWNLOADED_FILES := $(addsuffix .download,$(GITHUB_FILES))
 
 # ==============================================================================
 # Phony Targets
