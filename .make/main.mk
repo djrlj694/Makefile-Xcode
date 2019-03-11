@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 07MAR2019
-# REVISED: 10MAR2019
+# REVISED: 11MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -156,9 +156,15 @@ target_var = $(FG_CYAN)$@$(RESET)
 # A macro is a convenient way of defining a multi-line variable. Although the
 # terms "macro" and "variable" are uused interchangeably in the GNU "make"
 # manual, "macro" here will mean a variable that is defined using the "define"
-# directive, not one that is defined using an asignment operator. By convention,
-# macros are written in lowercase, and their words are separated by underscores.
+# directive, not one that is defined using an asignment operator.
+#
+# By convention, macros are written in lowercase, and their words are separated
+# by underscores.
 # ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Help strings
+# ------------------------------------------------------------------------------
 
 define usage_help
 
