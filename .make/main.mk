@@ -200,13 +200,6 @@ define result
 	(printf "$(FAILED)\n" && cat $(LOG) && echo)
 endef
 
-# $(call sed-cmd,template-var,replacement)
-# Generates a sed command for replacing Cookiecutter template variables with
-# appropriate values.
-#define sed-cmd
-#	's/{{ cookiecutter.$1 }}/$2/g'
-#endef
-
 # ==============================================================================
 # Phony Targets
 #
