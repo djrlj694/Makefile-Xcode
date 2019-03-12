@@ -31,32 +31,32 @@ For all other options, refer to the [`make` man page](https://linux.die.net/man/
 
 The targets shown below represent main set of activities for managing an Xcode software project.
 
-| Target | Description |
-| ------ | ----------- |
-| `clean` | Removes files and directories. |
-| `docs` | Makes API documentation. |
-| `help` | Shows `make` usage documentation. |
-| `setup` | Completes all Xcode project setup activities. |
-| `test` | Completes all test activities. |
+Target | Description
+------ | -----------
+`clean` | Removes files and directories.
+`docs` | Makes API documentation.
+`help` | Shows `make` usage documentation.
+`setup` | Completes all Xcode project setup activities.
+`test` | Completes all test activities.
 
 #### Prerequisite Targets
 
 For software project management activities that are more narrow in scope, prerequisite targets to the main targets can also be supplied to the `make` command.  Here are some of the higher level ones.
 
-| Target | Description |
-| ------ | ----------- |
-| `clean-carthage` | Completes all Carthage cleanup activities. |
-| `clean-dirs` | Completes all directory cleanup activities. |
-| `clean-git` | Completes all git cleanup activities. |
-| `clean-md` | Completes all Markdown cleanup activities. |
-| `setup-carthage` | Completes all Carthage setup activities. |
-| `setup-cocoapods` | Completes all CocoaPods setup activities. |
-| `setup-dirs` | Completes all directory setup activities. |
-| `setup-git` | Completes all git setup activities. |
-| `setup-md` | Makes all Markdown files. |
-| `test-log` | Shows the most recently generated log for a specified release. |
-| `test-vars-all` | Shows all Makefile variables (i.e., built-in and custom). |
-| `test-vars-some` | Shows only a few custom Makefile variables. |
+Target | Description
+------ | -----------
+`clean-carthage` | Completes all Carthage cleanup activities.
+`clean-dirs` | Completes all directory cleanup activities.
+`clean-git` | Completes all git cleanup activities.
+`clean-md` | Completes all Markdown cleanup activities.
+`setup-carthage` | Completes all Carthage setup activities.
+`setup-cocoapods` | Completes all CocoaPods setup activities.
+`setup-dirs` | Completes all directory setup activities.
+`setup-git` | Completes all git setup activities.
+`setup-md` | Makes all Markdown files.
+`test-log` | Shows the most recently generated log for a specified release.
+`test-vars-all` | Shows all Makefile variables (i.e., built-in and custom).
+`test-vars-some` | Shows only a few custom Makefile variables.
 
 ## Requirements
 
