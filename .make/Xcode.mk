@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 11MAR2019
+# REVISED: 12MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -22,7 +22,7 @@
 # its right-hand side -- i.e., immediately evaluate any variables thererin,
 # saving the resulting text as final the value.
 #
-# By convention, internal constants use uppercase words, separated by dashes.
+# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -41,13 +41,10 @@ XCODE_DIRS := $(addsuffix /.,$(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS))
 # ==============================================================================
 # Macros
 #
-# A macro is a convenient way of defining a multi-line variable. Although the
-# terms "macro" and "variable" are uused interchangeably in the GNU "make"
-# manual, "macro" here will mean a variable that is defined using the "define"
-# directive, not one that is defined using an asignment operator.
+# A macro is a variable that is defined using the "define" directive instead of
+# an assignment operator. It is typically used to define a multi-line variable.
 #
-# By convention, macros are written in lowercase, and their words are separated
-# by underscores.
+# By convention, its name uses lowercase, underscore-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -100,8 +97,8 @@ export XCODE_FILES_TEST
 # Phony Targets
 #
 # A phony target is one that does not represent a file or directory. It can be
-# thought of as an embedded shell script to be run when an explicit request
-# is made unless uness a file of the same name exists.
+# thought of as an embedded shell script. It runs when an explicit request is
+# made unless a file of the same name exists.
 #
 # Two reasons to use a phony target are:
 #
@@ -132,7 +129,8 @@ clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs
 ifeq ($(COOKIECUTTER),)
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 else
-#init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
+init-github: init-xcode-vars
+	@cookiecutter gh:$(TEMPLATES_REPO)
 endif
 
 ## init-xcode-dirs: Completes all initial Xcode directory setup activites.
