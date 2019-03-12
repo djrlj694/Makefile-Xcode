@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 11MAR2019
+# REVISED: 12MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -16,13 +16,13 @@
 # An internal constant is a variable that is intended to:
 #
 # 1. Have a fixed value;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
 #
 # It is typically defined using the ":=" assignment operator to "simply" expand
 # its right-hand side -- i.e., immediately evaluate any variables thererin,
 # saving the resulting text as final the value.
 #
-# By convention, internal constants use uppercase words, separated by dashes.
+# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -61,8 +61,8 @@ GITHUB_DOWNLOADED_FILES := $(addsuffix .download,$(GITHUB_FILES))
 # Phony Targets
 #
 # A phony target is one that does not represent a file or directory. It can be
-# thought of as an embedded shell script to be run when an explicit request
-# is made unless uness a file of the same name exists.
+# thought of as an embedded shell script. It runs when an explicit request is
+# made unless a file of the same name exists.
 #
 # Two reasons to use a phony target are:
 #
@@ -103,6 +103,9 @@ docs-github: $(GITHUB_FILES)
 ## init-github: Completes all initial Github setup activites.
 ifeq ($(COOKIECUTTER),)
 init-github: init-github-vars init-github-dirs docs-github
+else
+init-github: init-github-vars
+	@cookiecutter gh:$(TEMPLATES_REPO)
 endif
 
 ## init-github-dirs: Completes all initial Github directorry setup activites.
