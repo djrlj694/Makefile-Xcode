@@ -29,17 +29,19 @@ For all other options, refer to the [`make` man page](https://linux.die.net/man/
 
 #### Main Targets
 
+The targets shown below represent main set of activities for managing an Xcode software project.
+
 | Target | Description |
 | ------ | ----------- |
 | `clean` | Removes files and directories. |
 | `docs` | Makes API documentation. |
-| `help` | Shows usage documentation. |
+| `help` | Shows `make` usage documentation. |
 | `setup` | Completes all Xcode project setup activities. |
 | `test` | Completes all test activities. |
 
-
 #### Prerequisite Targets
 
+For software project management activities that are more narrow in scope, prerequisite targets to the main targets can also be supplied to the `make` command.  Here are some of the higher level ones.
 
 | Target | Description |
 | ------ | ----------- |
