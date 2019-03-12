@@ -32,11 +32,8 @@
 MKDIR := mkdir -p
 
 # ------------------------------------------------------------------------------
-# Debugging & Error Capture
+# Debugging & error capture
 # ------------------------------------------------------------------------------
-
-STATUS_RESULT = $(call result,$(DONE))
-TEST_RESULT = $(call result,$(PASSED))
 
 VARIABLES_TO_SHOW += PREFIX
 
@@ -85,11 +82,14 @@ FG_YELLOW := \033[1;33m
 # Help strings
 # ------------------------------------------------------------------------------
 
+# Color-formatted arguments displayed as parrt of the online help in the Usage
+# section of the "make" command when used with this makefile.
 PACKAGE_ARG := $(FG_CYAN)<package>$(RESET)
 PREFIX_ARG := $(FG_CYAN)<prefix>$(RESET)
 TARGET_ARG := $(FG_CYAN)<target>$(RESET)
 USER_ARG := $(FG_CYAN)<user>$(RESET)
 
+# Argument syntax for the "make" command when used with this makefile.
 MAKE_ARGS := [PACKAGE=$(PACKAGE_ARG)] [PREFIX=$(PREFIX_ARG)] [USER=$(USER_ARG)]
 
 # ------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Debugging & Error Capture
+# Debugging & error capture
 # ------------------------------------------------------------------------------
 
 status_result = $(call result,$(DONE))
