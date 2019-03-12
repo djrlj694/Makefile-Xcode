@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 07MAR2019
-# REVISED: 11MAR2019
+# REVISED: 12MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -226,7 +226,7 @@ endef
 
 .PHONY: help log
 
-## help: Shows usage documentation.
+## help: Shows "make" usage documentation.
 help:
 	@printf "$$usage_help"
 #	@cat $(MAKEFILE_LIST) | \
