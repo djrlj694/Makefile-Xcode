@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 11MAR2019
+# REVISED: 12MAR2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -25,7 +25,7 @@
 # assign its right-hand side -- i.e., to assign only if a value for the
 # variable has not been externally set.
 #
-# By convention, external constants use uppercase words, separated by dashes.
+# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -54,11 +54,11 @@ PACKAGE ?= $(PROJECT)
 # its right-hand side -- i.e., immediately evaluate any variables thererin,
 # saving the resulting text as final the value.
 #
-# By convention, internal constants use uppercase words, separated by dashes.
+# By convention, its name uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Debugging & Error Capture
+# Debugging & error capture
 # ------------------------------------------------------------------------------
 
 VARIABLES_TO_SHOW := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST
@@ -81,7 +81,7 @@ SETUP_DIRS = $(BIN_DIR) $(LOG_DIR)
 MAKEFILE = $(firstword $(MAKEFILE_LIST))
 
 # Used to create special empty ("marker") files in order to:
-# 1. Automaticcally create directory trees if they don't already exist;
+# 1. Automatically create directory trees if they don't already exist;
 # 2. Avoid directory tree rebuilds as their directory timestamps changed.
 ###DUMMY_FILES = $(addsuffix /.dummy,$(DIRS)) # RLJ: Commented out. 23FEB2019
 
@@ -90,7 +90,7 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 #
 # A phony target is one that does not represent a file or directory. It can be
 # thought of as an embedded shell script to be run when an explicit request
-# is made unless uness a file of the same name exists.
+# is made unless unless a file of the same name exists.
 #
 # Two reasons to use a phony target are:
 #
