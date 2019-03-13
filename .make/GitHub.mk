@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 12MAR2019
+# REVISED: 13MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -105,7 +105,7 @@ ifeq ($(COOKIECUTTER),)
 init-github: init-github-vars init-github-dirs docs-github
 else
 init-github: init-github-vars
-	@cookiecutter gh:$(TEMPLATES_REPO)
+	@cookiecutter gh:$(TEMPLATES_REPO) email=$(EMAIL) project_name=$(PROJECT)
 endif
 
 ## init-github-dirs: Completes all initial Github directorry setup activites.
