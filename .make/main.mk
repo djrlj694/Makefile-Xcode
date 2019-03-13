@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 07MAR2019
-# REVISED: 12MAR2019
+# REVISED: 13MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -22,7 +22,7 @@
 # its right-hand side -- i.e., immediately evaluate any variables thererin,
 # saving the resulting text as final the value.
 #
-# By convention, its name uses uppercase words, separated by dashes.
+# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
