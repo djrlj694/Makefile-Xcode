@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 12MAR2019
+# REVISED: 13MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -130,7 +130,7 @@ ifeq ($(COOKIECUTTER),)
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 else
 init-github: init-xcode-vars
-	@cookiecutter gh:$(TEMPLATES_REPO)
+	@cookiecutter gh:$(TEMPLATES_REPO) project_name=$(PROJECT)
 endif
 
 ## init-xcode-dirs: Completes all initial Xcode directory setup activites.
