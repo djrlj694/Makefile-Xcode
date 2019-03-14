@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 07MAR2019
-# REVISED: 13MAR2019
+# REVISED: 14MAR2019
 # ==============================================================================
 
 # ==============================================================================
@@ -29,12 +29,16 @@
 # Commands
 # ------------------------------------------------------------------------------
 
+# A convenience variable for representing the "mkdir" command with the "-p"
+# option.
 MKDIR := mkdir -p
 
 # ------------------------------------------------------------------------------
 # Debugging & error capture
 # ------------------------------------------------------------------------------
 
+# A list of makefile variables to show when testing/debugging.  Displayed when
+# the makkefile target specified is "test" or "test-vars-some".
 VARIABLES_TO_SHOW += PREFIX
 
 # ------------------------------------------------------------------------------
@@ -96,6 +100,8 @@ MAKE_ARGS := [PACKAGE=$(PACKAGE_ARG)] [PREFIX=$(PREFIX_ARG)] [USER=$(USER_ARG)]
 # Result strings
 # ------------------------------------------------------------------------------
 
+# Color-formatted outcome statuses, each of which is based on the return code
+# ($$?) of having run a shell command.
 DONE := $(FG_GREEN)done$(RESET).\n
 FAILED := $(FG_RED)failed$(RESET).\n
 IGNORE := $(FG_YELLOW)ignore$(RESET).\n
@@ -108,7 +114,7 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 #
 # 1. Have a value that depends on other variables, shell commands, etc. in its
 #    definition;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
 #
 # It is typically defined using the "=" assignment operator to "recursively"
 # expand its right-hand side -- i.e., defer evaluation until the variable is
@@ -128,6 +134,9 @@ test_result = $(call result,$(PASSED))
 # Directories
 # ------------------------------------------------------------------------------
 
+# Name of the subdirectory, represented by the current Makefile target being
+# run. The shell command "basename" removes the parent directory, $(@D)), from
+# the absolute path of the makefile target.
 subdir = $(shell basename $(@D))
 
 # ------------------------------------------------------------------------------
@@ -140,6 +149,8 @@ file = $(basename $@)
 # Help strings
 # ------------------------------------------------------------------------------
 
+# Line item iin the "Targets" section of the online help for the "make" command
+# when used with this makefile set.
 target_help = $(FG_CYAN)%-17s$(RESET) %s
 
 # ------------------------------------------------------------------------------
@@ -151,6 +162,7 @@ dir_var = $(FG_CYAN)$(@D)$(RESET)
 file_var = $(FG_CYAN)$(@F)$(RESET)
 subdir_var = $(FG_CYAN)$(subdir)$(RESET)
 
+# Color-formatted name of the current makefile target being run.
 target_var = $(FG_CYAN)$@$(RESET)
 
 # ==============================================================================
@@ -166,6 +178,8 @@ target_var = $(FG_CYAN)$@$(RESET)
 # Help strings
 # ------------------------------------------------------------------------------
 
+# Usage section of the online help for the "make" command when used with this
+# makefile set.
 define usage_help
 
 Usage:
