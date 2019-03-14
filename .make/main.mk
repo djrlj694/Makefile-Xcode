@@ -29,16 +29,14 @@
 # Commands
 # ------------------------------------------------------------------------------
 
-# A convenience variable for representing the "mkdir" command with the "-p"
-# option.
+# A shortcut representing the "mkdir" command with the "-p" option.
 MKDIR := mkdir -p
 
 # ------------------------------------------------------------------------------
 # Debugging & error capture
 # ------------------------------------------------------------------------------
 
-# A list of makefile variables to show when testing/debugging.  Displayed when
-# the makkefile target specified is "test" or "test-vars-some".
+# A list of makefile variables to show when testing/debugging.
 VARIABLES_TO_SHOW += PREFIX
 
 # ------------------------------------------------------------------------------
@@ -86,7 +84,7 @@ FG_YELLOW := \033[1;33m
 # Help strings
 # ------------------------------------------------------------------------------
 
-# Color-formatted arguments displayed as parrt of the online help in the Usage
+# Color-formatted arguments displayed as part of the online help in the Usage
 # section of the "make" command when used with this makefile.
 PACKAGE_ARG := $(FG_CYAN)<package>$(RESET)
 PREFIX_ARG := $(FG_CYAN)<prefix>$(RESET)
