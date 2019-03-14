@@ -61,6 +61,7 @@ PACKAGE ?= $(PROJECT)
 # Debugging & error capture
 # ------------------------------------------------------------------------------
 
+# A list of makefile variables to show when testing/debugging.
 VARIABLES_TO_SHOW := MAKEFILE MAKEFILE_DIR MAKEFILE_LIST
 VARIABLES_TO_SHOW += PACKAGE PREFIX PROJECT PWD USER
 
@@ -68,6 +69,8 @@ VARIABLES_TO_SHOW += PACKAGE PREFIX PROJECT PWD USER
 # Directories
 # ------------------------------------------------------------------------------
 
+# Absolute path of the directory containing files to be included as part of a
+# makefile set.
 MAKEFILE_DIR = $(dir $(realpath $(MAKEFILE)))/.make
 
 BIN_DIR = bin/.
@@ -78,6 +81,7 @@ SETUP_DIRS = $(BIN_DIR) $(LOG_DIR)
 # Files
 # ------------------------------------------------------------------------------
 
+# The name of the main makefile.
 MAKEFILE = $(firstword $(MAKEFILE_LIST))
 
 # Used to create special empty ("marker") files in order to:
