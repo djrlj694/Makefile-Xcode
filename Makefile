@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 12MAR2019
+# REVISED: 14MAR2019
 # ==============================================================================
 
 # .ONESHELL:
@@ -48,13 +48,13 @@ PACKAGE ?= $(PROJECT)
 # An internal constant is a variable that is intended to:
 #
 # 1. Have a fixed value;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file).
+# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
 #
 # It is typically defined using the ":=" assignment operator to "simply" expand
 # its right-hand side -- i.e., immediately evaluate any variables thererin,
 # saving the resulting text as final the value.
 #
-# By convention, its name uppercase, dash-separated words.
+# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
