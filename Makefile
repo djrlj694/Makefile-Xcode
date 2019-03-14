@@ -51,7 +51,7 @@ PACKAGE ?= $(PROJECT)
 # 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
 #
 # It is typically defined using the ":=" assignment operator to "simply" expand
-# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# its right-hand side -- i.e., immediately evaluate any variables therein,
 # saving the resulting text as final the value.
 #
 # By convention, its name uses uppercase, dash-separated words.
@@ -93,7 +93,7 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 # Phony Targets
 #
 # A phony target is one that does not represent a file or directory. It can be
-# thought of as an embedded shell script to be run when an explicit request
+# thought of as an embedded shell script. It is run when an explicit request
 # is made unless unless a file of the same name exists.
 #
 # Two reasons to use a phony target are:
