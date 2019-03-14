@@ -2,6 +2,18 @@
 
 # Files
 
+File | Description
+---- | -----------
+Carthage.mk | TBD
+CocoaPods.mk | TBD
+common.mk | TBD
+cookiecutter.mk | TBD
+git.mk  | TBD
+GitHub.mk | TBD
+main.mk | TBD
+Swift.mk | TBD
+Xcode.mk | TBD
+
 # Glossary
 
 ## Variables
