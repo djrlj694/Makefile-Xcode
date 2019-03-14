@@ -19,7 +19,7 @@
 # 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
 #
 # It is typically defined using the ":=" assignment operator to "simply" expand
-# its right-hand side -- i.e., immediately evaluate any variables thererin,
+# its right-hand side -- i.e., immediately evaluate any variables therein,
 # saving the resulting text as final the value.
 #
 # By convention, its name uses uppercase, dash-separated words.
