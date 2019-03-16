@@ -8,13 +8,20 @@ The files in the `.make` directory are intended for general reusability and main
 
 File | Description
 ---- | -----------
+common.mk | TBD
+debugging.mk | TBD
+formatting.mk | TBD
+helping.mk | TBD
+setting_up.mk  | TBD
+
+File | Description
+---- | -----------
 Carthage.mk | TBD
 CocoaPods.mk | TBD
-common.mk | TBD
 cookiecutter.mk | TBD
 git.mk  | TBD
 GitHub.mk | TBD
-main.mk | TBD
+sed.mk | TBD
 Swift.mk | TBD
 Xcode.mk | TBD
 
