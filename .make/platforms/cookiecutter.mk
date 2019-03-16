@@ -15,6 +15,14 @@
 # ==============================================================================
 
 # ==============================================================================
+# Feature Dependencies
+# ==============================================================================
+
+ifeq ($(COOKIECUTTER),)
+include $(MAKEFILE_DIR)/features/downloading.mk
+endif
+
+# ==============================================================================
 # External Constants
 # ==============================================================================
 
@@ -94,17 +102,6 @@ endif
 # ==============================================================================
 # File Targets
 # ==============================================================================
-
-# Downloads a file.
-# https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
-ifeq ($(COOKIECUTTER),)
-%.download: | $(LOG) 
-#	$(eval FILE = $(basename $@))
-	@printf "Downloading file $(file_var)..."
-	@curl -s -S -L -f $(FILE_URL)/$(file) -z $(file) -o $@ >$(LOG) 2>&1; \
-	mv -n $@ $(file) >>$(LOG) 2>&1; \
-	$(status_result)
-endif
 
 # Makes a special empty file for marking that a directory tree has been generated.
 #ifneq ($(COOKIECUTTER),)
