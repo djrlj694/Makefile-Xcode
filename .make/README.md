@@ -92,6 +92,10 @@ Two reasons to use a phony target are:
 1. To avoid a conflict with a file of the same name;
 2. To improve performance.
 
+### Intermediate Targets
+
+An intermediate target corresponds to a file that is needed on the way from a source file to a target file.  It typically is a temporary file that is needed only once to generate the target after the source changed.  The `make` command automatically removes files that are identified as intermediate targets.  In other words, such files that did not exist before a `make` run executed do not  exist after a `make` run.
+
 # References
 
 1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
