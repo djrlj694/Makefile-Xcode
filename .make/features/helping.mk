@@ -77,7 +77,7 @@ export usage_help
 # Main phony targets
 # ------------------------------------------------------------------------------
 
-.PHONY: help log
+.PHONY: help
 
 ## help: Shows "make" usage documentation.
 help:
