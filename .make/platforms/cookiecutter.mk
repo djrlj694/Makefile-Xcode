@@ -20,6 +20,7 @@
 
 ifeq ($(COOKIECUTTER),)
 include $(MAKEFILE_DIR)/features/downloading.mk
+include $(MAKEFILE_DIR)/features/setting_up.mk
 endif
 
 # ==============================================================================
@@ -64,37 +65,17 @@ TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
 endif
 
 # ==============================================================================
-# Macros
-# ==============================================================================
-
-ifeq ($(COOKIECUTTER),)
-define update-file
-	@sed -f $< $@ > $@.tmp
-	@mv $@.tmp $@
-endef
-endif
-
-# ==============================================================================
 # User-Defined Functions
 # ==============================================================================
 
 # $(call sed-cmd,template-var,replacement)
-# Generates a sed command for replacing Cookiecutter template variables with
-# appropriate values.
-ifeq ($(COOKIECUTTER),)
-define sed-cmd
-	's/{{ cookiecutter.$1 }}/$2/g'
-endef
-endif
+# Generates a Cookiecutter template variable.
+cc-var = {{ cookiecutter.$1 }}
 
 # ==============================================================================
-# Directory Targets
+# Platform Dependencies
 # ==============================================================================
 
-# Makes a directory tree.
 ifeq ($(COOKIECUTTER),)
-%/.: | $(LOG)
-	@printf "Making directory tree $(dir_var)..."
-	@mkdir -p $(@D) >$(LOG) 2>&1; \
-	$(status_result)
+include $(MAKEFILE_DIR)/platforms/sed.mk
 endif
