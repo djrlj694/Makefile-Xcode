@@ -7,22 +7,15 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 07MAR2019
-# REVISED: 14MAR2019
+# REVISED: 16MAR2019
+#
+# NOTES:
+#   For more info on terminology, style conventions, or source references, see
+#   the file ".make/README.md".
 # ==============================================================================
 
 # ==============================================================================
 # Internal Constants
-#
-# An internal constant is a variable that is intended to:
-#
-# 1. Have a fixed value;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
-#
-# It is typically defined using the ":=" assignment operator to "simply" expand
-# its right-hand side -- i.e., immediately evaluate any variables therein,
-# saving the resulting text as final the value.
-#
-# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -107,18 +100,6 @@ PASSED := $(FG_GREEN)passed$(RESET).\n
 
 # ==============================================================================
 # Internal Variables
-#
-# An internal variable is one that is intended to:
-#
-# 1. Have a value that depends on other variables, shell commands, etc. in its
-#    definition;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
-#
-# It is typically defined using the "=" assignment operator to "recursively"
-# expand its right-hand side -- i.e., defer evaluation until the variable is
-# used.
-#
-# By convention, its name uses lowercase, underscore-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -165,11 +146,6 @@ target_var = $(FG_CYAN)$@$(RESET)
 
 # ==============================================================================
 # Macros
-#
-# A macro is a variable that is defined using the "define" directive instead of
-# an assignment operator. It is typically used to define a multi-line variable.
-#
-# By convention, its name uses lowercase, underscore-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -190,17 +166,6 @@ export usage_help
 
 # ==============================================================================
 # User-Defined Functions
-#
-# A user-defined function is a variable or macro that includes one or more
-# temporary variables ($1, $2, etc.) in its definition.
-#
-# By convention, its name uses lowercase, dash-separated words.
-#
-# For more info, see:
-#
-# 1. https://www.gnu.org/software/make/manual/html_node/Call-Function.html
-# 2. https://www.oreilly.com/openbook/make3/book/ch11.pdf
-# 3. https://www.oreilly.com/openbook/make3/book/ch04.pdf
 # ==============================================================================
 
 # $(call result,formatted-string)
@@ -311,13 +276,6 @@ debug-vars-some:
 
 # ==============================================================================
 # Intermediate Targets
-#
-# An intermediate target corresponds to a file that is needed on the way from a
-# source file to a target file.  It typically is a temporary file that is needed
-# only once to generate the target after the source changed.  The "make" command
-# automatically removes files that are identified as intermediate targets.  In
-# other words, such files that did not exist before a "make" run executed do not
-# exist after a "make" run.
 # ==============================================================================
 
 .INTERMEDIATE: $(LOG)

@@ -7,22 +7,15 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 14MAR2019
+# REVISED: 16MAR2019
+#
+# NOTES:
+#   For more info on terminology, style conventions, or source references, see
+#   the file ".make/README.md".
 # ==============================================================================
 
 # ==============================================================================
 # Internal Constants
-#
-# An internal constant is a variable that is intended to:
-#
-# 1. Have a fixed value;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
-#
-# It is typically defined using the ":=" assignment operator to "simply" expand
-# its right-hand side -- i.e., immediately evaluate any variables therein,
-# saving the resulting text as final the value.
-#
-# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -59,15 +52,6 @@ GITHUB_DOWNLOADED_FILES := $(addsuffix .download,$(GITHUB_FILES))
 
 # ==============================================================================
 # Phony Targets
-#
-# A phony target is one that does not represent a file or directory. It can be
-# thought of as an embedded shell script. It runs when an explicit request is
-# made unless a file of the same name exists.
-#
-# Two reasons to use a phony target are:
-#
-# 1. To avoid a conflict with a file of the same name;
-# 2. To improve performance.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -165,13 +149,6 @@ SUPPORT.md: SUPPORT.md.download
 
 # ==============================================================================
 # Intermediate Targets
-#
-# An intermediate target corresponds to a file that is needed on the way from a
-# source file to a target file.  It typically is a temporary file that is needed
-# only once to generate the target after the source changed.  The "make" command
-# automatically removes files that are identified as intermediate targets.  In
-# other words, such files that did not exist before a "make" run executed do not
-# exist after a "make" run.
 # ==============================================================================
 
 .INTERMEDIATE: $(GITHUB_DOWNLOADED_FILES) CODE_OF_CONDUCT.sed CONTRIBUTING.sed

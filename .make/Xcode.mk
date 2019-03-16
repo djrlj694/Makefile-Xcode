@@ -7,22 +7,15 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 14MAR2019
+# REVISED: 16MAR2019
+#
+# NOTES:
+#   For more info on terminology, style conventions, or source references, see
+#   the file ".make/README.md".
 # ==============================================================================
 
 # ==============================================================================
 # Internal Constants
-#
-# An internal constant is a variable that is intended to:
-#
-# 1. Have a fixed value;
-# 2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
-#
-# It is typically defined using the ":=" assignment operator to "simply" expand
-# its right-hand side -- i.e., immediately evaluate any variables therein,
-# saving the resulting text as final the value.
-#
-# By convention, its name uses uppercase, dash-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -40,11 +33,6 @@ XCODE_DIRS := $(addsuffix /.,$(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS))
 
 # ==============================================================================
 # Macros
-#
-# A macro is a variable that is defined using the "define" directive instead of
-# an assignment operator. It is typically used to define a multi-line variable.
-#
-# By convention, its name uses lowercase, underscore-separated words.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -95,15 +83,6 @@ export XCODE_FILES_TEST
 
 # ==============================================================================
 # Phony Targets
-#
-# A phony target is one that does not represent a file or directory. It can be
-# thought of as an embedded shell script. It runs when an explicit request is
-# made unless a file of the same name exists.
-#
-# Two reasons to use a phony target are:
-#
-# 1. To avoid a conflict with a file of the same name;
-# 2. To improve performance.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -164,13 +143,6 @@ test-xcode-files: expected_xcode_files.txt actual_xcode_files.txt | $(LOG)
 
 # ==============================================================================
 # Intermediate Targets
-#
-# An intermediate target corresponds to a file that is needed on the way from a
-# source file to a target file.  It typically is a temporary file that is needed
-# only once to generate the target after the source changed.  The "make" command
-# automatically removes files that are identified as intermediate targets.  In
-# other words, such files that did not exist before a "make" run executed do not
-# exist after a "make" run.
 # ==============================================================================
 
 .INTERMEDIATE: actual_xcode_dirs.txt actual_xcode_files.txt expected_xcode_dirs.txt expected_xcode_files.txt
