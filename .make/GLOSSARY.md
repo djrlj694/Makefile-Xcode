@@ -20,9 +20,9 @@ By convention, external constants use uppercase, dash-separated words for names.
 An internal constant is a variable that is intended to:
 
 1. Have a fixed value;
-2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
+2. Be set within a makefile (e.g., `Makefile`) or an `include`-ed file.
 
-It is typically defined using the ":=" assignment operator to "simply" expand its right-hand side -- i.e., immediately evaluate any variables therein, saving the resulting text as final the value.
+It is typically defined using the `:=` assignment operator to "simply" expand its right-hand side -- i.e., immediately evaluate any variables therein, saving the resulting text as final the value.
 
 By convention, internal constants uses uppercase, dash-separated words for names.
 
@@ -31,9 +31,9 @@ By convention, internal constants uses uppercase, dash-separated words for names
 An internal variable is one that is intended to:
 
 1. Have a value that depends on other variables, shell commands, etc. in its definition;
-2. Be set within a makefile (e.g., "Makefile") or an "include"-ed file.
+2. Be set within a makefile (e.g., `Makefile`) or an `include`-ed file.
 
-It is typically defined using the "=" assignment operator to "recursively" expand its right-hand side -- i.e., defer evaluation until the variable is used.
+It is typically defined using the `=` assignment operator to "recursively" expand its right-hand side -- i.e., defer evaluation until the variable is used.
 
 By convention, internal variables use lowercase, underscore-separated words for names.
 
@@ -45,7 +45,7 @@ By convention, macros use lowercase, underscore-separated words for names.
 
 ### User-Defined Variables
 
-A user-defined function is a variable or macro that includes one or more temporary variables ($1, $2, etc.) in its definition.
+A user-defined function is a variable or macro that includes one or more temporary variables (`$1`, `$2`, etc.) in its definition.
 
 By convention, its user-defined functions use lowercase, dash-separated words for names.
 
@@ -60,8 +60,8 @@ Two reasons to use a phony target are:
 1. To avoid a conflict with a file of the same name;
 2. To improve performance.
 
-# References
-
-1. https://www.gnu.org/software/make/manual/html_node/Call-Function.html
-2. https://www.oreilly.com/openbook/make3/book/ch11.pdf
-3. https://www.oreilly.com/openbook/make3/book/ch04.pdf
+1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
+2. https://www.gnu.org/software/make/manual/make.html
+3. https://www.oreilly.com/library/view/managing-projects-with/0596006101/
+4. https://www.oreilly.com/openbook/make3/book/
+5. https://en.wikipedia.org/wiki/Make_(software)
