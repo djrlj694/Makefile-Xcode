@@ -4,7 +4,7 @@
 
 This project distinguishes makefile variables into the following 5 categories, based on considerations such as how the variable is assigned or defined as well its intended usage (i.e., how values are set and where).
 
-### External Constants
+### [External Constants](#external_constants)
 
 An external constant is a variable that is intended to:
 
@@ -15,7 +15,7 @@ It is typically defined using the `?=` assignment operator to "conditionally" as
 
 By convention, external constants use uppercase, dash-separated words for names.
 
-### Internal Constants
+### [Internal Constants](#internal_constants)
 
 An internal constant is a variable that is intended to:
 
@@ -26,7 +26,7 @@ It is typically defined using the `:=` assignment operator to "simply" expand it
 
 By convention, internal constants uses uppercase, dash-separated words for names.
 
-### Internal Variables
+### [Internal Variables](#internal_variables)
 
 An internal variable is one that is intended to:
 
@@ -37,13 +37,13 @@ It is typically defined using the `=` assignment operator to "recursively" expan
 
 By convention, internal variables use lowercase, underscore-separated words for names.
 
-### Macros
+### [Macros](#macros)
 
 A macro is a variable that is defined using the "define" directive instead of an assignment operator. It is typically used to define a multi-line variable.
 
 By convention, macros use lowercase, underscore-separated words for names.
 
-### User-Defined Variables
+### [User-Defined Variables](#user_defined_variables)
 
 A user-defined function is a variable or macro that includes one or more temporary variables (`$1`, `$2`, etc.) in its definition.
 
@@ -51,7 +51,7 @@ By convention, its user-defined functions use lowercase, dash-separated words fo
 
 ## Targets
 
-### Phony Targets
+### [Phony Targets](#phony_targets)
 
 A phony target is one that does not represent a file or directory. It can be thought of as an embedded shell script. It is run when an explicit request is made unless unless a file of the same name exists.
 
