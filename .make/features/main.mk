@@ -15,6 +15,13 @@
 # ==============================================================================
 
 # ==============================================================================
+# Feature Dependencies
+# ==============================================================================
+
+include $(MAKEFILE_DIR)/features/formatting.mk
+include $(MAKEFILE_DIR)/features/helping.mk
+
+# ==============================================================================
 # Internal Constants
 # ==============================================================================
 
@@ -48,30 +55,6 @@ LOG := make.log
 # ------------------------------------------------------------------------------
 
 SHELL := bash
-
-# ------------------------------------------------------------------------------
-# Special characters
-# ------------------------------------------------------------------------------
-
-EMPTY :=
-SPACE := $(EMPTY) $(EMPTY)
-
-# ------------------------------------------------------------------------------
-# STDOUT format settings
-#
-# NOTE: "\033" is a C-style octal code representing an ASCI escape character.
-# ------------------------------------------------------------------------------
-
-# ANSI escape sequences for setting the text intensity/emphasis of STDOUT.
-RESET := \033[0m
-BOLD := \033[1m
-DIM := \033[2m
-
-# ANSI escape sequences for setting the text color of STDOUT.
-FG_CYAN := \033[0;36m
-FG_GREEN := \033[0;32m
-FG_RED := \033[0;31m
-FG_YELLOW := \033[1;33m
 
 # ------------------------------------------------------------------------------
 # Help strings
@@ -125,14 +108,6 @@ subdir = $(shell basename $(@D))
 file = $(basename $@)
 
 # ------------------------------------------------------------------------------
-# Help strings
-# ------------------------------------------------------------------------------
-
-# Line item iin the "Targets" section of the online help for the "make" command
-# when used with this makefile set.
-target_help = $(FG_CYAN)%-17s$(RESET) %s
-
-# ------------------------------------------------------------------------------
 # Path strings
 # ------------------------------------------------------------------------------
 
@@ -143,26 +118,6 @@ subdir_var = $(FG_CYAN)$(subdir)$(RESET)
 
 # Color-formatted name of the current makefile target being run.
 target_var = $(FG_CYAN)$@$(RESET)
-
-# ==============================================================================
-# Macros
-# ==============================================================================
-
-# ------------------------------------------------------------------------------
-# Help strings
-# ------------------------------------------------------------------------------
-
-# Usage section of the online help for the "make" command when used with this
-# makefile set.
-define usage_help
-
-Usage:
-  make = make $(TARGET_ARG) $(MAKE_ARGS)
-
-Targets:
-
-endef
-export usage_help
 
 # ==============================================================================
 # User-Defined Functions
@@ -178,15 +133,6 @@ endef
 
 # ==============================================================================
 # Phony Targets
-#
-# A phony target is one that does not represent a file or directory. It can be
-# thought of as an embedded shell script. It runs when an explicit request is
-# made unless a file of the same name exists.
-#
-# Two reasons to use a phony target are:
-#
-# 1. To avoid a conflict with a file of the same name;
-# 2. To improve performance.
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -194,18 +140,6 @@ endef
 # ------------------------------------------------------------------------------
 
 .PHONY: help log
-
-## help: Shows "make" usage documentation.
-help:
-	@printf "$$usage_help"
-#	@cat $(MAKEFILE_LIST) | \
-#	egrep '^[a-zA-Z_-]+:.*?##' | \
-#	sed -e 's/:.* ##/: ##/' | sort -d | \
-#	awk 'BEGIN {FS = ":.*?## "}; {printf "  $(target_help)\n", $$1, $$2}'
-	@cat $(MAKEFILE_LIST) | \
-	egrep '^## [a-zA-Z_-]+: ' | sed -e 's/## //' | sort -d | \
-	awk 'BEGIN {FS = ": "}; {printf "  $(target_help)\n", $$1, $$2}'
-	@echo ""
 
 ## log: Shows the most recently generated log for a specified release.
 log:
