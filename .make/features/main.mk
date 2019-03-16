@@ -57,20 +57,6 @@ LOG := make.log
 SHELL := bash
 
 # ------------------------------------------------------------------------------
-# Help strings
-# ------------------------------------------------------------------------------
-
-# Color-formatted arguments displayed as part of the online help in the Usage
-# section of the "make" command when used with this makefile.
-PACKAGE_ARG := $(FG_CYAN)<package>$(RESET)
-PREFIX_ARG := $(FG_CYAN)<prefix>$(RESET)
-TARGET_ARG := $(FG_CYAN)<target>$(RESET)
-USER_ARG := $(FG_CYAN)<user>$(RESET)
-
-# Argument syntax for the "make" command when used with this makefile.
-MAKE_ARGS := [PACKAGE=$(PACKAGE_ARG)] [PREFIX=$(PREFIX_ARG)] [USER=$(USER_ARG)]
-
-# ------------------------------------------------------------------------------
 # Result strings
 # ------------------------------------------------------------------------------
 
