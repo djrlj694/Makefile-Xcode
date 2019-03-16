@@ -40,6 +40,12 @@ PACKAGE ?= $(PROJECT)
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
+# Settings
+# ------------------------------------------------------------------------------
+
+SHELL := bash
+
+# ------------------------------------------------------------------------------
 # Debugging & error capture
 # ------------------------------------------------------------------------------
 
@@ -130,15 +136,22 @@ init-dirs: $(INIT_DIRS)
 #	fi
 
 # ==============================================================================
-# Makefiles
+# Feature Dependencies
 # ==============================================================================
 
-include $(MAKEFILE_DIR)/features/main.mk
-include $(MAKEFILE_DIR)/platforms/cookiecutter.mk
+include $(MAKEFILE_DIR)/features/formatting.mk
+
+include $(MAKEFILE_DIR)/features/debugging.mk
+include $(MAKEFILE_DIR)/features/helping.mk
 
 include $(MAKEFILE_DIR)/features/common.mk
-include $(MAKEFILE_DIR)/platforms/git.mk
 
+# ==============================================================================
+# Platform Dependencies
+# ==============================================================================
+
+include $(MAKEFILE_DIR)/platforms/cookiecutter.mk
+include $(MAKEFILE_DIR)/platforms/git.mk
 include $(MAKEFILE_DIR)/platforms/GitHub.mk
 include $(MAKEFILE_DIR)/platforms/Swift.mk
 include $(MAKEFILE_DIR)/platforms/Xcode.mk
