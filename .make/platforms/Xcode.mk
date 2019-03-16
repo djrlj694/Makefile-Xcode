@@ -108,7 +108,7 @@ clean-xcode: clean-carthage clean-cocoapods clean-xcode-dirs
 ifeq ($(COOKIECUTTER),)
 init-xcode: init-xcode-vars init-xcode-dirs init-carthage init-cocoapods
 else
-init-github: init-xcode-vars
+init-xcode: init-xcode-vars
 	@cookiecutter gh:$(TEMPLATES_REPO) project_name=$(PROJECT)
 endif
 
