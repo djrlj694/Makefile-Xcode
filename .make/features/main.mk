@@ -139,7 +139,7 @@ endef
 # Main phony targets
 # ------------------------------------------------------------------------------
 
-.PHONY: help log
+.PHONY: log
 
 ## log: Shows the most recently generated log for a specified release.
 log:
