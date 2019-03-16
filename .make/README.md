@@ -83,7 +83,7 @@ By convention, its user-defined functions use lowercase, dash-separated words fo
 
 ## Targets
 
-### [Phony Targets](#phony_targets)
+### Phony Targets
 
 A phony target is one that does not represent a file or directory. It can be thought of as an embedded shell script. It is run when an explicit request is made unless unless a file of the same name exists.
 
