@@ -60,6 +60,8 @@ Two reasons to use a phony target are:
 1. To avoid a conflict with a file of the same name;
 2. To improve performance.
 
+# References
+
 1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
 2. https://www.gnu.org/software/make/manual/make.html
 3. https://www.oreilly.com/library/view/managing-projects-with/0596006101/
