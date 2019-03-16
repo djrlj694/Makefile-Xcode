@@ -28,11 +28,6 @@ This project distinguishes makefile variables into 5 categories, based on consid
 | [Macro]() | Lowercase, dash-separated words | `define usage_help<br/><br/>Usage:<br/>&nbsp;&nbsp;make = make $(TARGET_ARG) $(MAKE_ARGS)<br/>endef` | Deferred |
 | [User-defined function]() | Lowercase, dash-separated words | `define result<br/>&nbsp;&nbsp;([ $$? -eq 0 ] && printf "$1") || \<br/>&nbsp;&nbsp;(printf "$(FAILED)\n" && cat $(LOG) && echo)<br/>endef` | Deferred |
 
-define result
-	([ $$? -eq 0 ] && printf "$1") || \
-	(printf "$(FAILED)\n" && cat $(LOG) && echo)
-endef
-
 # References
 
 1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
