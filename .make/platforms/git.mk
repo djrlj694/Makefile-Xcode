@@ -76,7 +76,6 @@ endif
 	@mkdir -p $(@D); $(status_result)
 	@printf "Making marker file $(target_var)..."
 	@touch $@; $(status_result)
-endif
 
 # ==============================================================================
 # Intermediate Targets
