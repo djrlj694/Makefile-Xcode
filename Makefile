@@ -133,12 +133,12 @@ init-dirs: $(INIT_DIRS)
 # Makefiles
 # ==============================================================================
 
-include $(MAKEFILE_DIR)/main.mk
-include $(MAKEFILE_DIR)/cookiecutter.mk
+include $(MAKEFILE_DIR)/features/main.mk
+include $(MAKEFILE_DIR)/platforms/cookiecutter.mk
 
-include $(MAKEFILE_DIR)/common.mk
-include $(MAKEFILE_DIR)/git.mk
+include $(MAKEFILE_DIR)/features/common.mk
+include $(MAKEFILE_DIR)/platforms/git.mk
 
-include $(MAKEFILE_DIR)/GitHub.mk
-include $(MAKEFILE_DIR)/Swift.mk
-include $(MAKEFILE_DIR)/Xcode.mk
+include $(MAKEFILE_DIR)/platforms/GitHub.mk
+include $(MAKEFILE_DIR)/platforms/Swift.mk
+include $(MAKEFILE_DIR)/platforms/Xcode.mk

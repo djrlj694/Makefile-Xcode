@@ -32,6 +32,8 @@ This project distinguishes makefile variables into 5 categories, based on consid
 
 # Glossary
 
+This section list technical terminology used in in this makefile project. Some of the terms are generally accepted as part of makefile parlance. Others are unique to this particular makefile project, in part to better facilitate common conventions for, say, naming and defining makefile variables.
+
 ## Variables
 
 This project distinguishes makefile variables into the following 5 categories, based on considerations such as how the variable is assigned or defined as well its intended usage (i.e., how values are set and where).
