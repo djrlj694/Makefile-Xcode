@@ -171,5 +171,5 @@ expected_xcode_files.txt:
 # Makefiles
 # ==============================================================================
 
-include $(MAKEFILE_DIR)/Carthage.mk
-include $(MAKEFILE_DIR)/CocoaPods.mk
+include $(MAKEFILE_DIR)/platforms/Carthage.mk
+include $(MAKEFILE_DIR)/platforms/CocoaPods.mk
