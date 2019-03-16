@@ -69,8 +69,25 @@ endif
 ## .gitignore: Makes a .gitignore file.
 .gitignore: .gitignore.download
 
+# Makes a special empty file for marking that a directory tree has been generated.
+%/.gitkeep:
+	@printf "Making directory tree for marker file $(target_var)..."
+	@printf "Making marker file $(target_var) and its directory tree..."
+	@mkdir -p $(@D); $(status_result)
+	@printf "Making marker file $(target_var)..."
+	@touch $@; $(status_result)
+endif
+
 # ==============================================================================
 # Intermediate Targets
 # ==============================================================================
 
 .INTERMEDIATE: .gitignore.download
+
+# ==============================================================================
+# Second Expansion Targets
+# ==============================================================================
+
+.SECONDEXPANSION:
+# Make a directory tree.
+#$(PREFIX)/%.gitkeep: $$(@D)/.gitkeep | $$(@D)/.
