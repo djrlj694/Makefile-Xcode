@@ -22,11 +22,11 @@ This project distinguishes makefile variables into 5 categories, based on consid
 
 | Variable Category | Naming Convention | Example | Definition Expansion |
 | ----------------- | ----------------- | ------- | -------------------- |
-| [External constant](GLOSSARY.MD#external_constants) | Uppercase, underscore-separated words | `USER ?= $(shell whoami)` | Deferred |
-| [Internal constant](GLOSSARY.MD#internal_constants) | Uppercase, underscore-separated words | `MKDIR := mkdir -p` | Immediate |
-| [Internal variable](GLOSSARY.MD#internal_variables) | Lowercase, underscore-separated words | `subdir = $(shell basename $(@D))` | Deferred |
+| [External constant](GLOSSARY.MD#external-constants) | Uppercase, underscore-separated words | `USER ?= $(shell whoami)` | Deferred |
+| [Internal constant](GLOSSARY.MD#internal-constants) | Uppercase, underscore-separated words | `MKDIR := mkdir -p` | Immediate |
+| [Internal variable](GLOSSARY.MD#internal-variables) | Lowercase, underscore-separated words | `subdir = $(shell basename $(@D))` | Deferred |
 | [Macro](GLOSSARY.MD#macros) | Lowercase, dash-separated words | `define usage_help<br/><br/>Usage:<br/>&nbsp;&nbsp;make = make $(TARGET_ARG) $(MAKE_ARGS)<br/>endef` | Deferred |
-| [User-defined function](GLOSSARY.MD#user_defined_functions) | Lowercase, dash-separated words | `define result<br/>&nbsp;&nbsp;([ $$? -eq 0 ] && printf "$1") || \<br/>&nbsp;&nbsp;(printf "$(FAILED)\n" && cat $(LOG) && echo)<br/>endef` | Deferred |
+| [User-defined function](GLOSSARY.MD#user-defined-functions) | Lowercase, dash-separated words | `define result<br/>&nbsp;&nbsp;([ $$? -eq 0 ] && printf "$1") || \<br/>&nbsp;&nbsp;(printf "$(FAILED)\n" && cat $(LOG) && echo)<br/>endef` | Deferred |
 
 # References
 
