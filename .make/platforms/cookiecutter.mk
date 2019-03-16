@@ -98,24 +98,3 @@ ifeq ($(COOKIECUTTER),)
 	@mkdir -p $(@D) >$(LOG) 2>&1; \
 	$(status_result)
 endif
-
-# ==============================================================================
-# File Targets
-# ==============================================================================
-
-# Makes a special empty file for marking that a directory tree has been generated.
-#ifneq ($(COOKIECUTTER),)
-#%/.gitkeep:
-#	@printf "Making directory tree for marker file $(target_var)..."
-#	@printf "Making marker file $(target_var) and its directory tree..."
-#	@mkdir -p $(@D); $(status_result)
-#	@printf "Making marker file $(target_var)..."
-#	@touch $@; $(status_result)
-#endif
-
-# ==============================================================================
-# Second Expansion Targets
-# ==============================================================================
-
-.SECONDEXPANSION:
-#$(PREFIX)/%.dummy: $$(@D)/.gitkeep | $$(@D)/. ## Make a directory tree.
