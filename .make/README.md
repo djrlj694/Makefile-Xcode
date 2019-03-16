@@ -21,7 +21,7 @@ Xcode.mk | TBD
 This project distinguishes makefile variables into 5 categories, based on considerations such as how the variable is assigned or defined as well its intended usage (i.e., how values are set and where).  For each variable category, there is a convention for naming and defining a variable. For more information about these variable categories, please refer to the [glossary](GLOSSARY.md) of terms or click on a particular variable category in the table below.
 
 | Variable Category | Naming Convention | Example | Definition Expansion |
-|-------- | --------------- | ---------------- | ----------- | -----------------
+| ----------------- | ----------------- | ------- | -------------------- |
 | [External constant]() | Uppercase, underscore-separated words | `USER ?= $(shell whoami)` | Deferred |
 | [Internal constant]() | Uppercase, underscore-separated words | `MKDIR := mkdir -p` | Immediate |
 | [Internal variable]() | Lowercase, underscore-separated words | `subdir = $(shell basename $(@D))` | Deferred |
