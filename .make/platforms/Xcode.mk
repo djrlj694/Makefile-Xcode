@@ -168,8 +168,9 @@ expected_xcode_files.txt:
 	@echo "$$XCODE_FILES_TEST" >$@
 
 # ==============================================================================
-# Makefiles
+# Platform Dependencies
 # ==============================================================================
 
 include $(MAKEFILE_DIR)/platforms/Carthage.mk
 include $(MAKEFILE_DIR)/platforms/CocoaPods.mk
+include $(MAKEFILE_DIR)/platforms/Swift.mk
