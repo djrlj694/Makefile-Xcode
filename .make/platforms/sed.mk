@@ -31,7 +31,7 @@ endef
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
 define add-sed-cmd
-	echo 's/{{ cookiecutter.$1 }}/$2/g' >> $@
+	echo 's/$1/$2/g' >> $@
 endef
 
 # $(call sed-cmd,template-var,replacement)
