@@ -27,9 +27,15 @@ endef
 # User-Defined Functions
 # ==============================================================================
 
+# $(call add-sed-cmd,regexp,replacement)
+# Generates a sed command for substituting the replacement string for the 1st
+# instance of the regular expression in the pattern space.
+add-sed-cmd = echo 's/$1/$2/g' >> $@
+
 # $(call sed-cmd,template-var,replacement)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
-define sed-cmd
-	's/{{ cookiecutter.$1 }}/$2/g'
-endef
+#define sed-cmd
+#'s/{{ cookiecutter.$1 }}/$2/g'
+#endef
+sed-cmd = 's/$1/$2/g'
