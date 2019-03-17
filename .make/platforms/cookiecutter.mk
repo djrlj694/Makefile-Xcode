@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 10MAR2019
-# REVISED: 16MAR2019
+# REVISED: 17MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -50,27 +50,19 @@ VARIABLES_TO_SHOW += COOKIECUTTER
 MAKE_ARGS += [COOKIECUTTER=]
 
 # ==============================================================================
-# Internal Variables
-# ==============================================================================
-
-# ------------------------------------------------------------------------------
-# Sed commands
-# ------------------------------------------------------------------------------
-
-ifeq ($(COOKIECUTTER),)
-PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
-EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
-GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
-TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
-endif
-
-# ==============================================================================
 # User-Defined Functions
 # ==============================================================================
 
 # $(call sed-cmd,template-var,replacement)
 # Generates a Cookiecutter template variable.
 cc-var = {{ cookiecutter.$1 }}
+
+# $(call sed-cmd,template-var,replacement)
+# Generates a sed command for replacing Cookiecutter template variables with
+# appropriate values.
+define sed-cmd
+	's/{{ cookiecutter.$1 }}/$2/g'
+endef
 
 # ==============================================================================
 # Platform Dependencies
