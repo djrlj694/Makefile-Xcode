@@ -44,16 +44,12 @@ MAKE_ARGS += [COOKIECUTTER=]
 # User-Defined Functions
 # ==============================================================================
 
-# $(call sed-cmd,template-var,replacement)
-# Generates a Cookiecutter template variable.
-cc-var = {{ cookiecutter.$1 }}
-
-# $(call sed-cmd,template-var,replacement)
+# $(call add-cc-sed-cmds,template-vars)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
-define sed-cmd
-	's/{{ cookiecutter.$1 }}/$2/g'
-endef
+# Generates sed commands for substituting the replacement string for the 1st
+# instance of the Cookiecutter template variable in the pattern space.
+add-cc-sed-cmds = $(foreach cc_var,$1,$(call add-cc-sed-cmd,$(cc_var)))
 
 # ==============================================================================
 # Feature Dependencies
