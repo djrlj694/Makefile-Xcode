@@ -97,6 +97,23 @@ TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
 endif
 
 # ==============================================================================
+# User-Defined Functions
+# ==============================================================================
+
+# $(call add-sed-cmd,template-var,replacement)
+# Generates a sed command for replacing Cookiecutter template variables with
+# appropriate values.
+define add-sed-cmd
+	case $1 in \
+		email) sed_cmd=$(call sed-cmd,$1,$(EMAIL));; \
+		github_user) sed_cmd=$(call sed-cmd,$1,$(GITHUB_USER));; \
+		project_name) sed_cmd=$(call sed-cmd,$1,$(PROJECT));; \
+		travis_user) sed_cmd=$(call sed-cmd,$1,$(TRAVIS_USER));; \
+	esac; \
+	echo $$sed_cmd >> $@;
+endef
+
+# ==============================================================================
 # Feature Dependencies
 # ==============================================================================
 
