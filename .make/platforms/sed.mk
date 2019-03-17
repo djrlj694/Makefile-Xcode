@@ -27,13 +27,6 @@ endef
 # User-Defined Functions
 # ==============================================================================
 
-# $(call add-sed-cmd,template-var,replacement)
-# Generates a sed command for replacing Cookiecutter template variables with
-# appropriate values.
-define add-sed-cmd
-	echo 's/$1/$2/g' >> $@
-endef
-
 # $(call sed-cmd,template-var,replacement)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
