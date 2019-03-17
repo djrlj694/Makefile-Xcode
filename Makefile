@@ -90,28 +90,30 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 # ------------------------------------------------------------------------------
 
 ifeq ($(COOKIECUTTER),)
-PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
-EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
-GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
-TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
+#PROJECT_CMD = $(call sed-cmd,project_name,$(PROJECT))
+#EMAIL_CMD = $(call sed-cmd,email,$(EMAIL))
+#GITHUB_USER_CMD = $(call sed-cmd,github_user,$(GITHUB_USER))
+#TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
 endif
 
 # ==============================================================================
 # User-Defined Functions
 # ==============================================================================
 
-# $(call add-sed-cmd,template-var,replacement)
-# Generates a sed command for replacing Cookiecutter template variables with
-# appropriate values.
-define add-sed-cmd
+# $(call add-sed-cmd,template-var)
+# Generates a sed command for substituting the replacement string for the 1st
+# instance of the Cookiecutter template variable in the pattern space.
+ifeq ($(COOKIECUTTER),)
+define add-cc-sed-cmd
+	$(eval re = {{ cookiecutter.$1 }})
 	case $1 in \
-		email) sed_cmd=$(call sed-cmd,$1,$(EMAIL));; \
-		github_user) sed_cmd=$(call sed-cmd,$1,$(GITHUB_USER));; \
-		project_name) sed_cmd=$(call sed-cmd,$1,$(PROJECT));; \
-		travis_user) sed_cmd=$(call sed-cmd,$1,$(TRAVIS_USER));; \
-	esac; \
-	echo $$sed_cmd >> $@;
+		email) $(call add-sed-cmd,$(re),$(EMAIL));; \
+		github_user) $(call add-sed-cmd,$(re),$(GITHUB_USER));; \
+		project_name) $(call add-sed-cmd,$(re),$(PROJECT));; \
+		travis_user) $(call add-sed-cmd,$(re),$(TRAVIS_USER));; \
+	esac
 endef
+endif
 
 # ==============================================================================
 # Feature Dependencies
