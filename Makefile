@@ -97,6 +97,17 @@ TRAVIS_USER_CMD = $(call sed-cmd,travis_user,$(TRAVIS_USER))
 endif
 
 # ==============================================================================
+# Feature Dependencies
+# ==============================================================================
+
+include $(MAKEFILE_DIR)/features/formatting.mk
+
+include $(MAKEFILE_DIR)/features/debugging.mk
+include $(MAKEFILE_DIR)/features/helping.mk
+
+include $(MAKEFILE_DIR)/features/common.mk
+
+# ==============================================================================
 # Phony Targets
 # ==============================================================================
 
@@ -155,22 +166,10 @@ init-dirs: $(INIT_DIRS)
 #	fi
 
 # ==============================================================================
-# Feature Dependencies
-# ==============================================================================
-
-include $(MAKEFILE_DIR)/features/formatting.mk
-
-include $(MAKEFILE_DIR)/features/debugging.mk
-include $(MAKEFILE_DIR)/features/helping.mk
-
-include $(MAKEFILE_DIR)/features/common.mk
-
-# ==============================================================================
 # Platform Dependencies
 # ==============================================================================
 
 include $(MAKEFILE_DIR)/platforms/cookiecutter.mk
 include $(MAKEFILE_DIR)/platforms/git.mk
 include $(MAKEFILE_DIR)/platforms/GitHub.mk
-include $(MAKEFILE_DIR)/platforms/Swift.mk
 include $(MAKEFILE_DIR)/platforms/Xcode.mk
