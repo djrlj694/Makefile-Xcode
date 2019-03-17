@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 03MAR2019
-# REVISED: 16MAR2019
+# REVISED: 17MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -76,10 +76,8 @@ README.md: README.sed README.md.download
 
 # Makes a sed script for file README.sed.
 README.sed:
-	@echo $(PROJECT_CMD) >> $@
-	@echo $(EMAIL_CMD) >> $@
-	@echo $(GITHUB_USER_CMD) >> $@
-	@echo $(TRAVIS_USER_CMD) >> $@
+	$(eval var_names = project_name email github_user travis_user)
+	$(call add-cc-sed-cmds,$(var_names))
 
 ## REFERENCES.md: Makes a REFERENCES.md file.
 REFERENCES.md: REFERENCES.md.download
