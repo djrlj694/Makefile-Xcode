@@ -32,6 +32,18 @@ endef
 # instance of the regular expression in the pattern space.
 add-sed-cmd = echo 's/$1/$2/g' >> $@
 
+# $(call add-sed-cmds,add_sed_cmd,vars)
+# Generates a sed command for replacing Cookiecutter template variables with
+# appropriate values.
+# Generates sed commands for substituting the replacement string for the 1st
+# instance of the Cookiecutter template variable in the pattern space.
+# $(call add-sed-cmds,template-vars)
+# Generates a sed command for replacing Cookiecutter template variables with
+# appropriate values.
+# Generates sed commands for substituting the replacement string for the 1st
+# instance of the Cookiecutter template variable in the pattern space.
+add-sed-cmds = $(foreach var,$2,$(call $1,$(var)))
+
 # $(call sed-cmd,template-var,replacement)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
