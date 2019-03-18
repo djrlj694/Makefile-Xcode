@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 10MAR2019
-# REVISED: 17MAR2019
+# REVISED: 18MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -44,7 +44,7 @@ MAKE_ARGS += [COOKIECUTTER=]
 # User-Defined Functions
 # ==============================================================================
 
-# $(call add-cc-sed-cmds,template-vars)
+# $(call add-cc-sed-cmds,cc_vars)
 # Generates a sed command for replacing Cookiecutter template variables with
 # appropriate values.
 # Generates sed commands for substituting the replacement string for the 1st
