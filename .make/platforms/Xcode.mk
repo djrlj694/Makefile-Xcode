@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 16MAR2019
+# REVISED: 19MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -30,6 +30,19 @@ XCODE_SOURCES_DIRS := $(addprefix $(PACKAGE)/Sources/,$(XCODE_SOURCES))
 
 XCODE_DIRS := $(addsuffix /.,$(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS))
 #XCODE_DIRS := $(XCODE_RESOURCES_DIRS) $(XCODE_SOURCES_DIRS)
+
+# ==============================================================================
+# Internal Constants
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Help strings
+# ------------------------------------------------------------------------------
+
+# Argument syntax for the "make" command when used with this makefile.
+MAKE_ARGS += [PACKAGE=$(FG_CYAN)<package>$(RESET)]
+MAKE_ARGS += [PREFIX=$(FG_CYAN)<prefix>$(RESET)]
+MAKE_ARGS += [USER=$(FG_CYAN)<user>$(RESET)]
 
 # ==============================================================================
 # Macros
