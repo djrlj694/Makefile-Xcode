@@ -22,7 +22,7 @@
 # Help strings
 # ------------------------------------------------------------------------------
 
-# Argument syntax for the "make [help]" command for this makefile set.
+# Argument syntax for the "make" command.
 MAKE_ARGS := [$(FG_CYAN)<target>$(RESET)]
 
 # ==============================================================================
@@ -33,8 +33,7 @@ MAKE_ARGS := [$(FG_CYAN)<target>$(RESET)]
 # Help strings
 # ------------------------------------------------------------------------------
 
-# "Targets" section line item of the online help for the "make [help]" command
-# for this makefile set.
+# "Targets" section line item of the online help for the "make" command.
 target_help = $(FG_CYAN)%-17s$(RESET) %s
 
 # ==============================================================================
@@ -45,7 +44,7 @@ target_help = $(FG_CYAN)%-17s$(RESET) %s
 # Help strings
 # ------------------------------------------------------------------------------
 
-# Targets section of the "make" command's online help for this makefile set.
+# Targets section of the "make" command's online help.
 define targets_help
 
 Targets:
@@ -53,7 +52,7 @@ Targets:
 endef
 export targets_help
 
-# Usage section of the "make" command's online help for makefile set.
+# Usage section of the "make" command's online help.
 define usage_help
 
 Usage:
