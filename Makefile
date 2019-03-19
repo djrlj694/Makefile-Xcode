@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 18MAR2019
+# REVISED: 19MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -89,31 +89,20 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 # User-Defined Functions
 # ==============================================================================
 
-# $(call add-sed-cmd,template-var)
+# $(call add-sed-cmd,cc_var)
 # Generates a sed command for substituting the replacement string for the 1st
 # instance of the Cookiecutter template variable in the pattern space.
 ifeq ($(COOKIECUTTER),)
 define add-cc-sed-cmd
 	$(eval re = {{ cookiecutter.$1 }})
 	case $1 in \
-		email) $(call add-sed-cmd,$(re),$(EMAIL));; \
-		github_user) $(call add-sed-cmd,$(re),$(GITHUB_USER));; \
-		project_name) $(call add-sed-cmd,$(re),$(PROJECT));; \
-		travis_user) $(call add-sed-cmd,$(re),$(TRAVIS_USER));; \
+		email) $(call add-sed-cmd,s/$(re)/$(EMAIL)/g);; \
+		github_user) $(call add-sed-cmd,s/$(re)/$(GITHUB_USER)/g);; \
+		project_name) $(call add-sed-cmd,s/$(re)/$(PROJECT)/g);; \
+		travis_user) $(call add-sed-cmd,s/$(re)/$(TRAVIS_USER)/g);; \
 	esac
 endef
 endif
-
-# ==============================================================================
-# Feature Dependencies
-# ==============================================================================
-
-include $(MAKEFILE_DIR)/features/formatting.mk
-
-include $(MAKEFILE_DIR)/features/debugging.mk
-include $(MAKEFILE_DIR)/features/helping.mk
-
-include $(MAKEFILE_DIR)/features/common.mk
 
 # ==============================================================================
 # Phony Targets
@@ -172,6 +161,17 @@ init-dirs: $(INIT_DIRS)
 #	else \
 #		printf "$(IGNORE)"; \
 #	fi
+
+# ==============================================================================
+# Feature Dependencies
+# ==============================================================================
+
+include $(MAKEFILE_DIR)/features/formatting.mk
+
+include $(MAKEFILE_DIR)/features/debugging.mk
+include $(MAKEFILE_DIR)/features/helping.mk
+
+include $(MAKEFILE_DIR)/features/common.mk
 
 # ==============================================================================
 # Platform Dependencies
