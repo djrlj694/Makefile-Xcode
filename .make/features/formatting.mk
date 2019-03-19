@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 16MAR2019
-# REVISED: 16MAR2019
+# REVISED: 19MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -22,22 +22,23 @@
 # Special characters
 # ------------------------------------------------------------------------------
 
+# C-style octal code representing an ASCI escape character.
+ESC := \033
+
 EMPTY :=
 SPACE := $(EMPTY) $(EMPTY)
 
 # ------------------------------------------------------------------------------
 # ANSI escape sequences
-#
-# NOTE: "\033" is a C-style octal code representing an ASCI escape character.
 # ------------------------------------------------------------------------------
 
 # Setting the text intensity/emphasis of STDOUT.
-RESET := \033[0m
-BOLD := \033[1m
-DIM := \033[2m
+RESET := $(ESC)[0m
+BOLD := $(ESC)[1m
+DIM := $(ESC)[2m
 
 # Setting the text color of STDOUT.
-FG_CYAN := \033[0;36m
-FG_GREEN := \033[0;32m
-FG_RED := \033[0;31m
-FG_YELLOW := \033[1;33m
+FG_CYAN := $(ESC)[0;36m
+FG_GREEN := $(ESC)[0;32m
+FG_RED := $(ESC)[0;31m
+FG_YELLOW := $(ESC)[1;33m
