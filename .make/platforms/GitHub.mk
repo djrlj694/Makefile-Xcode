@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0
 # CREATED: 23FEB2019
-# REVISED: 17MAR2019
+# REVISED: 20MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -130,8 +130,8 @@ CODE_OF_CONDUCT.md: CODE_OF_CONDUCT.sed CODE_OF_CONDUCT.md.download
 
 # Makes a sed script for file CODE_OF_CONDUCT.sed.
 CODE_OF_CONDUCT.sed:
-	$(eval var_names = project_name email github_user)
-	$(call add-cc-sed-cmds,$(var_names))
+	$(eval kv_list = $(PROJECT_KV) $(EMAIL_KV) $(GITHUB_USER_KV))
+	$(call add-sed-cmds,cc-sed-cmd,$(kv_list))
 
 # Makes a CONTRIBUTING.md file.
 CONTRIBUTING.md: CONTRIBUTING.sed CONTRIBUTING.md.download
@@ -139,8 +139,8 @@ CONTRIBUTING.md: CONTRIBUTING.sed CONTRIBUTING.md.download
 
 # Makes a sed script for file CONTRIBUTING.sed.
 CONTRIBUTING.sed:
-	$(eval var_names = project_name email github_user)
-	$(call add-cc-sed-cmds,$(var_names))
+	$(eval kv_list = $(PROJECT_KV) $(EMAIL_KV) $(GITHUB_USER_KV))
+	$(call add-sed-cmds,cc-sed-cmd,$(kv_list))
 
 # Makes a SUPPORT.md file.
 SUPPORT.md: SUPPORT.md.download
