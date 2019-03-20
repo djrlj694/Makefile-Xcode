@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.0.0
 # CREATED: 16MAR2019
-# REVISED: 200MAR2019
+# REVISED: 20MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -19,7 +19,7 @@
 # ==============================================================================
 
 # Run a sed script ("$<") to perform text transformations on a file ("$@"), such
-# as substituting regular exprression pattern matches with replacement values.
+# as substituting regular expression pattern matches with replacement values.
 define update-file
 	@sed -f $< $@ > $@.tmp
 	@mv $@.tmp $@
@@ -29,11 +29,15 @@ endef
 # User-Defined Functions
 # ==============================================================================
 
-# $(call add-sed-cmd,cmd)
-# Adds a sed command to a sed script.
-add-sed-cmd = echo $1 >> $@
+# $(call add-sed-cmds,sed-cmd,kv_var)
+# Generates and adds a sed command to a sed script from a single key/value pair.
+define add-sed-cmd
+	$(eval key = $(shell echo '$2' | cut -d':' -f1))
+	$(eval value = $(shell echo '$2' | cut -d':' -f2))
+	@echo $(call $1,$(key),$(value)) >> $@
+endef
 
-# $(call add-sed-cmds,add_sed_cmd,vars)
-# Generates a list of syntactically identical sed command to add to the same
-# sed script.
-add-sed-cmds = $(foreach var,$2,$(call $1,$(var)))
+# $(call add-sed-cmds,sed-cmd,kv_list)
+# Generates and adds a list of syntactically identical sed commands to the same
+# sed script from a list of key/value.
+add-sed-cmds = $(foreach kv_var,$2,$(call add-sed-cmd,$1,$(kv_var)))
