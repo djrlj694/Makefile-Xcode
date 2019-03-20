@@ -43,7 +43,7 @@ PACKAGE ?= $(PROJECT)
 # Settings
 # ------------------------------------------------------------------------------
 
-SHELL := bash
+SHELL := /bin/bash
 
 # ------------------------------------------------------------------------------
 # Debugging & error capture
@@ -95,12 +95,13 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 ifeq ($(COOKIECUTTER),)
 define add-cc-sed-cmd
 	$(eval re = {{ cookiecutter.$1 }})
-	case $1 in \
-		email) $(call add-sed-cmd,s/$(re)/$(EMAIL)/g);; \
-		github_user) $(call add-sed-cmd,s/$(re)/$(GITHUB_USER)/g);; \
-		project_name) $(call add-sed-cmd,s/$(re)/$(PROJECT)/g);; \
-		travis_user) $(call add-sed-cmd,s/$(re)/$(TRAVIS_USER)/g);; \
-	esac
+	@case $1 in \
+		email) replacement=$(EMAIL);; \
+		github_user) replacement=$(GITHUB_USER);; \
+		project_name) replacement=$(PROJECT);; \
+		travis_user) replacement=$(TRAVIS_USER);; \
+	esac; \
+	echo "s/$(re)/$${replacement}/g" >> $@
 endef
 endif
 
