@@ -30,7 +30,8 @@ endef
 # ==============================================================================
 
 # $(call add-sed-cmd,sed-cmd,kv_var)
-# Generates and adds a sed command to a sed script from a single key/value pair.
+# Generates and adds a sed command to a sed script ("$@") from a single
+# key/value pair.
 define add-sed-cmd
 	$(eval key = $(shell echo '$2' | cut -d':' -f1))
 	$(eval value = $(shell echo '$2' | cut -d':' -f2))
@@ -40,5 +41,5 @@ endef
 
 # $(call add-sed-cmds,sed-cmd,kv_list)
 # Generates and adds a list of syntactically identical sed commands to the same
-# sed script from a list of key/value.
+# sed script from a list of key/value pairs.
 add-sed-cmds = $(foreach kv_var,$2,$(call add-sed-cmd,$1,$(kv_var)))
