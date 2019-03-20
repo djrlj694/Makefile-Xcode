@@ -29,12 +29,13 @@ endef
 # User-Defined Functions
 # ==============================================================================
 
-# $(call add-sed-cmds,sed-cmd,kv_var)
+# $(call add-sed-cmd,sed-cmd,kv_var)
 # Generates and adds a sed command to a sed script from a single key/value pair.
 define add-sed-cmd
 	$(eval key = $(shell echo '$2' | cut -d':' -f1))
 	$(eval value = $(shell echo '$2' | cut -d':' -f2))
-	@echo $(call $1,$(key),$(value)) >> $@
+	$(eval sed_cmd = $(call $1,$(key),$(value)))
+	@echo $(sed_cmd) >> $@
 endef
 
 # $(call add-sed-cmds,sed-cmd,kv_list)
