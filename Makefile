@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 19MAR2019
+# REVISED: 20MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -85,25 +85,14 @@ MAKEFILE = $(firstword $(MAKEFILE_LIST))
 # 2. Avoid directory tree rebuilds as their directory timestamps changed.
 ###DUMMY_FILES = $(addsuffix /.dummy,$(DIRS)) # RLJ: Commented out. 23FEB2019
 
-# ==============================================================================
-# User-Defined Functions
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# Key/Value pairs
+# ------------------------------------------------------------------------------
 
-# $(call add-sed-cmd,cc_var)
-# Generates a sed command for substituting the replacement string for the 1st
-# instance of the Cookiecutter template variable in the pattern space.
-ifeq ($(COOKIECUTTER),)
-define add-cc-sed-cmd
-	$(eval re = {{ cookiecutter.$1 }})
-	@case $1 in \
-		email) replacement=$(EMAIL);; \
-		github_user) replacement=$(GITHUB_USER);; \
-		project_name) replacement=$(PROJECT);; \
-		travis_user) replacement=$(TRAVIS_USER);; \
-	esac; \
-	echo "s/$(re)/$${replacement}/g" >> $@
-endef
-endif
+PROJECT_KV = project_name:$(PROJECT)
+EMAIL_KV = email:$(EMAIL)
+GITHUB_USER_KV = github_user:$(GITHUB_USER)
+TRAVIS_USER_KV = travis_user:$(TRAVIS_USER)
 
 # ==============================================================================
 # Phony Targets
@@ -180,5 +169,6 @@ include $(MAKEFILE_DIR)/features/common.mk
 
 include $(MAKEFILE_DIR)/platforms/cookiecutter.mk
 include $(MAKEFILE_DIR)/platforms/git.mk
+
 include $(MAKEFILE_DIR)/platforms/GitHub.mk
 include $(MAKEFILE_DIR)/platforms/Xcode.mk
