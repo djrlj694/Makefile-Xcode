@@ -9,19 +9,19 @@ The files in the `.make` directory are intended for general reusability and main
 File | Description
 ---- | -----------
 common.mk | TBD
-debugging.mk | TBD
-formatting.mk | TBD
-helping.mk | TBD
+debugging.mk | Enables debugging activities.
+formatting.mk | Defines variables for special characters and formatting standard output (STDOUT).
+helping.mk | Enables the generation and display of the `make` command's online help for this makefile set (i.e., `Makefile` and `.make/*.mk`).
 setting_up.mk  | TBD
 
 File | Description
 ---- | -----------
-Carthage.mk | TBD
-CocoaPods.mk | TBD
-cookiecutter.mk | TBD
-git.mk  | TBD
+Carthage.mk | Abstracts Carthage activities for dependency management in software projects.
+CocoaPods.mk | Abstracts CocoaPods activities for dependency management in software projects.
+cookiecutter.mk | Abstracts Cookiecutter activities for creating software projects from software project templates.
+git.mk  | Abstracts `git` command activities for version control in software projects.
 GitHub.mk | TBD
-sed.mk | TBD
+sed.mk | Abstracts `sed` command activities for transforming text files.
 Swift.mk | TBD
 Xcode.mk | TBD
 
