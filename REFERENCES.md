@@ -21,6 +21,7 @@ The following is a list of sources that I found helpful or inspirational when le
 10. https://stackoverflow.com/questions/26063839/how-can-i-make-a-target-private-in-gnu-make-for-internal-use-only-or-how-to
 11. https://stackoverflow.com/questions/7281395/output-multiline-variable-to-a-file-with-gnu-make
 12. https://stackoverflow.com/questions/816370/how-do-you-force-a-makefile-to-rebuild-a-target
+13. https://stackoverflow.com/questions/8540485/how-do-i-split-a-string-in-make 
 
 ## Open Source
 1. https://opensource.guide
