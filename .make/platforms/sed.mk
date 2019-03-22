@@ -33,9 +33,9 @@ endef
 # Generates and adds a sed command to a sed script ("$@") from a single
 # key/value pair.
 define add-sed-cmd
-	$(eval key = $(shell echo '$2' | cut -d':' -f1))
-	$(eval value = $(shell echo '$2' | cut -d':' -f2))
-	$(eval sed_cmd = $(call $1,$(key),$(value)))
+	$(eval key = $(firstword $(subst :, ,$2)))
+	$(eval val = $(word 2,$(subst :, ,$2)))
+	$(eval sed_cmd = $(call $1,$(key),$(val)))
 	@echo $(sed_cmd) >> $@
 endef
 
