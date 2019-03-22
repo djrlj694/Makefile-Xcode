@@ -4,7 +4,16 @@ The following is a summary of the [files](#files), style [conventions](#conventi
 
 # Files
 
-The files in the `.make` directory are intended for general reusability and maintainability. They are organized based on considerations such as feature additions and development platform extensions.
+Software projects with large, monolithic code bases have problematic architectures. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. Makefile projects are no different in these respects.
+
+This makefile project is architected for easier development, testing, and deployment. It stores and organizes definitions for custom variables, functions, and targets in separate makefiles and groups these makefiles in accordance with 3 separate, orthogonal areas of concern:
+
+1. Common features
+2. Popular software platforms
+3. 3rd-party libraries
+4. Custom definitions
+
+The files in the `.make` directory are intended for general reusability and maintainability. They are organized based on considerations such as feature additions and development platform extensions.  Futhermore, `.make` directory itself was chosen to be hidden to reinforce its role as infrastructure for supporting the development, testing, and deployment of other software projects. 
 
 ## Libraries
 
