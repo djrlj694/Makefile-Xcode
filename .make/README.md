@@ -16,14 +16,14 @@ setting_up.mk  | TBD
 
 File | Description
 ---- | -----------
-Carthage.mk | Abstracts Carthage activities for dependency management in software projects.
-CocoaPods.mk | Abstracts CocoaPods activities for dependency management in software projects.
-cookiecutter.mk | Abstracts Cookiecutter activities for creating software projects from software project templates.
+Carthage.mk | Abstracts Carthage dependency management set up / clean up activities in Xcode software projects.
+CocoaPods.mk | Abstracts CocoaPods dependency management set up / clean up activities in Xcode software projects.
+cookiecutter.mk | Abstracts activities for transforming Cookiecutter templates into software projects.
 git.mk  | Abstracts `git` command activities for version control in software projects.
-GitHub.mk | TBD
+GitHub.mk | Abstracts document set up /clean up activities for a basic GitHub repo.
 sed.mk | Abstracts `sed` command activities for transforming text files.
-Swift.mk | TBD
-Xcode.mk | TBD
+Swift.mk | Abstracts Swift software project set up / clean up activities.
+Xcode.mk | Abstracts Xcode software project set up / clean up activities.
 
 # Conventions
 
