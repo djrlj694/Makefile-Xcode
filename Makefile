@@ -7,7 +7,7 @@
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 20MAR2019
+# REVISED: 22MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
@@ -167,8 +167,8 @@ include $(MAKEFILE_DIR)/features/common.mk
 # Platform Dependencies
 # ==============================================================================
 
-include $(MAKEFILE_DIR)/platforms/cookiecutter.mk
-include $(MAKEFILE_DIR)/platforms/git.mk
+include $(MAKEFILE_DIR)/platforms/Cookiecutter.mk
+include $(MAKEFILE_DIR)/platforms/Git.mk
 
 include $(MAKEFILE_DIR)/platforms/GitHub.mk
 include $(MAKEFILE_DIR)/platforms/Xcode.mk
