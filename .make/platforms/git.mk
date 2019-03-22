@@ -1,13 +1,13 @@
-# git.mk
+# Git.mk
 # Copyright © 2019 Synthelytics LLC. All rights reserved.
 #
 # ==============================================================================
-# PROGRAM: git.mk
+# PROGRAM: Git.mk
 # AUTHORS: Robert L. Jones
 # COMPANY: Synthelytics LLC
 # VERSION: 1.1.0
 # CREATED: 04FEB2019
-# REVISED: 16MAR2019
+# REVISED: 22MAR2019
 #
 # NOTES:
 #   For more info on terminology, style conventions, or source references, see
