@@ -6,24 +6,33 @@ The following is a summary of the [files](#files), style [conventions](#conventi
 
 The files in the `.make` directory are intended for general reusability and maintainability. They are organized based on considerations such as feature additions and development platform extensions.
 
-File | Description
----- | -----------
-common.mk | TBD
-debugging.mk | Enables debugging activities.
-formatting.mk | Defines variables for special characters and formatting standard output (STDOUT).
-helping.mk | Enables the generation and display of the `make` command's online help for this makefile set (i.e., `Makefile` and `.make/*.mk`).
-setting_up.mk  | TBD
+## Libraries
+
+Feature libraries are custom makefiles that define variables, macros, functions, and targets for abstracting or enabling key features.
 
 File | Description
 ---- | -----------
-Carthage.mk | Defines variables and targets for Carthage dependency management activities in Xcode software projects.
-CocoaPods.mk | Defines variables and targets for CocoaPods dependency management activities in Xcode software projects.
-Cookiecutter.mk | Defines variables and functions for transforming Cookiecutter templates into software projects.
-Git.mk  | Defines targets for Git repository managemement and version control activities in software projects.
-GitHub.mk | Defines variables and targets for GitHub repository management activities.
-sed.mk | Defines functions for transforming text files using  the `sed` command.
-Swift.mk | Defines targets Swift software project management activities.
-Xcode.mk | Defines variables and targets for Xcode software project management activities.
+common.mk | Defines variables and targets for managing documentation to be included in any software project.
+debugging.mk | Defines variables and targets for debugging makefile projects.
+downloading.mk | Defines functions and targets for downloading file.
+formatting.mk | Defines variables for special characters and formatting standard output (STDOUT).
+helping.mk | Defines variables and targets for generating and displaying a makefile project's online help.
+setting_up.mk | Defines variables and targets for setting up a software project.
+
+## Platform Libraries
+
+Platform libraries are custom makefiles that define variables, macros, functions, and targets for abstracting or enabling activities for particular software platforms.
+
+File | Description
+---- | -----------
+Carthage.mk | Defines variables and targets for [Carthage](https://github.com/Carthage/Carthage) dependency management activities in Xcode software projects.
+CocoaPods.mk | Defines variables and targets for [CocoaPods](https://cocoapods.org) dependency management activities in Xcode software projects.
+Cookiecutter.mk | Defines variables and functions for transforming [Cookiecutter](https://github.com/audreyr/cookiecutter) templates into software projects.
+Git.mk  | Defines targets for [Git](https://git-scm.com) repository managemement and version control activities in software projects.
+GitHub.mk | Defines variables and targets for [GitHub](https://github.com) repository management activities.
+sed.mk | Defines functions for transforming text files using the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command.
+Swift.mk | Defines targets [Swift](https://swift.org) software project management activities.
+Xcode.mk | Defines variables and targets for [Xcode](https://developer.apple.com/xcode/) software project management activities.
 
 # Conventions
 
