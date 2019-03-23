@@ -26,7 +26,7 @@ The subsections that follow focus on 2 custom library groups: feature libraries 
 
 File | Description
 ---- | -----------
-common.mk | A makefile library for managing documentation to be included in any software project.
+[common.mk](features/common.mk) | A makefile library for managing documentation to be included in any software project.
 debugging.mk | A makefile library for debugging makefile projects.
 downloading.mk | A makefile library for downloading file.
 formatting.mk | A makefile library for formatting standard output (STDOUT).
