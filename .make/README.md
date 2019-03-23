@@ -60,7 +60,14 @@ This project distinguishes makefile variables into 5 categories, based on consid
 
 # Glossary
 
-This section list technical terminology used in in this makefile project. Some of the terms are generally accepted as part of makefile parlance. Others are unique to this particular makefile project, in part to better facilitate common conventions for, say, naming and defining makefile variables.
+Documentation on makefile syntax describe 4 types of constructs:
+
+1. **comment:** A line that starts with a hashtag character (`#`) and is entirely ignored.
+2. **directive:** An instruction for the `make` command to do something special while reading the makefile.
+3. **rule:** A name that specifies when and how to (re)make one or more files.
+4. **variable:** A name for a text string value that can be substituted (i.e., "expanded") into the name later.
+
+This section goes beyond these constructs and lists technical terminology used in this makefile project. Some of the terms are generally accepted as part of makefile parlance. Others are unique to this particular makefile project, in part to better facilitate common conventions for, say, naming and defining makefile variables.
 
 ## Variables
 
@@ -135,3 +142,4 @@ An intermediate target corresponds to a file that is needed on the way from a so
 3. https://www.oreilly.com/library/view/managing-projects-with/0596006101/
 4. https://www.oreilly.com/openbook/make3/book/
 5. https://en.wikipedia.org/wiki/Make_(software)
+6. https://en.wikipedia.org/wiki/Makefile
