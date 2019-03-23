@@ -4,44 +4,47 @@ The following is a summary of the [files](#files), style [conventions](#conventi
 
 # Files
 
-Software projects with large, monolithic code bases have problematic architectures. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. Makefile projects are no different in these respects.
+Software projects with large, source code files are problematic. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. Makefile projects are no different in these respects.
 
-This makefile project is architected for easier development, testing, and deployment. It stores and organizes definitions for custom variables, functions, and targets in separate makefiles and groups these makefiles in accordance with 3 separate, orthogonal areas of concern:
+This makefile project is designed with modularity and maintainability in mind.  It groups makefiles into 4 separate, orthogonal areas of concern:
 
-1. Common features
-2. Popular software platforms
-3. 3rd-party libraries
-4. Custom definitions
+| Path | Concern | Description |
+| ------------- | ---- | ----------- |
+| `$(PREFIX)/Makefile` | Custom definitions | Variable, function, or target definitions that are unique to this makefile project |
+| `$(PREFIX)/.make/custom/features/*` | Features | Adds feature capabilities to a makefile project |
+| `$(PREFIX)/.make/custom/platforms/*` | Software platforms | Manages software platform/tool capabilities for a software project |
+| `$(PREFIX)/.make/licensed/*` | 3rd-party libraries | Externally-sourced, copyrighted makefiles |
 
-The files in the `.make` directory are intended for general reusability and maintainability. They are organized based on considerations such as feature additions and development platform extensions.  Futhermore, `.make` directory itself was chosen to be hidden to reinforce its role as infrastructure for supporting the development, testing, and deployment of other software projects. 
+Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules.  They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
 
-## Libraries
+1. They are intended for general reusability across multiple makefile projects;
+2. They are hidden from the rest of a software project.
 
-Feature libraries are custom makefiles that define variables, macros, functions, and targets for abstracting or enabling key features.
+The subsections that follow focus on 2 custom library groups: feature libraries and platform libraries.
+
+## Feature Libraries
 
 File | Description
 ---- | -----------
-common.mk | Defines variables and targets for managing documentation to be included in any software project.
-debugging.mk | Defines variables and targets for debugging makefile projects.
-downloading.mk | Defines functions and targets for downloading file.
-formatting.mk | Defines variables for special characters and formatting standard output (STDOUT).
-helping.mk | Defines variables and targets for generating and displaying a makefile project's online help.
-setting_up.mk | Defines variables and targets for setting up a software project.
+common.mk | A makefile library for managing documentation to be included in any software project.
+debugging.mk | A makefile library for debugging makefile projects.
+downloading.mk | A makefile library for downloading file.
+formatting.mk | A makefile library for formatting standard output (STDOUT).
+helping.mk | A makefile library for generating and displaying a makefile project's online help.
+setting_up.mk | A makefile library for setting up a software project.
 
 ## Platform Libraries
 
-Platform libraries are custom makefiles that define variables, macros, functions, and targets for abstracting or enabling activities for particular software platforms.
-
 File | Description
 ---- | -----------
-Carthage.mk | Defines variables and targets for [Carthage](https://github.com/Carthage/Carthage) dependency management activities in Xcode software projects.
-CocoaPods.mk | Defines variables and targets for [CocoaPods](https://cocoapods.org) dependency management activities in Xcode software projects.
-Cookiecutter.mk | Defines variables and functions for transforming [Cookiecutter](https://github.com/audreyr/cookiecutter) templates into software projects.
-Git.mk  | Defines targets for [Git](https://git-scm.com) repository managemement and version control activities in software projects.
-GitHub.mk | Defines variables and targets for [GitHub](https://github.com) repository management activities.
-sed.mk | Defines functions for transforming text files using the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command.
-Swift.mk | Defines targets [Swift](https://swift.org) software project management activities.
-Xcode.mk | Defines variables and targets for [Xcode](https://developer.apple.com/xcode/) software project management activities.
+Carthage.mk | A makefile library for [Carthage](https://github.com/Carthage/Carthage) dependency management activities in Xcode software projects.
+CocoaPods.mk | A makefile library for [CocoaPods](https://cocoapods.org) dependency management activities in Xcode software projects.
+Cookiecutter.mk | A makefile library for transforming [Cookiecutter](https://github.com/audreyr/cookiecutter) templates into software projects.
+Git.mk  | A makefile library for [Git](https://git-scm.com) repository managemement and version control activities in software projects.
+GitHub.mk | A makefile library for [GitHub](https://github.com) repository management activities.
+sed.mk | A makefile library for transforming text files using the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command.
+Swift.mk | A makefile library for [Swift](https://swift.org) software project management activities.
+Xcode.mk | A makefile library for [Xcode](https://developer.apple.com/xcode/) software project management activities.
 
 # Conventions
 
