@@ -6,21 +6,21 @@ The following is a summary of the [files](#files), style [conventions](#conventi
 
 Software projects with large, source code files are problematic. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. Makefile projects are no different in these respects.
 
-This makefile project is designed with modularity and maintainability in mind.  It groups makefiles into 4 separate, orthogonal areas of concern:
+This makefile project is designed with modularity and maintainability in mind.  Following the [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns) software design principle, it separates makefiles into 4 orthogonal areas of concern:
 
 | Path | Concern | Description |
 | ------------- | ---- | ----------- |
 | `$(PREFIX)/Makefile` | Custom definitions | Variable, function, or target definitions that are unique to this makefile project |
-| `$(PREFIX)/.make/custom/features/*` | Features | Adds feature capabilities to a makefile project |
-| `$(PREFIX)/.make/custom/platforms/*` | Software platforms | Manages software platform/tool capabilities for a software project |
-| `$(PREFIX)/.make/licensed/*` | 3rd-party libraries | Externally-sourced, copyrighted makefiles |
+| `$(PREFIX)/.make/features/*` | Features | Adds feature capabilities to a makefile project |
+| `$(PREFIX)/.make/platforms/*` | Software platforms | Manages software platform/tool capabilities for a software project |
+| `$(PREFIX)/.make/utiltites/*` | Utilities | Externally-sourced, copyrighted makefiles |
 
 Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules.  They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
 
-1. They are intended for general reusability across multiple makefile projects;
-2. They are hidden from the rest of a software project.
+1. They are intended for sharing and reusability across multiple makefile projects with no rework required;
+2. They are isolated and hidden from the rest of a software project.
 
-The subsections that follow focus on 2 custom library groups: feature libraries and platform libraries.
+The subsections that follow focus on 2 makefile library groups: feature libraries and platform libraries.
 
 ## Feature Libraries
 
