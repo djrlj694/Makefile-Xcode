@@ -30,7 +30,7 @@ The subsections that follow focus on 2 makefile library groups: feature librarie
 | ---- | ----------- |
 | [common.mk](features/common.mk) | A makefile library for managing documentation to be included in any software project. |
 | [debugging.mk](features/debugging.mk) | A makefile library for debugging makefile projects. |
-| [downloading.mk](features/downloading.mk) | A makefile library for downloading file. |
+| [downloading.mk](features/downloading.mk) | A makefile library for downloading files. |
 | [formatting.mk](features/formatting.mk) | A makefile library for formatting standard output (STDOUT). |
 | [helping.mk](features/helping.mk) | A makefile library for generating and displaying a makefile project's online help. |
 | [setting_up.mk](features/setting_up.mk) | A makefile library for setting up a software project. |
