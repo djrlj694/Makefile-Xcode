@@ -12,7 +12,7 @@ This makefile project is designed with modularity and maintainability in mind.  
 | ------------- | ---- | ----------- |
 | `$(PREFIX)/Makefile` | Custom definitions | Variable, function, or target definitions that are unique to this makefile project |
 | `$(PREFIX)/.make/features/*` | Features | Adds feature capabilities to a makefile project |
-| `$(PREFIX)/.make/platforms/*` | Software platforms | Manages software platform/tool capabilities for a software project |
+| `$(PREFIX)/.make/platforms/*` | Software platforms | Adds software platform/tool management capabilities for a software project |
 | `$(PREFIX)/.make/utilities/*` | Utilities | Externally-sourced, copyrighted makefiles |
 
 Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules.  They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
