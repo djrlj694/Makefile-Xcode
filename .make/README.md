@@ -1,6 +1,6 @@
 # README
 
-**`make`** is a command-line utility for maintaining groups of software files, typically source code files. Created in 1976, it originally functioned as a build automation tool for Unix software -- that is, it would automatically recompile parts of a program after the source code for those parts had changed. Today, it can be used more broadly to automatically complete some task after prerequisite file-specific conditions (e.g., updates to one or more files) are met. This automation is facilitated via so-called **makefiles**, script-like description files that declaratively specify:
+**`make`** is a command-line utility for maintaining groups of software files, typically source code files. Created in 1976, it originally functioned as a build automation tool for Unix software -- that is, it would automatically recompile parts of a program after the source code for those parts had changed. Today, it can be used more broadly to automatically complete some task after prerequisite file-specific conditions (e.g., updates to one or more files) for that task are met. This automation is facilitated via so-called **makefiles**, script-like description files that declaratively specify:
 
 1. The relationships among files in a software project;
 2. The sequence of commands for completing each task.
