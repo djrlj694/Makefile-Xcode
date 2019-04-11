@@ -10,7 +10,7 @@ This makefile project is designed with modularity and maintainability in mind.  
 
 | Path | Concern | Description |
 | ------------- | ---- | ----------- |
-| `$(PREFIX)/Makefile` | Custom definitions | Variable, function, or target definitions that are unique to this makefile project |
+| `$(PREFIX)/Makefile` | Customizations | Variable, function, or target definitions that are unique to this makefile project |
 | `$(PREFIX)/.make/features/*` | Features | Adds feature capabilities to a makefile project |
 | `$(PREFIX)/.make/platforms/*` | Software platforms | Adds software platform/tool management capabilities for a software project |
 | `$(PREFIX)/.make/utilities/*` | Utilities | Externally-sourced, copyrighted makefiles |
