@@ -15,7 +15,7 @@ This makefile project is designed with modularity and maintainability in mind.  
 | `$(PREFIX)/.make/platforms/*` | Software platforms | Adds software platform/tool management capabilities for a software project |
 | `$(PREFIX)/.make/utilities/*` | Utilities | Externally-sourced, copyrighted makefiles |
 
-Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules.  They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
+Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules. They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
 
 1. They are intended for sharing and reusability across multiple makefile projects with no rework required;
 2. They are isolated and hidden from the rest of a software project.
