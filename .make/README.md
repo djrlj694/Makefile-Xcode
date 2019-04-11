@@ -20,6 +20,8 @@ Makefiles stored under the appropriately named `.make` directory are makefile li
 1. They are intended for sharing and reusability across multiple makefile projects with no rework required;
 2. They are isolated and hidden from the rest of a software project.
 
+Makefile libraries may or may not be suffixed with `.mk`; the extension is not a syntactic requirement for when the `make` command reads makefiles.  However, as a convention, extending makefile names with `.mk` is highly recommended and encouraged.
+ 
 The subsections that follow focus on 2 makefile library groups: feature libraries and platform libraries.
 
 ### Feature Libraries
