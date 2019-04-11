@@ -137,7 +137,7 @@ An intermediate target corresponds to a file that is needed on the way from a so
 
 #### Second Expansion Targets
 
-# References
+## References
 
 1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
 2. https://www.gnu.org/software/make/manual/make.html
