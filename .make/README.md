@@ -42,7 +42,7 @@ File | Description
 [Carthage.mk](platforms/Carthage.mk) | A makefile library for [Carthage](https://github.com/Carthage/Carthage) dependency management activities in Xcode software projects.
 [CocoaPods.mk](platforms/CocoaPods.mk) | A makefile library for [CocoaPods](https://cocoapods.org) dependency management activities in Xcode software projects.
 [Cookiecutter.mk](platforms/Cookiecutter.mk) | A makefile library for transforming [Cookiecutter](https://github.com/audreyr/cookiecutter) templates into software projects.
-[Git.mk](platforms/Git.mk)  | A makefile library for [Git](https://git-scm.com) repository managemement and version control activities in software projects.
+[Git.mk](platforms/Git.mk) | A makefile library for [Git](https://git-scm.com) repository managemement and version control activities in software projects.
 [GitHub.mk](platforms/GitHub.mk) | A makefile library for [GitHub](https://github.com) repository management activities.
 [sed.mk](platforms/sed.mk) | A makefile library for transforming text files using the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command.
 [Swift.mk](platforms/Swift.mk) | A makefile library for [Swift](https://swift.org) software project management activities.
