@@ -1,10 +1,15 @@
 # README
 
-The following is a summary of the [files](#files), style [conventions](#conventions), and [terminology](#glossary) used in this makefile project.
+**`make`** is a command-line utility for maintaining groups of software files, typically source code files. Created in 1976, it originally functioned as a build automation tool for Unix software -- that is, it would automatically recompile parts of a program after the source code for those parts had changed. Today, it can be used more broadly to automatically complete some task after prerequisite file-specific conditions (e.g., updates to one or more files) are met. This automation is facilitated via so-called **makefiles**, script-like description files that declaratively specify:
+
+1. The relationships among files in a software project;
+2. The sequence of commands for completing each task.
+
+The sections that follow summarize the [makefiles](#files), style [conventions](#conventions), and [terminology](#glossary) used in this project.  For information about the `make` command or makefile syntax, please refer to the links in the [References](#references) section.
 
 ## Files
 
-Software projects with large, source code files are problematic. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. Makefile projects are no different in these respects.
+Software projects with large, source code files are problematic. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. **Makefile projects**, collections of makefiles to support build activities for a software project, are no different in these respects.
 
 This makefile project is designed with modularity and maintainability in mind.  Following the [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns) software design principle, it separates makefiles into 4 orthogonal areas of concern:
 
