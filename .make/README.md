@@ -62,7 +62,7 @@ This project distinguishes makefile variables into 5 categories, based on consid
 
 ## Glossary
 
-Documentation on makefile syntax describe 4 types of constructs:
+[References](#references) on makefile syntax describe 4 types of constructs:
 
 1. **comment:** A line that starts with a hashtag character (`#`) and is entirely ignored.
 2. **directive:** An instruction for the `make` command to do something special while reading the makefile.
