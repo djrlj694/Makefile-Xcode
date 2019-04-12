@@ -1,6 +1,6 @@
 # README
 
-[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "to describe any task where files must be automatically updated from other whenever the others change". This automation is facilitated via so-called [**makefiles**](https://en.wikipedia.org/wiki/Makefile), script-like description files that [declaratively](https://en.wikipedia.org/wiki/Declarative_programming) specify:
+[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "[to describe any task where files must be updated automatically from others whenever the others change](https://linux.die.net/man/1/make)". This automation is facilitated via so-called [**makefiles**](https://en.wikipedia.org/wiki/Makefile), script-like description files that [declaratively](https://en.wikipedia.org/wiki/Declarative_programming) specify:
 
 1. A software project's file components;
 2. The [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph) of these components (i.e., how they fit together as a set of relationships);
@@ -148,8 +148,9 @@ An intermediate target corresponds to a file that is needed on the way from a so
 ## References
 
 1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
-2. https://www.gnu.org/software/make/manual/make.html
-3. https://www.oreilly.com/library/view/managing-projects-with/0596006101/
-4. https://www.oreilly.com/openbook/make3/book/
-5. https://en.wikipedia.org/wiki/Make_(software)
-6. https://en.wikipedia.org/wiki/Makefile
+2. https://linux.die.net/man/1/make
+3. https://www.gnu.org/software/make/manual/make.html
+4. https://www.oreilly.com/library/view/managing-projects-with/0596006101/
+5. https://www.oreilly.com/openbook/make3/book/
+6. https://en.wikipedia.org/wiki/Make_(software)
+7. https://en.wikipedia.org/wiki/Makefile
