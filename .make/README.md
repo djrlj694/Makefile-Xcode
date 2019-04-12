@@ -1,18 +1,18 @@
 # README
 
-**`make`** is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "to describe any task where files must be automatically updated from other whenever the others change". This automation is facilitated via so-called **makefiles**, script-like description files that declaratively specify:
+[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "to describe any task where files must be automatically updated from other whenever the others change". This automation is facilitated via so-called **makefiles**, script-like description files that declaratively specify:
 
 1. A software project's file components;
-2. The dependency graph of these components (i.e., how they fit together);
+2. The dependency graph of these components (i.e., how they fit together as a set of relationships);
 3. The sequence of commands for creating or updating each component.
 
 **Makefile projects**, integrated sets of makefiles, provide a blueprint for a software project's source code base and its maintenance. As such, makefiles together with the `make` command can serve as the scaffolding for a software project's development process.
 
-The sections that follow summarize the [makefiles](#files), style [conventions](#conventions), and [terminology](#glossary) used in this project.  For information about the `make` command or makefile syntax, please refer to the links in the [References](#references) section.
+The sections that follow summarize the [makefiles](#files), style [conventions](#conventions), and [terminology](#glossary) used in this makefile project.  For information about the `make` command or makefile syntax, please refer to the links in the [References](#references) section.
 
 ## Files
 
-Software projects with large, source code files are problematic. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. **Makefile projects**, collections of makefiles to support build activities for a software project, are no different in these respects.
+Software projects with large, source code files are problematic. At best, they can be intimidating to developers, particularly to those who are new to a development team.  At worse, they become difficult to maintain, debug, or reuse. Makefile projects are no different in these respects.
 
 This makefile project is designed with modularity and maintainability in mind.  Following the [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns) software design principle, it separates makefiles into 4 orthogonal areas of concern:
 
