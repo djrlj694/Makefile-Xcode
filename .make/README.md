@@ -1,9 +1,9 @@
 # README
 
-[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "to describe any task where files must be automatically updated from other whenever the others change". This automation is facilitated via so-called **makefiles**, script-like description files that declaratively specify:
+[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "to describe any task where files must be automatically updated from other whenever the others change". This automation is facilitated via so-called [**makefiles**](https://en.wikipedia.org/wiki/Makefile), script-like description files that [declaratively](https://en.wikipedia.org/wiki/Declarative_programming) specify:
 
 1. A software project's file components;
-2. The dependency graph of these components (i.e., how they fit together as a set of relationships);
+2. The [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph) of these components (i.e., how they fit together as a set of relationships);
 3. The sequence of commands for creating or updating each component.
 
 **Makefile projects**, integrated sets of makefiles, provide a blueprint for a software project's source code base and its maintenance. As such, makefiles together with the `make` command can serve as the scaffolding for a software project's development process.
