@@ -1,6 +1,6 @@
 # README
 
-[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "[to describe any task where files must be updated automatically from others whenever the others change](https://linux.die.net/man/1/make)". This automation is facilitated via so-called [**makefiles**](https://en.wikipedia.org/wiki/Makefile), script-like description files that [declaratively](https://en.wikipedia.org/wiki/Declarative_programming) specify:
+[**`make`**](https://en.wikipedia.org/wiki/Make_(software)) is a command-line utility for maintaining groups of software files, typically source code files. Originally created in 1976 as a software build automation tool for Unix environments, it can be used more broadly "[to describe any task where files must be updated automatically from others whenever the others change](https://linux.die.net/man/1/make)". This automation is facilitated via so-called [**makefiles**](https://en.wikipedia.org/wiki/Makefile), script-like description files that [declaratively](https://en.wikipedia.org/wiki/Declarative_programming) specify via variable definitions and build rules:
 
 1. A software project's file components;
 2. The [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph) of these components (i.e., how they fit together as a set of relationships);
@@ -21,7 +21,7 @@ This makefile project is designed with modularity and maintainability in mind.  
 | `$(PREFIX)/Makefile` | Customizations | Uniquely defines a software project |
 | `$(PREFIX)/.make/features/*` | Features | Adds feature capabilities to a makefile project |
 | `$(PREFIX)/.make/platforms/*` | Software platforms | Adds software platform/tool management capabilities for a software project |
-| `$(PREFIX)/.make/utilities/*` | Utilities | Adds general-purpose definitions |
+| `$(PREFIX)/.make/utilities/*` | Utilities | Adds general-purpose variable definitions |
 
 Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules. They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
 
