@@ -6,7 +6,7 @@
 2. The [dependency graph](https://en.wikipedia.org/wiki/Dependency_graph) of these components (i.e., their interrelationships);
 3. The sequence of commands for creating or updating each component.
 
-**Makefile projects**, integrated sets of makefiles, provide a blueprint for a software project's source code base and its maintenance. As such, makefiles together with the `make` command can serve as the scaffolding for a software project's development process.
+**Makefile projects**, integrated sets of makefiles, provide a blueprint for a software project's source code base and its maintenance. In addition, together with the `make` command, makefile projects serve as the scaffolding for build activities and more within a software project's development process.
 
 The sections that follow summarize the [makefiles](#files), style [conventions](#conventions), and [terminology](#glossary) used in this makefile project.  For information about the `make` command or makefile syntax, please refer to the links in the [References](#references) section.
 
