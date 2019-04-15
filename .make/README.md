@@ -30,7 +30,7 @@ Makefiles stored under the appropriately named `.make` directory are makefile li
 
 Makefile libraries may or may not be suffixed with `.mk`; the extension is not a syntactic requirement for when the `make` command reads makefiles.  However, as a convention, extending makefile names with `.mk` is highly recommended and strongly encouraged.
  
-The subsections that follow focus on 2 makefile library groups: [**feature libraries**](#feature_libraries) and platform libraries.
+The subsections that follow focus on 2 makefile library groups: [**feature libraries**](#feature_libraries) and [**platform libraries**]((#platform_libraries).
 
 ### Feature Libraries
 
