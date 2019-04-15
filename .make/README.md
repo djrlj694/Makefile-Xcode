@@ -99,7 +99,7 @@ By convention, external constants use uppercase, dash-separated words for names.
 An **internal constant** is a variable that is intended to:
 
 1. Have a fixed value;
-2. Be set within a makefile (e.g., `Makefile`) or an `include`-ed file.
+2. Be set within a makefile.
 
 It is typically defined using the `:=` assignment operator to "simply" expand its right-hand side&mdash;i.e., immediately evaluate any variables therein, saving the resulting text as final the value.
 
@@ -110,7 +110,7 @@ By convention, internal constants uses uppercase, dash-separated words for names
 An **internal variable** is one that is intended to:
 
 1. Have a value that depends on other variables, shell commands, etc. in its definition;
-2. Be set within a makefile (e.g., `Makefile`) or an `include`-ed file.
+2. Be set within a makefile.
 
 It is typically defined using the `=` assignment operator to "recursively" expand its right-hand side&mdash;i.e., defer evaluation until the variable is used.
 
