@@ -16,12 +16,12 @@ Software projects with large, source code files are problematic. At best, they c
 
 This makefile project is designed with modularity and maintainability in mind.  Following the [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns) software design principle, it separates makefiles into 4 orthogonal areas of concern:
 
-| Path | Concern | Description |
+| Path | Concern | Intended Usage |
 | ---- | ------- | ----------- |
-| `$(PREFIX)/Makefile` | Customizations | Uniquely defines a software project |
-| `$(PREFIX)/.make/features/*` | Features | Adds feature capabilities to a makefile project |
-| `$(PREFIX)/.make/platforms/*` | Software platforms | Adds software platform/tool management capabilities for a software project |
-| `$(PREFIX)/.make/utilities/*` | Utilities | Adds general-purpose variable definitions |
+| `$(PREFIX)/Makefile` | Customizations | Uniquely defining a software project |
+| `$(PREFIX)/.make/features/*` | Features | Adding feature capabilities to a makefile project |
+| `$(PREFIX)/.make/platforms/*` | Software platforms | Adding software platform/tool management capabilities for a software project |
+| `$(PREFIX)/.make/utilities/*` | Utilities | Adding general-purpose variable definitions |
 
 Makefiles stored under the appropriately named `.make` directory are makefile libraries, portable collections of variable definitions and target rules. They are distinguished from the top-level makefile, `Makefile`, in 2 respects:
 
@@ -34,27 +34,27 @@ The subsections that follow focus on 2 makefile library groups: [**feature libra
 
 ### Feature Libraries
 
-| File | Description |
+| File | Intended Usage |
 | ---- | ----------- |
-| [common.mk](features/common.mk) | A makefile library for managing documentation to be included in any software project. |
-| [debugging.mk](features/debugging.mk) | A makefile library for debugging makefile projects. |
-| [downloading.mk](features/downloading.mk) | A makefile library for downloading files. |
-| [formatting.mk](features/formatting.mk) | A makefile library for formatting standard output (STDOUT). |
-| [helping.mk](features/helping.mk) | A makefile library for generating and displaying a makefile project's online help. |
-| [setting_up.mk](features/setting_up.mk) | A makefile library for setting up a software project. |
+| [common.mk](features/common.mk) | Managing documentation to be included in any software project. |
+| [debugging.mk](features/debugging.mk) | Debugging makefile projects. |
+| [downloading.mk](features/downloading.mk) | Downloading files. |
+| [formatting.mk](features/formatting.mk) | Formatting standard output (STDOUT). |
+| [helping.mk](features/helping.mk) | Generating and displaying a makefile project's online help. |
+| [setting_up.mk](features/setting_up.mk) | Setting up a software project. |
 
 ### Platform Libraries
 
-| File | Description |
+| File | Intended Usage |
 | ---- | ----------- |
-| [Carthage.mk](platforms/Carthage.mk) | A makefile library for [Carthage](https://github.com/Carthage/Carthage) dependency management activities in Xcode software projects. |
-| [CocoaPods.mk](platforms/CocoaPods.mk) | A makefile library for [CocoaPods](https://cocoapods.org) dependency management activities in Xcode software projects. |
-| [Cookiecutter.mk](platforms/Cookiecutter.mk) | A makefile library for transforming [Cookiecutter](https://github.com/audreyr/cookiecutter) templates into software projects. |
-| [Git.mk](platforms/Git.mk) | A makefile library for [Git](https://git-scm.com) repository managemement and version control activities in software projects. |
-| [GitHub.mk](platforms/GitHub.mk) | A makefile library for [GitHub](https://github.com) repository management activities. |
-| [sed.mk](platforms/sed.mk) | A makefile library for transforming text files using the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command. |
-| [Swift.mk](platforms/Swift.mk) | A makefile library for [Swift](https://swift.org) software project management activities. |
-| [Xcode.mk](platforms/Xcode.mk) | A makefile library for [Xcode](https://developer.apple.com/xcode/) software project management activities. |
+| [Carthage.mk](platforms/Carthage.mk) | Managing [Carthage](https://github.com/Carthage/Carthage) dependencies in Xcode software projects. |
+| [CocoaPods.mk](platforms/CocoaPods.mk) | Managing [CocoaPods](https://cocoapods.org) dependencies in Xcode software projects. |
+| [Cookiecutter.mk](platforms/Cookiecutter.mk) | Transforming [Cookiecutter](https://github.com/audreyr/cookiecutter) templates into software projects. |
+| [Git.mk](platforms/Git.mk) | Managing [Git](https://git-scm.com) repositories and version control in software projects. |
+| [GitHub.mk](platforms/GitHub.mk) | Managing [GitHub](https://github.com) repositories. |
+| [sed.mk](platforms/sed.mk) | Transforming text files using the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command. |
+| [Swift.mk](platforms/Swift.mk) | Managing [Swift](https://swift.org) software projects. |
+| [Xcode.mk](platforms/Xcode.mk) | Managing [Xcode](https://developer.apple.com/xcode/) software projects. |
 
 ## Conventions
 
