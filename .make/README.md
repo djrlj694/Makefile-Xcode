@@ -28,7 +28,7 @@ Makefiles stored under the appropriately named `.make` directory are makefile li
 1. They are intended for sharing and reusability across multiple makefile projects with no rework required;
 2. They are isolated and hidden from the rest of a software project.
 
-Makefile libraries may or may not be suffixed with `.mk`; the extension is not a syntactic requirement for when the `make` command reads makefiles.  However, as a convention, extending makefile names with `.mk` is highly recommended and strongly encouraged.
+Makefile libraries may or may not be suffixed with `.mk`; the extension isn't a syntactic requirement for when the `make` command reads makefiles.  However, as a convention, extending makefile names with `.mk` is highly recommended and strongly encouraged.
  
 The subsections that follow focus on 2 makefile library groups: [**feature libraries**](#feature-libraries) and [**platform libraries**](#platform-libraries).
 
@@ -90,7 +90,7 @@ An **external constant** is a variable that is intended to:
 1. Have a fixed value;
 2. Be set at the command line or by the environment.
 
-It is typically defined using the `?=` assignment operator to "conditionally" assign its right-hand side&mdash;i.e., to assign only if a value for the variable has not been externally set.
+It's typically defined using the `?=` assignment operator to "conditionally" assign its right-hand side&mdash;i.e., to assign only if a value for the variable hasn't been externally set.
 
 By convention, external constants use uppercase, dash-separated words for names.
 
@@ -101,7 +101,7 @@ An **internal constant** is a variable that is intended to:
 1. Have a fixed value;
 2. Be set within a makefile.
 
-It is typically defined using the `:=` assignment operator to "simply" expand its right-hand side&mdash;i.e., immediately evaluate any variables therein, saving the resulting text as final the value.
+It's typically defined using the `:=` assignment operator to "simply" expand its right-hand side&mdash;i.e., immediately evaluate any variables therein, saving the resulting text as final the value.
 
 By convention, internal constants uses uppercase, dash-separated words for names.
 
@@ -112,13 +112,13 @@ An **internal variable** is one that is intended to:
 1. Have a value that depends on other variables, shell commands, etc. in its definition;
 2. Be set within a makefile.
 
-It is typically defined using the `=` assignment operator to "recursively" expand its right-hand side&mdash;i.e., defer evaluation until the variable is used.
+It's typically defined using the `=` assignment operator to "recursively" expand its right-hand side&mdash;i.e., defer evaluation until the variable is used.
 
 By convention, internal variables use lowercase, underscore-separated words for names.
 
 #### Macros
 
-A **macro** is a variable that is defined using the "define" directive instead of an assignment operator. It is typically used to define a multi-line variable.
+A **macro** is a variable that is defined using the "define" directive instead of an assignment operator. It's typically used to define a multi-line variable.
 
 By convention, macros use lowercase, underscore-separated words for names.
 
@@ -132,7 +132,7 @@ By convention, its user-defined functions use lowercase, dash-separated words fo
 
 #### Phony Targets
 
-A **phony target** is one that does not represent a file or directory. It can be thought of as an embedded shell script. It is run when an explicit request is made unless unless a file of the same name exists.
+A **phony target** is one that doesn't represent a file or directory. It can be thought of as an embedded shell script. It's run when an explicit request is made unless unless a file of the same name exists.
 
 Two reasons to use a phony target are:
 
