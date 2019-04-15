@@ -85,7 +85,7 @@ This project distinguishes makefile variables into the following 5 categories, b
 
 #### External Constants
 
-An external constant is a variable that is intended to:
+An **external constant** is a variable that is intended to:
 
 1. Have a fixed value;
 2. Be set at the command line or by the environment.
