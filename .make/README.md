@@ -65,8 +65,8 @@ This project distinguishes makefile variables into 5 categories, based on consid
 | [External constant](#external-constants) | Uppercase, underscore-separated words | `USER ?= $(shell whoami)` | Deferred |
 | [Internal constant](#internal-constants) | Uppercase, underscore-separated words | `MKDIR := mkdir -p` | Immediate |
 | [Internal variable](#internal-variables) | Lowercase, underscore-separated words | `subdir = $(shell basename $(@D))` | Deferred |
-| [Macro](#macros) | Lowercase, dash-separated words | <code>define usage_help<br/><br/>Usage:<br/>&nbsp;&nbsp;make = make $(TARGET_ARG) $(MAKE_ARGS)<br/>endef</code> | Deferred |
-| [User-defined function](#user-defined-functions) | Lowercase, dash-separated words | <code>define result<br/>&nbsp;&nbsp;([ $$? -eq 0 ] && printf "$1") \|\| <br/>&nbsp;&nbsp;(printf "$(FAILED)\n" && cat $(LOG) && echo)<br/>endef</code> | Deferred |
+| [Macro](#macros) | Lowercase, hyphenated words | <code>define usage_help<br><br>Usage:<br/>&nbsp;&nbsp;make $(TARGET_ARG) $(MAKE_ARGS)<br>endef</code> | Deferred |
+| [User-defined function](#user-defined-functions) | Lowercase, hyphenated words | <code>define result<br>&nbsp;&nbsp;([ $$? -eq 0 ] && printf "$1") \|\| <br>&nbsp;&nbsp;(printf "$(FAILED)\n" && cat $(LOG) && echo)<br/>endef</code> | Deferred |
 
 ## Glossary
 
@@ -92,7 +92,7 @@ An **external constant** is a variable that is intended to:
 
 It's typically defined using the `?=` assignment operator to "conditionally" assign its right-hand side&mdash;i.e., to assign only if a value for the variable hasn't been externally set.
 
-By convention, external constants use uppercase, dash-separated words for names.
+By convention, external constants use uppercase, underscore-separated words for names.
 
 #### Internal Constants
 
@@ -103,7 +103,7 @@ An **internal constant** is a variable that is intended to:
 
 It's typically defined using the `:=` assignment operator to "simply" expand its right-hand side&mdash;i.e., immediately evaluate any variables therein, saving the resulting text as final the value.
 
-By convention, internal constants uses uppercase, dash-separated words for names.
+By convention, internal constants uses uppercase, underscore-separated words for names.
 
 #### Internal Variables
 
@@ -120,13 +120,13 @@ By convention, internal variables use lowercase, underscore-separated words for 
 
 A **macro** is a variable that is defined using the "define" directive instead of an assignment operator. It's typically used to define a multi-line variable.
 
-By convention, macros use lowercase, underscore-separated words for names.
+By convention, macros use lowercase, hyphenated words for names.
 
 #### User-Defined Variables
 
 A **user-defined function** is a variable or macro that includes one or more temporary variables (`$1`, `$2`, etc.) in its definition.
 
-By convention, its user-defined functions use lowercase, dash-separated words for names.
+By convention, its user-defined functions use lowercase, hyphenated words for names.
 
 ### Targets
 
