@@ -141,7 +141,7 @@ Two reasons to use a phony target are:
 
 #### Intermediate Targets
 
-An **intermediate target** corresponds to a file that is needed on the way from a source file to a target file.  It typically is a temporary file that is needed only once to generate the target after the source changed.  The `make` command automatically removes files that are identified as intermediate targets.  In other words, such files that did not exist before a `make` run do not exist after a `make` run.
+An **intermediate target** corresponds to a file that is needed on the way from a source file to a target file.  It typically is a temporary file that is needed only once to generate the target after the source changed.  The `make` command automatically removes files that are identified as intermediate targets.  In other words, such files that did not exist before a `make` run won't exist after a `make` run.
 
 #### Second Expansion Targets
 
@@ -149,9 +149,9 @@ An **intermediate target** corresponds to a file that is needed on the way from 
 
 1. https://www.cl.cam.ac.uk/teaching/0910/UnixTools/make.pdf
 2. https://linux.die.net/man/1/make
-3. https://www.gnu.org/software/make/
+3. https://www.gnu.org/software/make
 4. https://www.gnu.org/software/make/manual/make.html
-5. https://www.oreilly.com/library/view/managing-projects-with/0596006101/
-6. https://www.oreilly.com/openbook/make3/book/
+5. https://www.oreilly.com/library/view/managing-projects-with/0596006101
+6. https://www.oreilly.com/openbook/make3/book
 7. https://en.wikipedia.org/wiki/Make_(software)
 8. https://en.wikipedia.org/wiki/Makefile
