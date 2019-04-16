@@ -66,7 +66,7 @@ This project distinguishes makefile variables into 5 categories, based on consid
 | [Internal constant](#internal-constants) | Uppercase, underscore-separated words | `MKDIR := mkdir -p` | Immediate |
 | [Internal variable](#internal-variables) | Lowercase, underscore-separated words | `subdir = $(shell basename $(@D))` | Deferred |
 | [Macro](#macros) | Lowercase, hyphenated words | `define usage_help`<br><br>`Usage:`<br>&nbsp;&nbsp;`make $(TARGET_ARG) $(MAKE_ARGS)`<br>`endef` | Deferred |
-| [User-defined function](#user-defined-functions) | Lowercase, hyphenated words | <code>define result<br>&nbsp;&nbsp;([ $$? -eq 0 ] && printf "$1") \|\| <br>&nbsp;&nbsp;(printf "$(FAILED)\n" && cat $(LOG) && echo)<br>endef</code> | Deferred |
+| [User-defined function](#user-defined-functions) | Lowercase, hyphenated words | `define result`<br>&nbsp;&nbsp;`([ $$? -eq 0 ] && printf "$1") \|\|`<br>&nbsp;&nbsp;`(printf "$(FAILED)\n" && cat $(LOG) && echo)`<br>`endef` | Deferred |
 
 ## Glossary
 
