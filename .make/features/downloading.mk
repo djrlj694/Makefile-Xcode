@@ -1,22 +1,19 @@
-# downloading.mk
-# Copyright © 2019 Synthelytics LLC. All rights reserved.
-#
-# ==============================================================================
+# Copyright © 2019 djrlj694.dev. All rights reserved.
+#==============================================================================#
 # PROGRAM: downloading.mk
 # AUTHORS: Robert L. Jones
-# COMPANY: Synthelytics LLC
+# COMPANY: djrlj694.dev
 # VERSION: 1.0.0
-# CREATED: 10MAR16MAR20192019
-# REVISED: 16MAR2019
-#
-# NOTES:
-#   For more info on terminology, style conventions, or source references, see
-#   the file ".make/README.md".
-# ==============================================================================
+# CREATED: 10MAR2019
+# REVISED: 24MAY2019
+#==============================================================================#
+# For more info on terminology, style conventions, or source references, see
+# the file ".make/README.md".
+#==============================================================================#
 
-# ==============================================================================
-# User-Defined Functions
-# ==============================================================================
+#==============================================================================#
+# USER-DEFINED FUNCTIONS
+#==============================================================================#
 
 # $(call download-file,file,base-url)
 # Downloads a file.
@@ -24,9 +21,9 @@ define download-file
 	curl --silent --show-error --location --fail $2/$1 --time-cond $1
 endef
 
-# ==============================================================================
-# File Targets
-# ==============================================================================
+#==============================================================================#
+# FILE TARGETS
+#==============================================================================#
 
 # Downloads a file.
 # https://stackoverflow.com/questions/32672222/how-to-download-a-file-only-if-more-recently-changed-in-makefile
