@@ -1,22 +1,19 @@
-# sed.mk
-# Copyright © 2019 Synthelytics LLC. All rights reserved.
-#
-# ==============================================================================
+# Copyright © 2019 djrlj694.dev. All rights reserved.
+#==============================================================================#
 # PROGRAM: sed.mk
 # AUTHORS: Robert L. Jones
-# COMPANY: Synthelytics LLC
+# COMPANY: djrlj694.dev
 # VERSION: 1.0.0
 # CREATED: 16MAR2019
-# REVISED: 08AP2019
-#
-# NOTES:
-#   For more info on terminology, style conventions, or source references, see
-#   the file ".make/README.md".
-# ==============================================================================
+# REVISED: 24MAY2019
+#==============================================================================#
+# For more info on terminology, style conventions, or source references, see
+# the file ".make/README.md".
+#==============================================================================#
 
-# ==============================================================================
-# Macros
-# ==============================================================================
+#==============================================================================#
+# MACROS
+#==============================================================================#
 
 # Runs a sed script ("$<") to transform a text file ("$@"), such as substituting
 # regular expression pattern matches with replacement values.
@@ -25,17 +22,17 @@ define update-file
 	@mv $@.tmp $@
 endef
 
-# ==============================================================================
-# User-Defined Functions
-# ==============================================================================
+#==============================================================================#
+# USER-DEFINED FUNCTIONS
+#==============================================================================#
 
 # $(call add-sed-cmd,sed-cmd,kv_var)
-# Generates and adds a sed command to a sed script ("$@") from a single
+# Generates and adds a sed command to a sed script ($@) from a single
 # key/value pair.
 define add-sed-cmd
 	$(eval key = $(firstword $(subst :, ,$2)))
-	$(eval val = $(word 2,$(subst :, ,$2)))
-	$(eval sed_cmd = $(call $1,$(key),$(val)))
+	$(eval value = $(word 2,$(subst :, ,$2)))
+	$(eval sed_cmd = $(call $1,$(key),$(value)))
 	@echo $(sed_cmd) >> $@
 endef
 
