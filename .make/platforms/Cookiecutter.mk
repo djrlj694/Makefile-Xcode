@@ -5,7 +5,7 @@
 # COMPANY: djrlj694.dev
 # VERSION: 1.0.0
 # CREATED: 10MAR2019
-# REVISED: 24MAY2019
+# REVISED: 25MAY2019
 #==============================================================================#
 # For more info on terminology, style conventions, or source references, see
 # the file ".make/README.md".
@@ -49,18 +49,18 @@ cc-sed-cmd = s/{{ cookiecutter.$1 }}/$2/g
 endif
 
 #==============================================================================#
+# UTILITY DEPENDENCIES
+#==============================================================================#
+
+ifeq ($(COOKIECUTTER),)
+include $(MAKEFILE_DIR)/utilities/sed.mk
+endif
+
+#==============================================================================#
 # FEATURE DEPENDENCIES
 #==============================================================================#
 
 ifeq ($(COOKIECUTTER),)
 include $(MAKEFILE_DIR)/features/downloading.mk
 include $(MAKEFILE_DIR)/features/setting_up.mk
-endif
-
-#==============================================================================#
-# PLATFORM DEPENDENCIES
-#==============================================================================#
-
-ifeq ($(COOKIECUTTER),)
-include $(MAKEFILE_DIR)/platforms/sed.mk
 endif
