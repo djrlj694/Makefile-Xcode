@@ -49,11 +49,11 @@ Target | Description
 `clean-dirs` | Completes all directory cleanup activities.
 `clean-git` | Completes all git cleanup activities.
 `clean-md` | Completes all Markdown cleanup activities.
-`setup-carthage` | Completes all Carthage setup activities.
-`setup-cocoapods` | Completes all CocoaPods setup activities.
-`setup-dirs` | Completes all directory setup activities.
-`setup-git` | Completes all git setup activities.
-`setup-md` | Makes all Markdown files.
+`init-carthage` | Completes all Carthage setup activities.
+`init-cocoapods` | Completes all CocoaPods setup activities.
+`init-dirs` | Completes all directory setup activities.
+`init-git` | Completes all git setup activities.
+`init-md` | Makes all Markdown files.
 `test-log` | Shows the most recently generated log for a specified release.
 `test-vars-all` | Shows all Makefile variables (i.e., built-in and custom).
 `test-vars-some` | Shows only a few custom Makefile variables.
