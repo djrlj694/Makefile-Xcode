@@ -5,7 +5,7 @@
 # COMPANY: djrlj694.dev
 # VERSION: 1.0.0
 # CREATED: 16MAR2019
-# REVISED: 25MAY2019
+# REVISED: 26MAY2019
 #==============================================================================#
 # For more info on terminology, style conventions, or source references, see
 # the file ".make/README.md".
@@ -15,7 +15,7 @@
 # MACROS
 #==============================================================================#
 
-# Runs a sed script ("$<") to transform a text file ("$@"), such as substituting
+# Runs a sed script ($<) to transform a text file ($@), such as substituting
 # regular expression pattern matches with replacement values.
 define update-file
 	@sed -f $< $@ > $@.tmp
