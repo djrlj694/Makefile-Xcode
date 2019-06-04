@@ -36,7 +36,7 @@ Target | Description
 `clean` | Removes files and directories.
 `docs` | Makes API documentation.
 `help` | Shows `make` usage documentation.
-`setup` | Completes all Xcode project setup activities.
+`init` | Completes all Xcode project setup activities.
 `test` | Completes all test activities.
 
 #### Prerequisite Targets
@@ -58,7 +58,7 @@ Target | Description
 `test-vars-all` | Shows all Makefile variables (i.e., built-in and custom).
 `test-vars-some` | Shows only a few custom Makefile variables.
 
-## Requirements
+## System Requirements
 
 Makefile-xcode requires the following to be installed on your system:
 
