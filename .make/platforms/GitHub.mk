@@ -95,7 +95,7 @@ init-github-dirs: $(GITHUB_DIRS)
 ## init-github-vars: Completes all GitHub variable setup activites.
 init-github-vars:
 	$(eval PROJECT_REPO = $(GITHUB_USER)/$(PROJECT))
-	$(eval TEMPLATES_REPO = $(GITHUB_USER)/Cookiecutter-GitHub)
+	$(eval TEMPLATES_REPO = $(GITHUB_USER)/cookiecutter-github)
 	$(eval FILE_URL = https://raw.githubusercontent.com/$(TEMPLATES_REPO)/master/%7B%7Bcookiecutter.project_name%7D%7D)
 	$(eval ORIGIN_URL = https://github.com/$(PROJECT_REPO).git)
 
