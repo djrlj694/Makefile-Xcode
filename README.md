@@ -70,7 +70,7 @@ Makefile-xcode requires the following to be installed on your system:
 1. Clone or download the `Makefile-xcode` repository.
 2. Copy the `Makefile` file to the root folder of your project.
 
-## Known issues
+## Known Issues
 
 Currently, there are no known issues.  If you discover any, please kindly submit a [pull request](CONTRIBUTING.md).
 
