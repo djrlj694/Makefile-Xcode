@@ -1,6 +1,6 @@
 # References
 
-The following is a list of sources that I found helpful or inspirational when learning new topics, troubleshooting bugs, authoring documentation, etc.
+The following is a list of sources that were helpful or inspirational when learning new topics, troubleshooting bugs, authoring documentation, etc. while developing or maintaining [Makefile-Xcode](README.md).
 
 ## GitHub
 7. https://code.likeagirl.io/how-to-add-git-to-your-new-xcode-project-ce5f53e1ad5a
