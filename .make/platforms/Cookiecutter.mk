@@ -45,7 +45,7 @@ MAKE_ARGS += [COOKIECUTTER=]
 # Generates a sed command for substituting a Cookiecutter template variable with
 # a replacement value.
 ifeq ($(COOKIECUTTER),)
-cc-sed-cmd = s/{{ cookiecutter.$1 }}/$2/g
+cc-sed-cmd = s/{{cookiecutter.$1}}/$2/g
 endif
 
 #==============================================================================#
