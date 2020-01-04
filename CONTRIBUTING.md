@@ -1,4 +1,4 @@
-# Contributing to Makefile-xcode
+# Contributing Guidelines
 
 Contributions toward improving [Makefile-xcode](README.md) (its source code, documentation, etc.) are welcome via GitHub's [pull request](https://github.com/djrlj694/Makefile-xcode/pull/new/master) process.  By submitting a pull request, you acknowledge and agree to the following:
 
